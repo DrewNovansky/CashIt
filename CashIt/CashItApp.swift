@@ -11,7 +11,7 @@ import SwiftUI
 struct CashItApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WelcomePageView()
         }
     }
 }
