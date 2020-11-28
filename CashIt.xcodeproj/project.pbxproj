@@ -18,6 +18,7 @@
 		49602D19256C198400BAD277 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49602D18256C198400BAD277 /* Preview Assets.xcassets */; };
 		49602D24256C198500BAD277 /* CashItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49602D23256C198500BAD277 /* CashItTests.swift */; };
 		49602D2F256C198500BAD277 /* CashItUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49602D2E256C198500BAD277 /* CashItUITests.swift */; };
+		49CB5034256EA33C00278D94 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB5033256EA33C00278D94 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		49602D2A256C198500BAD277 /* CashItUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CashItUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49602D2E256C198500BAD277 /* CashItUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashItUITests.swift; sourceTree = "<group>"; };
 		49602D30256C198500BAD277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49CB5033256EA33C00278D94 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				490334A4256D41A800B5CCA8 /* Register */,
 				490334A2256D417B00B5CCA8 /* Login */,
 				49602D13256C198200BAD277 /* ContentView.swift */,
+				49BA0C33256F855900EB19EA /* Home */,
 				49602D15256C198400BAD277 /* Assets.xcassets */,
 				49602D1A256C198400BAD277 /* Info.plist */,
 				49602D17256C198400BAD277 /* Preview Content */,
@@ -167,6 +170,14 @@
 				49602D30256C198500BAD277 /* Info.plist */,
 			);
 			path = CashItUITests;
+			sourceTree = "<group>";
+		};
+		49BA0C33256F855900EB19EA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				49CB5033256EA33C00278D94 /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +314,7 @@
 				490334BF256D482000B5CCA8 /* LabelTemplate.swift in Sources */,
 				49602D14256C198200BAD277 /* ContentView.swift in Sources */,
 				49602D12256C198200BAD277 /* CashItApp.swift in Sources */,
+				49CB5034256EA33C00278D94 /* HomeView.swift in Sources */,
 				490334AF256D421800B5CCA8 /* WelcomePageView.swift in Sources */,
 				490334B7256D47BF00B5CCA8 /* Notes.swift in Sources */,
 			);
