@@ -23,7 +23,7 @@ struct LoginView: View {
             
             Spacer()
             NavigationLink(
-                destination: RegisterView(),
+                destination: HomeView(),
                 label: {
                     Text("Submit")
                         .font(.body)
