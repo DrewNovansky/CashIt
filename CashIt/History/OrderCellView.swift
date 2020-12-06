@@ -7,30 +7,37 @@
 
 import SwiftUI
 
+struct Transaction {
+    var orderNumber: String
+    var date: String
+    var moneyChangerName: String
+    var moneyChangerAddress: String
+    var time: String
+    var amount: String
+}
+
 struct OrderCellView: View {
-    var moneyChangerName: String = ""
-    var transaction: String = ""
-    var date: String = ""
+    var transaction: Transaction
     
     var body: some View {
-        Button(action: {
-            
-        }, label: {
+        NavigationLink(
+            destination: OrderDetailView(transaction: transaction),
+            label: {
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
-                    Text("\(moneyChangerName)")
+                    Text("\(transaction.moneyChangerName)")
                         .font(.title3)
                         .fontWeight(.bold)
-                    Text("\(transaction)")
+                    Text("\(transaction.amount)")
                 }.padding()
                 
                 Spacer()
                 
                 VStack {
-                    Text("\(date)")
+                    Text("\(transaction.date)")
                 }.padding()
             }
-            .frame(width: 360, height: 107)
+            .frame(width: UIScreen.main.bounds.width*0.85, height: 107)
             .background(Color(red: 245/256, green: 245/256, blue: 245/256))
             .clipShape(RoundedRectangle(cornerRadius: 10))
         })
@@ -39,6 +46,6 @@ struct OrderCellView: View {
 
 struct OrderCellView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderCellView()
+        OrderCellView(transaction: Transaction(orderNumber: "190120001", date: "29/05/2020", moneyChangerName: "Maju Roso Money Changer", moneyChangerAddress: "Jln. Doang Jadian Kaga", time: "18:00", amount: "IDR 15000000 = USD 1000"))
     }
 }
