@@ -22,7 +22,7 @@ struct ReviewButton: View {
                 .foregroundColor(Color("AccentColor"))
         })
         .sheet(isPresented: $isPresentingModalView, content: {
-            
+            GiveRatingAndReviewView()
         })
         .frame(width: UIScreen.main.bounds.width*0.8, height: 50)
         .overlay(

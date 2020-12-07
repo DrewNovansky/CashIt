@@ -27,7 +27,6 @@ struct textFieldTemp: View {
         TextField("Insert \(textField)", text: $input)
             .padding(.bottom)
             .textFieldStyle(RoundedBorderTextFieldStyle())
-        
     }
 }
 
