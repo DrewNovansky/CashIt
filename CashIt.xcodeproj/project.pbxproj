@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21D39EEC257D40DD0038B1E4 /* GiveRatingAndReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D39EEB257D40DD0038B1E4 /* GiveRatingAndReviewView.swift */; };
+		21D39EF4257D418D0038B1E4 /* ReviewTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D39EF3257D418D0038B1E4 /* ReviewTextField.swift */; };
+		21D39EF9257D4DE90038B1E4 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D39EF8257D4DE90038B1E4 /* SubmitButton.swift */; };
+		21D39EFE257D77A90038B1E4 /* StarsRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D39EFD257D77A90038B1E4 /* StarsRating.swift */; };
 		21D8C3E2257C006E00C57DAB /* OrderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D8C3E1257C006E00C57DAB /* OrderCellView.swift */; };
 		21D8C3EA257C008800C57DAB /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D8C3E9257C008800C57DAB /* HistoryView.swift */; };
 		21D8C3F5257C04CE00C57DAB /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D8C3F4257C04CE00C57DAB /* TitleLabel.swift */; };
@@ -44,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21D39EEB257D40DD0038B1E4 /* GiveRatingAndReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveRatingAndReviewView.swift; sourceTree = "<group>"; };
+		21D39EF3257D418D0038B1E4 /* ReviewTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextField.swift; sourceTree = "<group>"; };
+		21D39EF8257D4DE90038B1E4 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
+		21D39EFD257D77A90038B1E4 /* StarsRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsRating.swift; sourceTree = "<group>"; };
 		21D8C3E1257C006E00C57DAB /* OrderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCellView.swift; sourceTree = "<group>"; };
 		21D8C3E9257C008800C57DAB /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		21D8C3F4257C04CE00C57DAB /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
@@ -94,6 +102,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21D39EEA257D40BC0038B1E4 /* GiveRatingAndReview */ = {
+			isa = PBXGroup;
+			children = (
+				21D39EEB257D40DD0038B1E4 /* GiveRatingAndReviewView.swift */,
+				21D39EF3257D418D0038B1E4 /* ReviewTextField.swift */,
+				21D39EFD257D77A90038B1E4 /* StarsRating.swift */,
+				21D39EF8257D4DE90038B1E4 /* SubmitButton.swift */,
+			);
+			path = GiveRatingAndReview;
+			sourceTree = "<group>";
+		};
 		21D8C3E0257C004500C57DAB /* History */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,8 +189,9 @@
 				49A9E09725769B1200AA1327 /* Home */,
 				21D8C3E0257C004500C57DAB /* History */,
 				21D8C3F2257C04AB00C57DAB /* OrderDetail */,
-				49602D1A256C198400BAD277 /* Info.plist */,
+				21D39EEA257D40BC0038B1E4 /* GiveRatingAndReview */,
 				49602D15256C198400BAD277 /* Assets.xcassets */,
+				49602D1A256C198400BAD277 /* Info.plist */,
 				49602D17256C198400BAD277 /* Preview Content */,
 			);
 			path = CashIt;
@@ -343,15 +363,19 @@
 			files = (
 				4903349B256D416C00B5CCA8 /* LoginView.swift in Sources */,
 				490334A6256D41BD00B5CCA8 /* RegisterView.swift in Sources */,
+				21D39EEC257D40DD0038B1E4 /* GiveRatingAndReviewView.swift in Sources */,
+				21D39EF4257D418D0038B1E4 /* ReviewTextField.swift in Sources */,
 				490334BF256D482000B5CCA8 /* LabelTemplate.swift in Sources */,
 				21D8C3F5257C04CE00C57DAB /* TitleLabel.swift in Sources */,
 				49602D12256C198200BAD277 /* CashItApp.swift in Sources */,
 				49A9E09325769B0600AA1327 /* HomeView.swift in Sources */,
 				21D8C3E2257C006E00C57DAB /* OrderCellView.swift in Sources */,
 				21D8C407257C051900C57DAB /* OrderDetailView.swift in Sources */,
+				21D39EFE257D77A90038B1E4 /* StarsRating.swift in Sources */,
 				490334AF256D421800B5CCA8 /* WelcomePageView.swift in Sources */,
 				21D8C3EA257C008800C57DAB /* HistoryView.swift in Sources */,
 				21D8C3FD257C04E800C57DAB /* ContentLabel.swift in Sources */,
+				21D39EF9257D4DE90038B1E4 /* SubmitButton.swift in Sources */,
 				490334B7256D47BF00B5CCA8 /* Notes.swift in Sources */,
 				21D8C402257C050400C57DAB /* ReviewButton.swift in Sources */,
 			);
@@ -512,7 +536,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CashIt/Preview Content\"";
-				DEVELOPMENT_TEAM = N89WD274V4;
+				DEVELOPMENT_TEAM = 35HAL8HCRV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CashIt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -534,7 +558,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CashIt/Preview Content\"";
-				DEVELOPMENT_TEAM = N89WD274V4;
+				DEVELOPMENT_TEAM = 35HAL8HCRV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CashIt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
