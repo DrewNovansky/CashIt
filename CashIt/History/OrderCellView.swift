@@ -7,21 +7,12 @@
 
 import SwiftUI
 
-struct Transaction {
-    var orderNumber: String
-    var date: String
-    var moneyChangerName: String
-    var moneyChangerAddress: String
-    var time: String
-    var amount: String
-}
-
 struct OrderCellView: View {
     var transaction: Transaction
     
     var body: some View {
         NavigationLink(
-            destination: OrderDetailView(transaction: transaction),
+            destination: OrderDetailView(viewModel: OrderDetailViewModel(transaction)),
             label: {
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {

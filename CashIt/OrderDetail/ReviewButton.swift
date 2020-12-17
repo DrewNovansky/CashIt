@@ -32,8 +32,8 @@ struct ReviewButton: View {
     }
 }
 
-//struct ReviewButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ReviewButton(isPresentingModalView: isPresentingModalView)
-//    }
-//}
+struct ReviewButton_Previews: PreviewProvider {
+    static var previews: some View {
+        ReviewButton(isPresentingModalView: .constant(false))
+    }
+}

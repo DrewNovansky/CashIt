@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ReviewTextField: View {
     @Binding var review: String
+    
     var body: some View {
         TextField("Your Review", text: $review)
             .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -17,8 +18,8 @@ struct ReviewTextField: View {
     }
 }
 
-//struct ReviewTextField_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ReviewTextField()
-//    }
-//}
+struct ReviewTextField_Previews: PreviewProvider {
+    static var previews: some View {
+        ReviewTextField(review: .constant("Review"))
+    }
+}

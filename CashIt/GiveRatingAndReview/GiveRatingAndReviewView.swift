@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct GiveRatingAndReviewView: View {
-    @State var review: String = ""
-    @State var rating: Int = 0
+    @ObservedObject var viewModel = GiveRatingAndReviewViewModel()
     
     var body: some View {
         Text("How many star(s) would you rate this transaction")
@@ -17,9 +16,9 @@ struct GiveRatingAndReviewView: View {
             .multilineTextAlignment(.center)
             .frame(width: UIScreen.main.bounds.width*0.5)
         
-        StarsRating(rating: $rating)
-        ReviewTextField(review: $review)
-        SubmitButton()
+        StarsRating(rating: $viewModel.review.rating)
+        ReviewTextField(review: $viewModel.review.description)
+        SubmitButton(action: {viewModel.checkIfAllFieldsFilled()})
             .padding()
     }
 }

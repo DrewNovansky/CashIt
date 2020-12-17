@@ -10,23 +10,32 @@ import SwiftUI
 struct SubmitButton: View {
     @Environment(\.presentationMode) var presentationMode
     
+    var action: (() -> Bool)?
+    
     var body: some View {
         Button(
             action: {
-                self.presentationMode.wrappedValue.dismiss()
+                if let run = action {
+                    if run() {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    else {
+                        print("no")
+                    }
+                }
             },
             label: {
-            Text("Submit")
-                .font(.title3)
-                .fontWeight(.semibold)
-                .foregroundColor(Color("AccentColor"))
-        })
-        .padding()
-        .frame(width: UIScreen.main.bounds.width*0.8, height: 50)
-        .overlay(
-            Capsule(style: .continuous)
-                .stroke(Color("AccentColor"), lineWidth: 5)
-        )
+                Text("Submit")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color("AccentColor"))
+            })
+            .padding()
+            .frame(width: UIScreen.main.bounds.width*0.8, height: 50)
+            .overlay(
+                Capsule(style: .continuous)
+                    .stroke(Color("AccentColor"), lineWidth: 5)
+            )
     }
 }
 
