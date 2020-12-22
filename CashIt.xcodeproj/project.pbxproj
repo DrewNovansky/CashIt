@@ -28,6 +28,7 @@
 		49602D24256C198500BAD277 /* CashItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49602D23256C198500BAD277 /* CashItTests.swift */; };
 		49602D2F256C198500BAD277 /* CashItUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49602D2E256C198500BAD277 /* CashItUITests.swift */; };
 		49A9E09325769B0600AA1327 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A9E09225769B0600AA1327 /* HomeView.swift */; };
+		49CAB2E62587536A00EC984F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CAB2E52587536A00EC984F /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		49602D2E256C198500BAD277 /* CashItUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashItUITests.swift; sourceTree = "<group>"; };
 		49602D30256C198500BAD277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49A9E09225769B0600AA1327 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		49CAB2E52587536A00EC984F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				49A9E09225769B0600AA1327 /* HomeView.swift */,
+				49CAB2E52587536A00EC984F /* MapView.swift */,
 			);
 			name = Home;
 			path = Login/Home;
@@ -368,6 +371,7 @@
 				490334BF256D482000B5CCA8 /* LabelTemplate.swift in Sources */,
 				21D8C3F5257C04CE00C57DAB /* TitleLabel.swift in Sources */,
 				49602D12256C198200BAD277 /* CashItApp.swift in Sources */,
+				49CAB2E62587536A00EC984F /* MapView.swift in Sources */,
 				49A9E09325769B0600AA1327 /* HomeView.swift in Sources */,
 				21D8C3E2257C006E00C57DAB /* OrderCellView.swift in Sources */,
 				21D8C407257C051900C57DAB /* OrderDetailView.swift in Sources */,

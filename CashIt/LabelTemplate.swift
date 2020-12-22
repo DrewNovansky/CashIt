@@ -25,12 +25,29 @@ struct textFieldTemp: View {
         Text("\(textField)")
             .font(.body)
         TextField("Insert \(textField)", text: $input)
+            .autocapitalization(.none)
+            .padding(.bottom)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+    }
+}
+struct passwordFieldTemp: View {
+    @Binding var input: String
+    var textField: String
+    var body: some View {
+        Text("\(textField)")
+            .font(.body)
+        SecureField("Insert \(textField)", text: $input)
+            .autocapitalization(.none)
+            .textContentType(.newPassword)
             .padding(.bottom)
             .textFieldStyle(RoundedBorderTextFieldStyle())
     }
 }
 
+
 struct LabelTemplate_Previews: PreviewProvider {
+    
+    
     static var previews: some View {
         titleTemp(text: "This is titleTemp")
     }
