@@ -11,7 +11,8 @@ import SwiftUI
 struct CashItApp: App {
     var body: some Scene {
         WindowGroup {
-            HistoryView()
+//            HistoryView()
+            HomeView()
         }
     }
 }
