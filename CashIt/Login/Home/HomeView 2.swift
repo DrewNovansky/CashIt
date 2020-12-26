@@ -89,11 +89,7 @@ struct HomeView: View {
                                 monasExample.title = "Monas Money Changer"
                                 self.locations.append(monasExample)
                             }
-                        
                         if showingPlaceDetails{
-                            let loc1 = CLLocation(latitude: centerCoordinate.latitude,longitude: centerCoordinate.longitude)
-                            let loc2 = CLLocation(latitude: selectedPlace?.coordinate.latitude ?? centerCoordinate.latitude, longitude: selectedPlace?.coordinate.longitude ?? centerCoordinate.longitude)
-                            let distance = Float(loc1.distance(from: loc2 ))
                             VStack{
                                 Spacer()
                                 VStack{
@@ -101,9 +97,6 @@ struct HomeView: View {
                                         VStack{
                                         Text("\(selectedPlace?.title ?? "Unknown")")
                                         Text("\(selectedPlace?.subtitle ?? "Missing place information")")
-                                            
-                                            Text("\(distance, specifier: "%.2f") Meter")
-                                            
                                         }
                                         .padding(30)
                                         .padding(.leading, 30.0)
