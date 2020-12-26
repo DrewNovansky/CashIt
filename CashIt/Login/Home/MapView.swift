@@ -22,6 +22,33 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
+        view.showsUserLocation = true
+
+            // Ask for Authorisation from the User.
+            self.locationManager.requestAlwaysAuthorization()
+
+            // For use in foreground
+            self.locationManager.requestWhenInUseAuthorization()
+
+            if CLLocationManager.locationServicesEnabled() {
+                //        self.locationManager.delegate = self
+                 self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                 self.locationManager.startUpdatingLocation()
+
+                //Temporary fix: App crashes as it may execute before getting users current location
+                //Try to run on device without DispatchQueue
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                    let locValue:CLLocationCoordinate2D = self.locationManager.location!.coordinate
+                    print("CURRENT LOCATION = \(locValue.latitude) \(locValue.longitude)")
+
+                    let coordinate = CLLocationCoordinate2D(
+                        latitude: locValue.latitude, longitude: locValue.longitude)
+                    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                    let region = MKCoordinateRegion(center: coordinate, span: span)
+                    view.setRegion(region, animated: true)
+                })
+            }
                 if annotations.count != view.annotations.count{
                     view.removeAnnotations(view.annotations)
                     view.addAnnotations(annotations)
