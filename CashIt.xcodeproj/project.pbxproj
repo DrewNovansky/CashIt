@@ -180,13 +180,6 @@
 			path = OrderDetail;
 			sourceTree = "<group>";
 		};
-		2D784C53259F1E010052C2A2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		2D784C73259F200F0052C2A2 /* MCProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,7 +276,6 @@
 				2D784C69259F1EAB0052C2A2 /* Currency.swift */,
 				2D784C81259F22770052C2A2 /* OperationalHours.swift */,
 				2D0942E825A0729000130193 /* StoreViewModel.swift */,
-				2D784C53259F1E010052C2A2 /* Model */,
 				2D784C73259F200F0052C2A2 /* MCProfile */,
 				2D784C86259F32BD0052C2A2 /* MCInfo */,
 				2D784C8F259F331F0052C2A2 /* MCReview */,
