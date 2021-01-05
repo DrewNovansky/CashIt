@@ -8,7 +8,7 @@
 import Foundation
 
 class GiveRatingAndReviewViewModel: ObservableObject {
-    @Published var review = Review(rating: 0, description: "")
+    @Published var review = NewReview(rating: 0, description: "")
     
     func checkIfAllFieldsFilled() -> Bool {
         if self.review.description.isEmpty || self.review.rating == 0 {
