@@ -8,47 +8,41 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @State var username:String = ""
-    @State var email:String = ""
-    @State var password:String = ""
-    @State var confPassword:String = ""
-    @State var showView:Bool = false
+    @ObservedObject var viewModel = RegisterViewModel()
+    @State var showView = false
     @State var showAlert = false
+    
     var body: some View {
-        VStack(alignment:.leading){
-            HStack{
-                titleTemp(text: "Sign Up")
+        NavigationView{
+            VStack(alignment:.leading){
+                HStack{
+                    TitleTemp(text: "Sign Up")
+                    Spacer()
+                }
                 Spacer()
-            }
-            Spacer()
-            textFieldTemp(input: $username, textField: "Username")
-            textFieldTemp(input: $email, textField: "Email")
-            passwordFieldTemp(input: $password, textField: "Password")
-            passwordFieldTemp(input: $confPassword, textField: "Confirmation Password")
-            Spacer()
-
-            NavigationLink(destination: HomeView(), isActive: $showView){
-                Button(action: {
-                    if username == "" || email == "" || password == "" || confPassword == ""{
-                        self.showAlert = true
-                    }
-                    else{
-                        print("\(username)\n\(email)\n\(password)\n\(confPassword)")
-                        showView = true
-                    }
-                }, label: {Text("Submit")
-                    .font(.body)
-                    .foregroundColor(.white)
-                    .frame(
-                        width: UIScreen.main.bounds.width*0.9,
-                        height:UIScreen.main.bounds.height*0.05,
-                        alignment: .center)
-                    .background(Color("AccentColor"))
-                    .padding(.bottom)})
-            }.alert(isPresented: $showAlert) {
-                Alert(title: Text("Error!"), message: Text("We're sorry but you need to fill all the box to register"), dismissButton: .cancel(Text("Okay")))
-            }
-        }.frame(width: UIScreen.main.bounds.width*0.9)
+                TextFieldTemp(input: $viewModel.user.username, textField: "Username")
+                    .onChange(of: viewModel.user.username, perform: { username in
+                        UserDefaults.standard.set(self.viewModel.user.username, forKey: "username")
+                    })
+                TextFieldTemp(input: $viewModel.user.email, textField: "Email")
+                    .onChange(of: viewModel.user.email, perform: { email in
+                        UserDefaults.standard.set(self.viewModel.user.email, forKey: "email")
+                    })
+                PasswordFieldTemp(input: $viewModel.user.password, textField: "Password")
+                    .onChange(of: viewModel.user.password, perform: { password in
+                        UserDefaults.standard.set(self.viewModel.user.password, forKey: "password")
+                    })
+                PasswordFieldTemp(input: $viewModel.user.confPassword, textField: "Confirmation Password")
+                    .onChange(of: viewModel.user.confPassword, perform: { confPassword in
+                        UserDefaults.standard.set(self.viewModel.user.confPassword, forKey: "confpassword")
+                    })
+                Spacer()
+                SubmitRegister(showView: $showView, showAlert: $showAlert, action: {viewModel.checkIfAllFieldsFilled()})
+                
+            }.frame(width: UIScreen.main.bounds.width*0.9)
+        }
+        .navigationBarTitle(Text(""), displayMode: .inline)
+        
     }
 }
 

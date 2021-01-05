@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import MapKit
 
 @main
 struct CashItApp: App {
     var body: some Scene {
         WindowGroup {
 //            HistoryView()
-            HomeView()
+//            TabBarVIew()
+            GiveRatingAndReviewView()
         }
     }
 }

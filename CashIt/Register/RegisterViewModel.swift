@@ -1,0 +1,22 @@
+//
+//  RegisterViewModel.swift
+//  CashIt
+//
+//  Created by Andrew Novansky Ignatius on 29/12/20.
+//
+
+import Foundation
+
+class RegisterViewModel: ObservableObject {
+    @Published var user = UserRegister()
+    
+    func checkIfAllFieldsFilled() -> Bool {
+        if self.user.username.isEmpty || self.user.email.isEmpty || self.user.password.isEmpty || self.user.confPassword.isEmpty || self.user.password != self.user.confPassword{
+            print("\(user.username) and \(user.password)")
+            return false
+            
+        }
+        print("\(user.username) and \(user.password)")
+        return true
+    }
+}
