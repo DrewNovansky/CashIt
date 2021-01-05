@@ -8,34 +8,36 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var email: String = ""
-    @State var password: String = ""
+    @ObservedObject var viewModel = LoginViewModel()
+    @State var showView: Bool = false
+    @State var showView2: Bool = false
+    @State var showAlert: Bool = false
     var body: some View {
-        VStack(alignment:.leading){
-            HStack{
-                titleTemp(text: "Sign In")
+        NavigationView{
+            VStack(alignment:.leading){
+                HStack{
+                    TitleTemp(text: "Sign In")
+                    Spacer()
+                }
                 Spacer()
+                
+                TextFieldTemp(input: self.$viewModel.user.email, textField: "Email")
+                    .onChange(of: viewModel.user.email, perform: { email in
+                        UserDefaults.standard.set(self.viewModel.user.email, forKey: "email")
+                    })
+                PasswordFieldTemp(input: self.$viewModel.user.password, textField: "Password")
+                    .onChange(of: viewModel.user.password, perform: { password in
+                        UserDefaults.standard.set(self.viewModel.user.password, forKey: "password")
+                        print("Password changed to \(password)")
+                    })
+                Spacer()
+                SubmitLogin(showView: $showView, showAlert: $showAlert, action: {viewModel.checkIfAllFieldsFilled()})
+                RegisterButton(showView: $showView2)
             }
-            Spacer()
-            
-            textFieldTemp(input: $email, textField: "Email")
-            textFieldTemp(input: $password, textField: "Password")
-            
-            Spacer()
-            NavigationLink(
-                destination: HomeView(),
-                label: {
-                    Text("Submit")
-                        .font(.body)
-                        .foregroundColor(.white)
-                        .frame(
-                            width: UIScreen.main.bounds.width*0.9,
-                            height:UIScreen.main.bounds.height*0.05,
-                            alignment: .center)
-                        .background(Color("AccentColor"))
-                        .padding(.bottom)
-                })
-        }.frame(width: UIScreen.main.bounds.width*0.9)
+            .frame(width: UIScreen.main.bounds.width*0.9)
+            .navigationBarTitle(Text(""), displayMode: .inline)
+            .navigationBarHidden(true)
+        }
     }
 }
 
