@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct Review: Identifiable {
+struct NewReview: Identifiable {
+    
     var id = UUID()
     var rating: Int
     var description: String
+    
 }
