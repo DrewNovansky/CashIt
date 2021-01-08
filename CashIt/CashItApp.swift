@@ -14,7 +14,7 @@ struct CashItApp: App {
         WindowGroup {
 //            HistoryView()
 //            TabBarVIew()
-            GiveRatingAndReviewView()
+            WelcomePageView()
         }
     }
 }

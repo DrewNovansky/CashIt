@@ -17,7 +17,7 @@ struct HomeView: View {
         
         ZStack{
                     VStack{
-                        SearchBar(text: $searchText, placeholder: "Search money changer store")
+                        SearchBar(text: $searchText, placeholder: "Cari nama money changer")
                         CurrencySelect(fromTo: $fromTo)
                         StoreList(searchText: $searchText)
                     }
@@ -30,7 +30,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-//        HomeView( locValue: locValue)
-        Text("Hai")
+        HomeView()
     }
 }

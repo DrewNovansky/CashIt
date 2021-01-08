@@ -14,7 +14,7 @@ struct TextFieldTemp: View {
     var body: some View {
         Text("\(textField)")
             .font(.body)
-        TextField("Insert \(textField)", text: $input)
+        TextField("Masukan \(textField)", text: $input)
             .autocapitalization(.none)
             .padding(.bottom)
             .textFieldStyle(RoundedBorderTextFieldStyle())

@@ -13,7 +13,7 @@ struct PasswordFieldTemp: View {
     var body: some View {
         Text("\(textField)")
             .font(.body)
-        SecureField("Insert \(textField)", text: $input)
+        SecureField("Masukan \(textField)", text: $input)
             .autocapitalization(.none)
             .textContentType(.newPassword)
             .padding(.bottom)
