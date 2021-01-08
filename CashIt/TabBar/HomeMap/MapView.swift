@@ -78,7 +78,7 @@ struct MapView: UIViewRepresentable {
 
             // For use in foreground
             self.locationManager.requestWhenInUseAuthorization()
-
+        
             if CLLocationManager.locationServicesEnabled() {
                 //        self.locationManager.delegate = self
                  self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters

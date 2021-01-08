@@ -13,12 +13,12 @@ struct TabBarVIew: View {
             HomeView()
                 .tabItem {
                     Image(systemName: "dollarsign.circle.fill")
-                    Text("Price") }
+                    Text("Harga") }
             HomeMapView()
                 .tabItem {
                     Image(systemName: "mappin.circle.fill")
-                    Text("Map") }
-        }
+                    Text("Peta") }
+        }.navigationBarHidden(true)
     }
 }
 

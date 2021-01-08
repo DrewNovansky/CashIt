@@ -13,7 +13,6 @@ struct LoginView: View {
     @State var showView2: Bool = false
     @State var showAlert: Bool = false
     var body: some View {
-        NavigationView{
             VStack(alignment:.leading){
                 HStack{
                     TitleTemp(text: "Sign In")
@@ -25,7 +24,7 @@ struct LoginView: View {
                     .onChange(of: viewModel.user.email, perform: { email in
                         UserDefaults.standard.set(self.viewModel.user.email, forKey: "email")
                     })
-                PasswordFieldTemp(input: self.$viewModel.user.password, textField: "Password")
+                PasswordFieldTemp(input: self.$viewModel.user.password, textField: "Kata Sandi")
                     .onChange(of: viewModel.user.password, perform: { password in
                         UserDefaults.standard.set(self.viewModel.user.password, forKey: "password")
                         print("Password changed to \(password)")
@@ -35,9 +34,8 @@ struct LoginView: View {
                 RegisterButton(showView: $showView2)
             }
             .frame(width: UIScreen.main.bounds.width*0.9)
-            .navigationBarTitle(Text(""), displayMode: .inline)
+//            .navigationBarTitle(Text(""), displayMode: .inline)
             .navigationBarHidden(true)
-        }
     }
 }
 

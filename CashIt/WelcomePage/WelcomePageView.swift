@@ -11,16 +11,16 @@ struct WelcomePageView: View {
     var body: some View {
         NavigationView{
             VStack{
-                Text("Hello World!")
+                Text("Cash It!")
                     .font(.title)
                     .foregroundColor(Color("AccentColor"))
                 Spacer()
                 NavigationLink(destination: LoginView(),label: {
-                    SignInButton(buttonText: "Sign In")
+                    SignInButton(buttonText: "Masuk")
                 }
                 )
-                NavigationLink(destination: RegisterView(),label: {
-                    SignInButton(buttonText: "Sign Up", backgroundColor: Color(.white), foregroundColor: Color("AccentColor"))
+                NavigationLink(destination: LoginView(),label: {
+                    SignInButton(buttonText: "Daftar", backgroundColor: Color(.white), foregroundColor: Color("AccentColor"))
                 }
                 )
             }
