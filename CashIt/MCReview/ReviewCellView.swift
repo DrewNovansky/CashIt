@@ -25,7 +25,8 @@ struct ReviewCellView: View {
             
             HStack{
                 Text(review.description)
-                    .frame(maxWidth: UIScreen.main.bounds.width/2, alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: UIScreen.main.bounds.width/2, maxHeight: UIScreen.main.bounds.height/5,alignment: .leading)
                 Spacer()
                 HStack{
                     ForEach(0..<review.rating){ i in

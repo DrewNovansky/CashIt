@@ -22,7 +22,7 @@ struct InfoCellView: View {
                 if(operationalHour.isOpen == true){
                     Text(operationalHour.openHour + " - " + operationalHour.closeHour)
                 }else {
-                    Text("Closed")
+                    Text("Tutup")
                 }
                 Spacer()
             }

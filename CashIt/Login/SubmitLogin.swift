@@ -23,7 +23,7 @@ struct SubmitLogin: View {
                         self.showAlert = true
                     }
                 }
-            }, label: {Text("Submit")
+            }, label: {Text("Masuk")
                 .font(.body)
                 .foregroundColor(.white)
                 .frame(

@@ -19,7 +19,7 @@ struct WelcomePageView: View {
                     SignInButton(buttonText: "Masuk")
                 }
                 )
-                NavigationLink(destination: LoginView(),label: {
+                NavigationLink(destination: RegisterView(),label: {
                     SignInButton(buttonText: "Daftar", backgroundColor: Color(.white), foregroundColor: Color("AccentColor"))
                 }
                 )

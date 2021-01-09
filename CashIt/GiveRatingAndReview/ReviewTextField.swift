@@ -10,7 +10,7 @@ import SwiftUI
 struct ReviewTextField: View {
     @Binding var review: String
     var body: some View {
-        multilineTF(placeholder: "Your Review", textWritten: $review)
+        multilineTF(placeholder: "Ulasan Anda", textWritten: $review)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .frame(width: UIScreen.main.bounds.width*0.8, height: UIScreen.main.bounds.height*0.2)
             .multilineTextAlignment(TextAlignment.center)

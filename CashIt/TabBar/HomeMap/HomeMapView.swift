@@ -13,7 +13,8 @@ struct HomeMapView: View {
     @State private var centerCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
     @State private var selectedPlace: MKPointAnnotation?
     @State private var showingPlaceDetails: Bool = false
-    @State var locValue: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    @State var locValue: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0,longitude: 0)
+    @State var showView: Bool = false
     var body: some View {
         ZStack{
             MapView(centerCoordinate: $centerCoordinate, selectedPlace: $selectedPlace, showingPlaceDetails: $showingPlaceDetails, locValue: $locValue, annotations: viewModel.annotatedMoneyChanger)
@@ -27,16 +28,19 @@ struct HomeMapView: View {
                 let loc1 = CLLocation(latitude: locValue.latitude,longitude: locValue.longitude)
                 let loc2 = CLLocation(latitude: selectedPlace?.coordinate.latitude ?? centerCoordinate.latitude, longitude: selectedPlace?.coordinate.longitude ?? centerCoordinate.longitude)
                 let distance = Float(loc1.distance(from: loc2 ))
-                
                 VStack{
                     Spacer()
+                    NavigationLink(destination: viewModel.segue(), isActive: $showView){
                     VStack{
                         PlaceDetails(selectedPlace: $selectedPlace, distance: distance)
+                    }
+                    .onTapGesture {
+                        showView.toggle()
                     }
                     .frame(width: UIScreen.main.bounds.width*0.93, height: UIScreen.main.bounds.height/6, alignment: .topLeading)
                     .border(Color.black, width: 1)
                     .background(Color(.white))
-                    
+                    }
                 }
             }
 

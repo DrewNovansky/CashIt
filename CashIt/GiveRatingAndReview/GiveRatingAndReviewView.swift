@@ -11,7 +11,7 @@ struct GiveRatingAndReviewView: View {
     @ObservedObject var viewModel = GiveRatingAndReviewViewModel()
     
     var body: some View {
-        Text("How many star(s) would you rate this transaction")
+        Text("Berapa bintang untuk pesanan ini")
             .padding()
             .multilineTextAlignment(.center)
             .frame(width: UIScreen.main.bounds.width*0.5)

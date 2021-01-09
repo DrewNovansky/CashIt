@@ -15,7 +15,7 @@ struct LoginView: View {
     var body: some View {
             VStack(alignment:.leading){
                 HStack{
-                    TitleTemp(text: "Sign In")
+                    TitleTemp(text: "Masuk")
                     Spacer()
                 }
                 Spacer()
