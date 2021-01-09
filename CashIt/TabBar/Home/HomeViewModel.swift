@@ -27,4 +27,10 @@ class HomeViewModel: ObservableObject {
     func getStore(index: Int) -> Store {
         return store[index]
     }
+    
+    func segue() -> MCProfileView {
+        let viewModel = MCProfileViewModel()//terima parameter
+        let view = MCProfileView(viewModel: viewModel, isTopNavigationActive: false)
+        return view
+    }
 }

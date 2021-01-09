@@ -26,7 +26,7 @@ struct MCReviewView: View {
                         }
                     }
                     
-                    Text("\(viewModel.reviews.count)" + " Review(s)")
+                    Text("\(viewModel.reviews.count)" + " Ulasan")
                     
                 }.frame(alignment: .leading)
             }
@@ -34,7 +34,7 @@ struct MCReviewView: View {
             Spacer()
             
             if(viewModel.reviews.count < 1){
-                Text("There isn't any review for this Money Changer")
+                Text("Money Changer ini belum memiliki Ulasan")
             }else {
                 ScrollView(){
                     ForEach(viewModel.reviews) { review in
@@ -42,7 +42,7 @@ struct MCReviewView: View {
                     }
                 }
             }
-        }.navigationBarTitle(Text("Reviews"), displayMode: .inline)
+        }.navigationBarTitle(Text("Ulasan"), displayMode: .inline)
     }
 }
 

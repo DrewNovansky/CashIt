@@ -19,13 +19,12 @@ struct MCInfoView: View {
                 .resizable()
                 .foregroundColor(.gray)
                 .frame(width: 100, height: 100, alignment: .center)
-                .frame(minWidth: 0, maxWidth: .infinity)
                 .padding(.top, 24)
                 .padding(.bottom, 32)
             
             HStack{
                 HStack{
-                    Text("Name")
+                    Text("Nama")
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width / 3)
                 .font(Font.title3.weight(.bold))
@@ -38,7 +37,7 @@ struct MCInfoView: View {
             
             HStack{
                 HStack{
-                    Text("Distance")
+                    Text("Jarak")
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width / 3)
                 .font(Font.title3.weight(.bold))
@@ -51,7 +50,7 @@ struct MCInfoView: View {
             
             HStack{
                 HStack{
-                    Text("Contact")
+                    Text("Nomor Telepon")
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width / 3)
                 .font(Font.title3.weight(.bold))
@@ -64,7 +63,7 @@ struct MCInfoView: View {
             
             HStack{
                 HStack{
-                    Text("Location")
+                    Text("Lokasi")
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width / 3)
                 .font(Font.title3.weight(.bold))
@@ -77,7 +76,7 @@ struct MCInfoView: View {
             
             HStack{
                 HStack{
-                    Text("Opening Hours")
+                    Text("Jam Operasional")
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width / 3)
                 .font(Font.title3.weight(.bold))
@@ -91,7 +90,7 @@ struct MCInfoView: View {
             
             Spacer()
             
-        }.navigationBarTitle(Text("Information"), displayMode: .inline)
+        }.navigationBarTitle(Text("Informasi"), displayMode: .inline)
         .padding(10)
     }
 }

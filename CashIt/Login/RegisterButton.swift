@@ -11,11 +11,11 @@ struct RegisterButton: View {
     @Binding var showView: Bool
     var body: some View {
         HStack{
-        Text("Haven't got an account?")
+        Text("Belum punya akun?")
             NavigationLink(destination: RegisterView(), isActive: $showView){
                 Button(action: {
                     showView.toggle()
-                }, label: {Text("Register")
+                }, label: {Text("Daftar")
                     .font(.body)
                     .foregroundColor(Color("AccentColor"))
                     .underline()

@@ -14,17 +14,18 @@ struct HomeView: View {
     
     
     var body: some View {
-        
-        ZStack{
-                    VStack{
-                        SearchBar(text: $searchText, placeholder: "Cari nama money changer")
-                        CurrencySelect(fromTo: $fromTo)
-                        StoreList(searchText: $searchText)
-                    }
+        NavigationView{
+            ZStack{
+                VStack{
+                    SearchBar(text: $searchText, placeholder: "Cari nama money changer")
+                    CurrencySelect(fromTo: $fromTo)
+                    StoreList(searchText: $searchText)
+                }
             }
-            .padding()
-        .navigationBarHidden(true)
-}
+        }.navigationBarHidden(true)
+        .padding()
+        .navigationBarTitle(Text(""),displayMode: .inline)
+    }
 }
 
 

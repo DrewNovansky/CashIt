@@ -22,4 +22,10 @@ class HistoryViewModel {
     func getTransaction(index: Int) -> Transaction {
         return transactions[index]
     }
+    
+    func segueToOrderDetail() -> OrderDetailView {
+        let viewModel = OrderDetailViewModel()//terima parameter
+        let view = OrderDetailView(viewModel: viewModel)
+        return view
+    }
 }

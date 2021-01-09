@@ -23,7 +23,7 @@ struct SubmitRegister: View {
                         self.showAlert = true
                     }
                 }
-            }, label: {Text("Submit")
+            }, label: {Text("Daftar")
                 .font(.body)
                 .foregroundColor(.white)
                 .frame(

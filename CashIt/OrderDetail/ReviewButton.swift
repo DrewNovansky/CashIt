@@ -16,7 +16,7 @@ struct ReviewButton: View {
                 self.isPresentingModalView.toggle()
             },
             label: {
-            Text("Give Review")
+            Text("Beri Ulasan")
                 .font(.title3)
                 .fontWeight(.semibold)
                 .foregroundColor(Color("AccentColor"))

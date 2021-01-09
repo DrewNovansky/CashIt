@@ -28,4 +28,27 @@ class MCProfileViewModel{
     func getPrices(index: Int) -> Currency {
         return currency[index]
     }
+    
+    func segueToInfo() -> MCInfoView {
+        let viewModel = InfoViewModel()//terima parameter
+        let view = MCInfoView(viewModel: viewModel)
+        return view
+    }
+    
+    func segueToReview() -> MCReviewView {
+        let viewModel = ReviewViewModel()//terima parameter
+        let view = MCReviewView(viewModel: viewModel)
+        return view
+    }
+    
+    func segueToMakeAppointment() -> MCMakeAppointmentView {
+        let viewModel = MCMakeAppointmentViewModel()//terima parameter
+        let view = MCMakeAppointmentView(viewModel: viewModel)
+        return view
+    }
+    
+    func openWA() -> URL{
+        let url = URL(string: "https://wa.me/\(wa)")!
+        return url
+    }
 }

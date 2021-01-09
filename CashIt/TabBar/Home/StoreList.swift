@@ -11,26 +11,31 @@ struct StoreList: View {
     @ObservedObject var viewModel = HomeViewModel()
     @Binding var searchText: String
     var action: (() -> Bool)?
+    @State var showView: Bool = false
     var body: some View {
-        List{
-            ForEach(viewModel.store.filter {
-                self.searchText.isEmpty ? true : $0.storeName.lowercased().contains(self.searchText.lowercased())
-            }, id: \.self) { item in
-                HStack(alignment: .top){
-                    Image("\(item.storeLogo)")
-                        .clipShape(Circle())
-                        .padding()
-                    
-                    VStack(alignment:.leading){
-                        Text("\(item.storeName)")
-                        Text("\(item.storeAddress)")
+        NavigationLink(destination: viewModel.segue(), isActive: $showView){
+            List{
+                ForEach(viewModel.store.filter {
+                    self.searchText.isEmpty ? true : $0.storeName.lowercased().contains(self.searchText.lowercased())
+                }, id: \.self) { item in
+                    HStack(alignment: .top){
+                        Image("\(item.storeLogo)")
+                            .clipShape(Circle())
+                            .padding()
+                        
+                        VStack(alignment:.leading){
+                            Text("\(item.storeName)")
+                            Text("\(item.storeAddress)")
+                        }
+                        Spacer()
+                        Text("\(item.storePrice)")
+                    }.onTapGesture {
+                        showView.toggle()
                     }
-                    Spacer()
-                    Text("\(item.storePrice)")
                 }
             }
+            .border(Color.black, width: 1)
         }
-        .border(Color.black, width: 1)
     }
 }
 

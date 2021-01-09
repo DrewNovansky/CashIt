@@ -18,6 +18,11 @@ struct TabBarVIew: View {
                 .tabItem {
                     Image(systemName: "mappin.circle.fill")
                     Text("Peta") }
+            UserProfileView()
+                .tabItem {
+                    Image(systemName: "person.circle.fill")
+                    Text("Profil")
+                }
         }.navigationBarHidden(true)
     }
 }

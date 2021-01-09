@@ -25,7 +25,7 @@ struct SubmitButton: View {
                 }
             },
             label: {
-                Text("Submit")
+                Text("Simpan")
                     .font(.title3)
                     .fontWeight(.semibold)
                     .foregroundColor(Color("AccentColor"))

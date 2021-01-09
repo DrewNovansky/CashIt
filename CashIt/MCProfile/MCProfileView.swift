@@ -20,7 +20,7 @@ struct MCProfileView: View {
             VStack{
                 
                 NavigationLink(
-                    destination: MCInfoView(),
+                    destination: viewModel.segueToInfo(),
                     isActive: $isTopNavigationActive,
                     label: {Text("")
                         .navigationBarItems(trailing:
@@ -39,7 +39,6 @@ struct MCProfileView: View {
                     .resizable()
                     .foregroundColor(.gray)
                     .frame(width: 100, height: 100, alignment: .center)
-                    .frame(minWidth: 0, maxWidth: .infinity)
                     .padding(.top, 14)
                     .padding(.bottom, 14)
                 
@@ -54,7 +53,7 @@ struct MCProfileView: View {
                     
                     VStack{
                         
-                        Text("Location")
+                        Text("Lokasi")
                         
                         Image(systemName: "map.fill")
                             .resizable()
@@ -69,10 +68,10 @@ struct MCProfileView: View {
                     
                     VStack{
                         
-                        Text("Contact")
+                        Text("Kontak")
                         
-                        Link(destination: URL(string: "https://wa.me/\(viewModel.wa)")!) {
-                            Image(systemName: "message.fill")
+                        Link(destination: viewModel.openWA()) {
+                            Image(systemName: "text.bubble.fill")
                                 .resizable()
                                 .foregroundColor(.blue)
                                 .frame(width: 45, height: 45)
@@ -86,9 +85,9 @@ struct MCProfileView: View {
                     
                     VStack{
                         
-                        Text("\(viewModel.review.reviews.count)" + " Review(s)")
+                        Text("\(viewModel.review.reviews.count)" + " Ulasan")
                         
-                        NavigationLink(destination: MCReviewView()){
+                        NavigationLink(destination: viewModel.segueToReview()){
                             HStack{
                                 Image(systemName: "star.fill")
                                     .resizable()
@@ -108,11 +107,11 @@ struct MCProfileView: View {
                 Spacer()
                 
                 HStack{
-                    Text("Price").frame(maxWidth: UIScreen.main.bounds.width/3)
+                    Text("Harga").frame(maxWidth: UIScreen.main.bounds.width/3)
                     
-                    Text("Buy").frame(maxWidth: UIScreen.main.bounds.width/3)
+                    Text("Beli").frame(maxWidth: UIScreen.main.bounds.width/3)
                     
-                    Text("Sell").frame(maxWidth: UIScreen.main.bounds.width/3)
+                    Text("Jual").frame(maxWidth: UIScreen.main.bounds.width/3)
                 }.font(.system(size: 20))
                 .frame(maxWidth: (UIScreen.main.bounds.width - 20))
                 
@@ -127,8 +126,8 @@ struct MCProfileView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: MCMakeAppointmentView()) {
-                    Text("Make an Appoinment")
+                NavigationLink(destination: viewModel.segueToMakeAppointment()) {
+                    Text("Buat Janji")
                         .frame(width: UIScreen.main.bounds.width - 20, height: 45)
                         .foregroundColor(.white)
                         .background(Color.purple)
@@ -136,7 +135,7 @@ struct MCProfileView: View {
                         .font(.title2)
                 }
                 
-            }.navigationBarTitle(Text("Store"), displayMode: .inline)
+            }.navigationBarTitle(Text("Toko"), displayMode: .inline)
         }
     }
 }

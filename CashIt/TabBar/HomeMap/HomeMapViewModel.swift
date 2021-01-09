@@ -30,5 +30,11 @@ class HomeMapViewModel: ObservableObject{
             annotatedMoneyChanger.append(pointAnnotation) // Now append this newly created annotation to array.
         }
     }
+    
+    func segue() -> MCProfileView {
+        let viewModel = MCProfileViewModel()//terima parameter
+        let view = MCProfileView(viewModel: viewModel, isTopNavigationActive: false)
+        return view
+    }
    
 }

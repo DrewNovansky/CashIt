@@ -9,10 +9,11 @@ import SwiftUI
 
 struct OrderCellView: View {
     var transaction: Transaction
+    var viewModel = HistoryViewModel()
     
     var body: some View {
         NavigationLink(
-            destination: OrderDetailView(viewModel: OrderDetailViewModel(transaction)),
+            destination: viewModel.segueToOrderDetail(),
             label: {
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
