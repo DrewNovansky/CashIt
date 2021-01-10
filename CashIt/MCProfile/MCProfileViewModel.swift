@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import SwiftUI
 class MCProfileViewModel{
     var currency: [Currency] = []
     var review = ReviewViewModel()
@@ -15,7 +15,7 @@ class MCProfileViewModel{
     var wa : String = "089633732603"
     
     // Dummy Data
-    init() {
+    init(){
         self.currency.append(contentsOf: [
             Currency(priceName: "USD", priceBuy: 14165, priceSell: 14195),
             Currency(priceName: "SGD", priceBuy: 10601, priceSell: 10632),
@@ -41,9 +41,9 @@ class MCProfileViewModel{
         return view
     }
     
-    func segueToMakeAppointment() -> MCMakeAppointmentView {
+    func segueToMakeAppointment(showView: Binding<Bool>) -> MCMakeAppointmentView {
         let viewModel = MCMakeAppointmentViewModel()//terima parameter
-        let view = MCMakeAppointmentView(viewModel: viewModel)
+        let view = MCMakeAppointmentView(popToRootView: showView)
         return view
     }
     

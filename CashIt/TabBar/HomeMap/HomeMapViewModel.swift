@@ -31,9 +31,9 @@ class HomeMapViewModel: ObservableObject{
         }
     }
     
-    func segue() -> MCProfileView {
+    func segue(showView: Binding<Bool>) -> MCProfileView {
         let viewModel = MCProfileViewModel()//terima parameter
-        let view = MCProfileView(viewModel: viewModel, isTopNavigationActive: false)
+        let view = MCProfileView(rootIsActive: showView)
         return view
     }
    

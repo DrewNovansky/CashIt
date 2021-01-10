@@ -68,8 +68,8 @@ struct CurrencySelect: View {
                 }
             }.frame(height: UIScreen.main.bounds.height*0.15)
             .border(Color.black, width: 1)
-            .zIndex(2)
-        }.zIndex(3)
+            .zIndex(6)
+        }.zIndex(5)
     }
 }
 

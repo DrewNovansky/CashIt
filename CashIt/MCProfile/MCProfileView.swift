@@ -10,27 +10,23 @@ import SwiftUI
 struct MCProfileView: View {
     
     var viewModel = MCProfileViewModel()
-    
     @State var isTopNavigationActive = false
-    
+    @Binding var rootIsActive: Bool
     var body: some View {
-        
-        NavigationView{
             
             VStack{
-                
                 NavigationLink(
                     destination: viewModel.segueToInfo(),
                     isActive: $isTopNavigationActive,
                     label: {Text("")
                         .navigationBarItems(trailing:
                                                 HStack{
-                                                    Image(systemName: "info.circle")
-                                                        .resizable()
-                                                        .onTapGesture(count: 1, perform: {
-                                                            isTopNavigationActive = true
-                                                        })
-                                                        .frame(width: 35, height: 35)
+                                                    Button(action: {
+                                                        isTopNavigationActive.toggle()
+                                                    }, label: {
+                                                        Image(systemName: "info.circle")
+                                                            .resizable()
+                                                    }).frame(width: 35, height: 35)
                                                 }
                         )}
                 )
@@ -126,22 +122,21 @@ struct MCProfileView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: viewModel.segueToMakeAppointment()) {
+                NavigationLink(destination: viewModel.segueToMakeAppointment(showView: $rootIsActive)) {
                     Text("Buat Janji")
                         .frame(width: UIScreen.main.bounds.width - 20, height: 45)
                         .foregroundColor(.white)
                         .background(Color.purple)
                         .cornerRadius(25)
                         .font(.title2)
-                }
+                }.isDetailLink(false)
                 
             }.navigationBarTitle(Text("Toko"), displayMode: .inline)
         }
-    }
 }
 
 struct MCProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        MCProfileView()
+        MCProfileView(rootIsActive: .constant(false))
     }
 }

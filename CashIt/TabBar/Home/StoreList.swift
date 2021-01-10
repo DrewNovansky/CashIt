@@ -13,28 +13,16 @@ struct StoreList: View {
     var action: (() -> Bool)?
     @State var showView: Bool = false
     var body: some View {
-        NavigationLink(destination: viewModel.segue(), isActive: $showView){
-            List{
-                ForEach(viewModel.store.filter {
-                    self.searchText.isEmpty ? true : $0.storeName.lowercased().contains(self.searchText.lowercased())
-                }, id: \.self) { item in
-                    HStack(alignment: .top){
-                        Image("\(item.storeLogo)")
-                            .clipShape(Circle())
-                            .padding()
-                        
-                        VStack(alignment:.leading){
-                            Text("\(item.storeName)")
-                            Text("\(item.storeAddress)")
-                        }
-                        Spacer()
-                        Text("\(item.storePrice)")
-                    }.onTapGesture {
-                        showView.toggle()
+        VStack{
+                List{
+                    ForEach(viewModel.store.filter {
+                        self.searchText.isEmpty ? true : $0.storeName.lowercased().contains(self.searchText.lowercased())
+                    }, id: \.self) { item in
+                        StoreListCellView(store: item)
                     }
                 }
-            }
-            .border(Color.black, width: 1)
+                .border(Color.black, width: 1)
+            
         }
     }
 }

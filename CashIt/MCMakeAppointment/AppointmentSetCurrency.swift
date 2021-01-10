@@ -22,18 +22,17 @@ struct AppointmentSetCurrency: View {
                         Text("Dari")
                         Spacer()
                     }
-                    
-                    if switcher{
-                        AppoinmentDropDownView()
-                    }else{
-                        Text("IDR")
+                    HStack{
+                        AppointmentDropDownView()
+                        Spacer()
+                        TextField("Amount", value: $textFieldFrom, formatter: NumberFormatter())
+                            .padding(10)
+                            .border(Color.gray,width: 3)
                     }
-                    
                 }
                 
-                TextField("Amount", value: $textFieldFrom, formatter: NumberFormatter())
-                
-            }.font(Font.title2)
+            }.zIndex(4)
+            .font(Font.title2)
             
             HStack{
                 VStack{
@@ -41,19 +40,18 @@ struct AppointmentSetCurrency: View {
                         Text("Ke")
                         Spacer()
                     }
-                    
-                    if switcher{
-                        Text("IDR")
-                    }else{
-                        AppoinmentDropDownView()
+                    HStack{
+                        AppointmentDropDownView()
+                        TextField("Amount", value: $textFieldTo, formatter: NumberFormatter())
+                            .padding(10)
+                            .border(Color.gray, width: 3)
                     }
-                    
                 }
                 
-                TextField("Amount", value: $textFieldTo, formatter: NumberFormatter())
                 
-            }.font(Font.title2)
-        }
+            }.zIndex(3)
+            .font(Font.title2)
+        }.zIndex(5)
     }
 }
 

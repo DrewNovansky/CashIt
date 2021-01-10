@@ -13,7 +13,7 @@ struct SubmitRegister: View {
     @Binding var showAlert:Bool
     var action: (() -> Bool)?
     var body: some View {
-        NavigationLink(destination: TabBarVIew(), isActive: $showView){
+        NavigationLink(destination: TabBarView(), isActive: $showView){
             Button(action: {
                 if let run = action {
                     if run() {

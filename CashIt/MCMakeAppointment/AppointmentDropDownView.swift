@@ -9,7 +9,7 @@ import SwiftUI
 
 var currency = ["IDR","USD","KRW","RGM"]
 
-struct AppoinmentDropDownView: View {
+struct AppointmentDropDownView: View {
     
     @State var expand = false
     @State var text = currency[1]
@@ -23,21 +23,22 @@ struct AppoinmentDropDownView: View {
                         .resizable()
                         .frame(width: 10, height: 5)
                     
-                }.frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height*0.05, alignment: .center)
-//                .overlay(
-//                    RoundedRectangle(cornerRadius: 20)
-//                        .stroke(expand ? Color("AccentColor") : Color.gray, lineWidth: 3)
-//                )
+                }.frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.height*0.05, alignment: .center)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke( Color.gray, lineWidth: 3)
+                )
                 .onTapGesture(perform: {
                     self.expand.toggle()
                 })
-            }.offset(y: UIScreen.main.bounds.height*0.01)
+            }
             .animation(.spring())
             if expand{
                 ForEach(0..<currency.count){
                     currency in
                     AppointmentDropDownElement(element: currencies[currency], expand: $expand, text: $text)
                         .offset(y: UIScreen.main.bounds.height * (0.055 * CGFloat((currency + 1))))
+                    
                 }
             }
         }
@@ -54,23 +55,22 @@ struct AppointmentDropDownElement:View {
             expand.toggle()
         }, label: {
             Text("\(element)")
-                .padding()
+                .padding(10)
 
         })
         .foregroundColor(Color(.black))
-        .frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height*0.05, alignment: .center)
+        .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.height*0.05, alignment: .center)
         .background(Color(.white))
         .cornerRadius(20)
-//        .overlay(
-//            RoundedRectangle(cornerRadius: 20)
-//                .stroke(expand ? Color("AccentColor") : Color.gray, lineWidth: 3)
-//        )
-        .offset(y: UIScreen.main.bounds.height*0.01)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.gray, lineWidth: 3)
+        )
     }
 }
 
 struct AppoinmentDropDownView_Previews: PreviewProvider {
     static var previews: some View {
-        AppoinmentDropDownView()
+        AppointmentDropDownView()
     }
 }
