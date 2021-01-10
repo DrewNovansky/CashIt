@@ -12,7 +12,6 @@ struct HomeView: View {
     @State private var searchText : String = ""
     @State var fromTo = false
     
-    
     var body: some View {
         NavigationView{
             ZStack{
@@ -20,14 +19,12 @@ struct HomeView: View {
                     SearchBar(text: $searchText, placeholder: "Cari nama money changer")
                     CurrencySelect(fromTo: $fromTo)
                     StoreList(searchText: $searchText)
-                }
+                }.padding()
+                .navigationBarHidden(true)
             }
-        }.navigationBarHidden(true)
-        .padding()
-        .navigationBarTitle(Text(""),displayMode: .inline)
+        }
     }
 }
-
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

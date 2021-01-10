@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 class MCMakeAppointmentViewModel: ObservableObject{
     
@@ -19,8 +19,6 @@ class MCMakeAppointmentViewModel: ObservableObject{
     @Published var appoinmentToPrice : Int = 0
     @Published var appoinmentDate: Date = Date()
     @Published var appoinmentTime: Date = Date()
-    
-    
     func dateValidation() -> Bool{
         if appoinmentDate < currentDate {
             

@@ -6,10 +6,9 @@
 //
 
 import Foundation
-
+import SwiftUI
 class HomeViewModel: ObservableObject {
     var store: [Store] = []
-    
     // Dummy Data
     init() {
         self.store.append(contentsOf: [
@@ -28,9 +27,9 @@ class HomeViewModel: ObservableObject {
         return store[index]
     }
     
-    func segue() -> MCProfileView {
+    func segue(showView: Binding<Bool>) -> MCProfileView {
         let viewModel = MCProfileViewModel()//terima parameter
-        let view = MCProfileView(viewModel: viewModel, isTopNavigationActive: false)
+        let view = MCProfileView(rootIsActive: showView)
         return view
     }
 }
