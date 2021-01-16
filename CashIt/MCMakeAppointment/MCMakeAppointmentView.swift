@@ -21,31 +21,32 @@ struct MCMakeAppointmentView: View {
                     .foregroundColor(.gray)
                     .frame(width: 100, height: 100, alignment: .center)
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .padding(.top, 24)
-                    .padding(.bottom, 32)
+                    .padding()
                 Text(viewModel.name)
                     .padding(.bottom, 15)
                     .font(.system(size:25))
+                Spacer()
                 VStack{
                     AppointmentSetCurrency(switcher: .constant(false), textFieldFrom: $viewModel.appoinmentFromPrice, textFieldTo: $viewModel.appoinmentToPrice)
                 }.zIndex(15)
                 .padding()
+                Spacer()
                 VStack{
                     AppointmentDateAndTime()
                         .padding()
-                    Spacer()
-                    Button("Confirm"){
-                        print(popToRootView)
-                        self.popToRootView = false
-                        print(popToRootView)
-                    }
-                    .padding()
-                    .font(.title2)
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 45)
-                    .foregroundColor(.white)
-                    .background(Color.purple)
-                    .cornerRadius(25)
                 }.zIndex(14)
+                Spacer()
+                Spacer()
+                Spacer()
+                Button("Confirm"){
+                    self.popToRootView = false
+                }
+                .padding()
+                .font(.title2)
+                .frame(width: UIScreen.main.bounds.width - 20, height: 45)
+                .foregroundColor(.white)
+                .background(Color("AccentColor"))
+                .cornerRadius(25)
             }
         }
     }

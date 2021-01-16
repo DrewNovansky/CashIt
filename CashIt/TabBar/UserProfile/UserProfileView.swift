@@ -12,6 +12,7 @@ struct UserProfileView: View {
     var viewModel = UserProfileViewModel()
     
     var body: some View {
+        NavigationView{
         VStack{
             HStack{
                 Text("Hi, " + "Andrew")
@@ -20,22 +21,22 @@ struct UserProfileView: View {
                 
                 Spacer()
             }.frame(width: UIScreen.main.bounds.width - 50)
-            
+            NavigationLink(destination: viewModel.segueToHistory()){
             HStack{
                 Image(systemName: "doc.plaintext")
                     .resizable()
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color("AccentColor"))
                     .frame(width: 25, height: 35)
                 Text("  Pesanan Saya")
-                    .font(.system(size:20))
+                    .font(.title3)
                 Spacer()
-                NavigationLink(destination: viewModel.segueToHistory()){
                     Image(systemName: "chevron.right")
                         .resizable()
                         .foregroundColor(.gray)
                         .frame(width: 15, height: 25)
-                }
-            }.frame(width: UIScreen.main.bounds.width - 50)
+                }.frame(width: UIScreen.main.bounds.width - 50)
+            .foregroundColor(.black)
+            }
             Divider()
             //                HStack{
             //                    Image(systemName: "star.fill")
@@ -60,14 +61,14 @@ struct UserProfileView: View {
                 Text("Keluar")
                     .font(.title2)
                     .cornerRadius(40)
-                    .foregroundColor(.purple)
                     .padding(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 40)
-                            .stroke(Color.purple, lineWidth: 5)
-                            .frame(width: UIScreen.main.bounds.width - 100, height: 45)
+                            .stroke(Color("AccentColor"), lineWidth: 5)
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 45)
                     )
             }.navigationBarTitle(Text("Profil"), displayMode: .inline)
+        }
         }
     }
 }

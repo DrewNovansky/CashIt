@@ -19,104 +19,99 @@ struct OrderDetailView: View {
                 .resizable()
                 .foregroundColor(.gray)
                 .frame(width: 100, height: 100, alignment: .center)
-                .padding(.top, 14)
-                .padding(.bottom, 14)
-            
-            Text(viewModel.name)
-                .font(.system(size:25))
-            
-            HStack{
-                HStack{
-                    Text("Lokasi")
-                    Spacer()
-                }.frame(width: UIScreen.main.bounds.width / 3)
-                .font(Font.title3.weight(.bold))
+                .padding(.vertical,10)
+            VStack{
+                Text(viewModel.name)
+                    .font(.system(size:25))
                 
                 HStack{
-                    Text(viewModel.address)
-                    Spacer()
-                }.font(.system(size: 19))
-            }.padding(10)
-            
-            HStack{
-                HStack{
-                    Text("Nomor Pesanan")
-                    Spacer()
-                }.frame(width: UIScreen.main.bounds.width / 3)
-                .font(Font.title3.weight(.bold))
+                    HStack{
+                        Text("Lokasi")
+                        Spacer()
+                    }.frame(width: UIScreen.main.bounds.width / 3)
+                    .font(Font.title3.weight(.semibold))
+                    
+                    HStack{
+                        Text(viewModel.address)
+                        Spacer()
+                    }.font(.system(size: 19))
+                }.padding(10)
                 
                 HStack{
-                    Text("191020001")
-                    Spacer()
-                }.font(.system(size: 19))
-            }.padding(10)
-            
-            HStack{
-                HStack{
-                    Text("Waktu & Tanggal")
-                    Spacer()
-                }.frame(width: UIScreen.main.bounds.width / 3)
-                .font(Font.title3.weight(.bold))
+                    HStack{
+                        Text("Nomor Pesanan")
+                        Spacer()
+                    }.frame(width: UIScreen.main.bounds.width / 3)
+                    .font(Font.title3.weight(.semibold))
+                    
+                    HStack{
+                        Text("191020001")
+                        Spacer()
+                    }.font(.system(size: 19))
+                }.padding(10)
                 
                 HStack{
-                    Text("11 Januari Bertemu")
-                    Text("19:00")
-                    Spacer()
-                }.font(.system(size: 19))
-            }.padding(10)
-            
-            HStack{
+                    HStack{
+                        Text("Waktu & Tanggal")
+                        Spacer()
+                    }.frame(width: UIScreen.main.bounds.width / 3)
+                    .font(Font.title3.weight(.bold))
+                    
+                    HStack{
+                        Text("11 Januari Bertemu")
+                        Text("19:00")
+                        Spacer()
+                    }.font(.system(size: 19))
+                }.padding(10)
+            }.font(.title3)
+            .frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.height/3)
+            .background(Color("CardBackground"))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .padding(.vertical,5)
+            VStack{
                 HStack{
-                    Text("Rangkuman Pesanan")
-                    Spacer()
-                }.frame(width: UIScreen.main.bounds.width / 2)
-                .font(Font.title2)
-                
-                Spacer()
-                
-            }.padding(10)
-            
-            Divider()
-            
-            HStack{
+                    HStack{
+                        Text("Rangkuman Pesanan")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        Spacer()
+                    }.frame(width: UIScreen.main.bounds.width-20)
+                }.padding(10)
                 VStack{
                     HStack{
                         Text("Dari")
+                            .font(.title3)
+                            .fontWeight(.semibold)
                         Spacer()
                     }
-                    
                     HStack{
                         Text(viewModel.fromName)
                             .frame(width: UIScreen.main.bounds.width / 3,alignment: .leading)
                         Text("\(viewModel.fromTotal)")
                             .frame(width: UIScreen.main.bounds.width / 2,alignment: .leading)
                         Spacer()
-                    }.font(Font.title2)
-                }
-                
-            }.padding(10)
-            
-            HStack{
-                VStack{
-                    HStack{
-                        Text("Ke")
-                        Spacer()
+                    }.font(.title3)
+                }.padding(5)
+                HStack{
+                    VStack{
+                        HStack{
+                            Text("Ke")
+                                .font(.title3)
+                                .fontWeight(.semibold)
+                            Spacer()
+                        }
+                        HStack{
+                            Text(viewModel.toName)
+                                .frame(width: UIScreen.main.bounds.width / 3,alignment: .leading)
+                            Text("\(viewModel.toTotal)")
+                                .frame(width: UIScreen.main.bounds.width / 2,alignment: .leading)
+                            Spacer()
+                        }.font(.title3)
                     }
-                    
-                    HStack{
-                        Text(viewModel.toName)
-                            .frame(width: UIScreen.main.bounds.width / 3,alignment: .leading)
-                        Text("\(viewModel.toTotal)")
-                            .frame(width: UIScreen.main.bounds.width / 2,alignment: .leading)
-                        Spacer()
-                    }.font(Font.title2)
-                }
-                
-            }.padding(10)
-            
-            Spacer()
-            
-            
+                }.padding(5)
+            }.frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.height * 0.2)
+            .background(Color("CardBackground"))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
         }.navigationBarTitle("Order Detail")
         ReviewButton(isPresentingModalView: $isPresentingModalView)
     }

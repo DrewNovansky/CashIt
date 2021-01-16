@@ -9,24 +9,26 @@ import SwiftUI
 
 struct ReviewCellView: View {
     
-    var review: Reviews
-
+    var review: Review
+    @State var expand: Bool = true
     var body: some View {
         
         VStack{
             HStack{
-                Text(review.userName)
+                Text("*NAME*")
+                    .fontWeight(.semibold)
+                    .font(.headline)
                     .frame(maxWidth: UIScreen.main.bounds.width/2, alignment: .leading)
-                    .font(.system(size: 19,weight: .semibold))
+                    
                 Spacer()
                 Text(review.date)
                     .frame(maxWidth: UIScreen.main.bounds.width/2, alignment: .trailing)
             }.padding()
             
-            HStack{
+            HStack(alignment: .top){
                 Text(review.description)
                     .multilineTextAlignment(.leading)
-                    .frame(maxWidth: UIScreen.main.bounds.width/2, maxHeight: UIScreen.main.bounds.height/5,alignment: .leading)
+                    .frame(maxWidth: UIScreen.main.bounds.width/2, maxHeight: expand ? UIScreen.main.bounds.height/3:UIScreen.main.bounds.height/4 ,alignment: .topLeading)
                 Spacer()
                 HStack{
                     ForEach(0..<review.rating){ i in
@@ -35,15 +37,18 @@ struct ReviewCellView: View {
                 }
             }.padding()
             
-        }.frame(width: UIScreen.main.bounds.width*0.85, height: 107)
-        .background(Color(red: 245/256, green: 245/256, blue: 245/256))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-        
+        }.frame(width: UIScreen.main.bounds.width - 20, height: expand ? UIScreen.main.bounds.height/7 :UIScreen.main.bounds.height/4)
+        .background(Color("CardBackground"))
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .padding(10)
+        .onTapGesture {
+            expand.toggle()
+        }
     }
 }
 
 struct ReviewCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewCellView(review: Reviews(rating: 5, userName: "Bambang Sutarjo", date: "12/12/2012", description: "Amazingly Good AF Holy Moly"))
+        ReviewCellView(review: Review(rating: 5, description: "Amazingly Good AF Holy Moly", date: "12/12/2012"))
     }
 }

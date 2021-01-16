@@ -12,7 +12,8 @@ struct PasswordFieldTemp: View {
     var textField: String
     var body: some View {
         Text("\(textField)")
-            .font(.body)
+            .font(.title3)
+            .fontWeight(.semibold)
         SecureField("Masukan \(textField)", text: $input)
             .autocapitalization(.none)
             .textContentType(.newPassword)

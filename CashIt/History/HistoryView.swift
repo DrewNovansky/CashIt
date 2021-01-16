@@ -11,14 +11,12 @@ struct HistoryView: View {
     var viewModel = HistoryViewModel()
     
     var body: some View {
-        NavigationView {
             ScrollView() {
                 ForEach(viewModel.transactions) { transaction in
                     OrderCellView(transaction: transaction)
                 }
-            }
+            }.padding()
             .navigationBarTitle("History")
-        }
     }
 }
 

@@ -12,8 +12,11 @@ struct WelcomePageView: View {
         NavigationView{
             VStack{
                 Text("Cash It!")
-                    .font(.title)
+                    .font(.largeTitle)
+                    .fontWeight(.semibold)
                     .foregroundColor(Color("AccentColor"))
+                    .padding(.top,20)
+                    .padding()
                 Spacer()
                 NavigationLink(destination: LoginView(),label: {
                     SignInButton(buttonText: "Masuk")
@@ -23,8 +26,8 @@ struct WelcomePageView: View {
                     SignInButton(buttonText: "Daftar", backgroundColor: Color(.white), foregroundColor: Color("AccentColor"))
                 }
                 )
-            }
-        }
+            }.navigationBarHidden(true)
+        }.navigationBarHidden(true)
     }
 }
 

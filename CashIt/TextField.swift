@@ -13,7 +13,8 @@ struct TextFieldTemp: View {
     var textField: String
     var body: some View {
         Text("\(textField)")
-            .font(.body)
+            .font(.title3)
+            .fontWeight(.semibold)
         TextField("Masukan \(textField)", text: $input)
             .autocapitalization(.none)
             .padding(.bottom)

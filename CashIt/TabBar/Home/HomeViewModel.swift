@@ -7,28 +7,44 @@
 
 import Foundation
 import SwiftUI
+import MapKit
 class HomeViewModel: ObservableObject {
-    var store: [Store] = []
+    var store: [MoneyChanger] = []
+    var currency: [Currency] = []
+    var distance: Double = 0
+    var locValue: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0,longitude: 0)
+    let locationManager = CLLocationManager()
     // Dummy Data
     init() {
+        locValue = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
         self.store.append(contentsOf: [
-            Store(storeName: "Andrew MC", storePrice: 14000, storeLogo: "Test", storeAddress: "Kp Janis"),
-            Store(storeName: "Evan MC", storePrice: 15000, storeLogo: "Test", storeAddress: "Palmerah"),
-            Store(storeName: "Sherwin MC", storePrice: 14500, storeLogo: "Test", storeAddress: "Riau"),
-            Store(storeName: "Dana MC", storePrice: 12000, storeLogo: "Test", storeAddress: "Puncak Monas"),
-            Store(storeName: "Maju Roso MC", storePrice: 11000, storeLogo: "Test", storeAddress: "Emasnya Monas")
+            MoneyChanger(moneyChangerName: "Andrew MC",photo: "Test", address: "Kp Janis",whatsappLink: "", phoneNumber: "",latitudeCoordinate:-6.175498079151794,longitudeCoordinate: 106.82726958474876,distance: 20),
+            MoneyChanger(moneyChangerName: "Evan MC",photo: "Test", address: "Palmerah",whatsappLink: "", phoneNumber: "",latitudeCoordinate:-6.175498079151794,longitudeCoordinate: 106.82726958474876,distance: 20),
+            MoneyChanger(moneyChangerName: "Sherwin MC", photo: "Test", address: "Riau",whatsappLink: "", phoneNumber: "",latitudeCoordinate:-6.1375,longitudeCoordinate: 106.8046,distance: 20),
+            MoneyChanger(moneyChangerName: "Dana MC",photo: "Test", address: "Puncak Monas",whatsappLink: "", phoneNumber: "",latitudeCoordinate:-7.1375,longitudeCoordinate: 109.8046,distance: 20),
+            MoneyChanger(moneyChangerName: "Maju Roso MC", photo: "Test", address: "Emasnya Monas",whatsappLink: "", phoneNumber: "",latitudeCoordinate:-7.1375,longitudeCoordinate: 107.8046,distance: 20)
                 ])
+        for i in 0..<(store.count)
+        {
+            let loc1 = CLLocation(latitude: locationManager.location?.coordinate.latitude ?? locValue.latitude,longitude: locationManager.location?.coordinate.longitude ?? locValue.longitude)
+            let loc2 = CLLocation(latitude: store[i].latitudeCoordinate, longitude: store[i].longitudeCoordinate)
+            distance = loc1.distance(from: loc2)
+            store[i].distance = distance
+        }
         store.sort {
-            $0.storePrice < $1.storePrice
+            $0.distance < $1.distance
+//            Price Sort implement price Currency first
+//                && $0.storePrice < $1.storePrice
         }
     }
     
-    func getStore(index: Int) -> Store {
+    func getStore(index: Int) -> MoneyChanger {
         return store[index]
     }
     
     func segue(showView: Binding<Bool>) -> MCProfileView {
-        let viewModel = MCProfileViewModel()//terima parameter
+        let viewModel = MCProfileViewModel()
+        viewModel.distance = self.distance//terima parameter
         let view = MCProfileView(rootIsActive: showView)
         return view
     }

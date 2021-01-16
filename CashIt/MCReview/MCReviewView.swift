@@ -20,13 +20,12 @@ struct MCReviewView: View {
                 VStack{
                     HStack{
                         ForEach(0..<viewModel.getStoreRating()){ i in
-                            Image(systemName: "star.fill").resizable().frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(.yellow)
+                            Image(systemName: "star.fill").resizable().frame(width: 30, height: 30, alignment: .center).foregroundColor(.yellow)
                         }
                     }
                     Text("\(viewModel.reviews.count)" + " Ulasan")
                 }.frame(alignment: .leading)
-            }
-            Spacer()
+            }.padding(10)
             if(viewModel.reviews.count < 1){
                 Text("Money Changer ini belum memiliki Ulasan")
             }else {
