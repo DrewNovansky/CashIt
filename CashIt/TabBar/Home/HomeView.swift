@@ -16,10 +16,12 @@ struct HomeView: View {
         NavigationView{
             ZStack{
                 VStack{
+                    Spacer()
                     SearchBar(text: $searchText, placeholder: "Cari nama money changer")
-                    CurrencySelect(fromTo: $fromTo)
+                    CurrencySelect()
                     StoreList(searchText: $searchText)
-                }.padding()
+                    Spacer()
+                }.frame(width: UIScreen.main.bounds.width-20)
                 .navigationBarHidden(true)
             }
         }

@@ -2,7 +2,7 @@
 // and file name also any function or controller you made that we can use together
 // Ada LabelTemplate untuk isi Template yang gw buat buat kita pake ada textfield dan Title
 //
-//
+// Baru rapihin view model sampe transaction atau historyViewModel
 //
 //
 //

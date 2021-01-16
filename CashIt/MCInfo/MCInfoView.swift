@@ -12,16 +12,12 @@ struct MCInfoView: View {
     var viewModel = InfoViewModel()
     
     var body: some View {
-        
         VStack{
-            
             Image(systemName: "person.circle.fill")
                 .resizable()
-                .foregroundColor(.gray)
                 .frame(width: 100, height: 100, alignment: .center)
-                .padding(.top, 24)
-                .padding(.bottom, 32)
-            
+                .padding(24)
+            VStack{
             HStack{
                 HStack{
                     Text("Nama")
@@ -50,6 +46,7 @@ struct MCInfoView: View {
             
             HStack{
                 HStack{
+                    // open WA
                     Text("Nomor Telepon")
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width / 3)
@@ -88,8 +85,12 @@ struct MCInfoView: View {
                 }
             }.padding(10)
             
-            Spacer()
             
+            }.frame(width: UIScreen.main.bounds.width-20)
+            .foregroundColor(.black)
+            .background(Color("CardBackground"))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            Spacer()
         }.navigationBarTitle(Text("Informasi"), displayMode: .inline)
         .padding(10)
     }

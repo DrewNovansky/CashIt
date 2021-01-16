@@ -24,8 +24,9 @@ struct TabBarView: View {
                         Image(systemName: "person.circle.fill")
                         Text("Profil")
                     }
-            }.navigationBarHidden(true)
+            }
             .navigationBarTitle(Text(""),displayMode: .inline)
+            .navigationBarHidden(true)
 //        }
     }
 }

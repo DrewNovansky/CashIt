@@ -10,30 +10,31 @@ import MapKit
 import SwiftUI
 
 class HomeMapViewModel: ObservableObject{
-    var store: [Store] = []
+    var store: [MoneyChanger] = []
     var annotatedMoneyChanger: [MKPointAnnotation] = [MKPointAnnotation]()
-    var annotations: [Annotations] = []
     let locationManager = CLLocationManager()
     init() {
        
-        self.annotations.append(contentsOf: [
-            Annotations(storeName: "Monas", storeLatitude: -6.175498079151794, storeLongitude: 106.82726958474876, storeAddress: "Tugu Monas"),
-            Annotations(storeName: "Andrew MC", storeLatitude: -6.1375, storeLongitude: 106.8046, storeAddress: "Pekojan")
+        self.store.append(contentsOf: [
+            MoneyChanger(moneyChangerName: "Andrew MC",photo: "Test", address: "Kp Janis",whatsappLink: "", phoneNumber: "",latitudeCoordinate:-6.175498079151794,longitudeCoordinate: 106.82726958474876,distance: 20),
+            MoneyChanger(moneyChangerName: "Evan MC",photo: "Test", address: "Palmerah",whatsappLink: "", phoneNumber: "",latitudeCoordinate:-6.175498079151794,longitudeCoordinate: 106.82726958474876,distance: 20)
         ])
         
-        for i in 0..<(annotations.count)
+        for i in 0..<(store.count)
         {
             let pointAnnotation = MKPointAnnotation() // First create an annotation.
-            pointAnnotation.title = annotations[i].storeName
-            pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: annotations[i].storeLatitude, longitude: annotations[i].storeLongitude)
-            pointAnnotation.subtitle = annotations[i].storeAddress
+            pointAnnotation.title = store[i].moneyChangerName
+            pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: store[i].latitudeCoordinate, longitude: store[i].longitudeCoordinate)
+            pointAnnotation.subtitle = store[i].address
             annotatedMoneyChanger.append(pointAnnotation) // Now append this newly created annotation to array.
         }
     }
     
-    func segue(showView: Binding<Bool>) -> MCProfileView {
-        let viewModel = MCProfileViewModel()//terima parameter
+    func segue(showView: Binding<Bool>, distance: Double) -> MCProfileView {
+        let viewModel = MCProfileViewModel()
+        //terima parameter
         let view = MCProfileView(rootIsActive: showView)
+        viewModel.distance = 100
         return view
     }
    

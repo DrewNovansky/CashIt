@@ -28,12 +28,12 @@ struct HomeMapView: View {
                 if showingPlaceDetails{
                     let loc1 = CLLocation(latitude: locValue.latitude,longitude: locValue.longitude)
                     let loc2 = CLLocation(latitude: selectedPlace?.coordinate.latitude ?? centerCoordinate.latitude, longitude: selectedPlace?.coordinate.longitude ?? centerCoordinate.longitude)
-                    let distance = Float(loc1.distance(from: loc2 ))
+                    let distance = Double(loc1.distance(from: loc2 ))
                     VStack{
                         Spacer()
-                        NavigationLink(destination: viewModel.segue(showView: $showView), isActive: $showView){
+                        NavigationLink(destination: viewModel.segue(showView: $showView, distance: distance), isActive: $showView){
                             VStack{
-                                PlaceDetails(selectedPlace: $selectedPlace, distance: distance)
+                                PlaceDetails(selectedPlace: $selectedPlace, distance: Float(distance))
                             }
                             .onTapGesture {
                                 showView.toggle()

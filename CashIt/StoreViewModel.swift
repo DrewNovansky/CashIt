@@ -9,13 +9,13 @@ import Foundation
 
 class StoreViewModel {
     
-    var stores : [Stores] = []
+    var stores : [MoneyChanger] = []
     var money = MCProfileViewModel()
     var review = ReviewViewModel()
     var operationalHour = InfoViewModel()
     init() {
         self.stores.append(contentsOf: [
-            Stores(storeName: "Bambang", storePhone: "09123", storeWA: "linktree", storeLogo: "iamge", storeAddress: "address", isOpen: true, storeRating: review.getStoreRating(), currency: money.currency, review: review.reviews, operationHour: operationalHour.operationalHours)
+//            MoneyChanger(storeName: "Bambang", storePhone: "09123", storeWA: "linktree", storeLogo: "iamge", storeAddress: "address", isOpen: true, storeRating: review.getStoreRating(), currency: money.currency, review: review.reviews, operationHour: operationalHour.operationalHours)
         ])
     }
     

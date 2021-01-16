@@ -8,7 +8,7 @@
 import Foundation
 
 class InfoViewModel{
-    var operationalHours: [OperationalHours] = []
+    var operationalHours: [OfficeHour] = []
     
     var name : String = "Maju Jaya Money Changer"
     var wa : String = "081234567890"
@@ -17,17 +17,17 @@ class InfoViewModel{
     // Dummy Data
     init() {
         self.operationalHours.append(contentsOf: [
-            OperationalHours(dayName: "Monday", isOpen: false, openHour: "0", closeHour: "0"),
-            OperationalHours(dayName: "Tuesday", isOpen: true, openHour: "10:00", closeHour: "22:00"),
-            OperationalHours(dayName: "Wednesday", isOpen: true, openHour: "10:00", closeHour: "22:00"),
-            OperationalHours(dayName: "Thursday", isOpen: true, openHour: "10:00", closeHour: "22:00"),
-            OperationalHours(dayName: "Friday", isOpen: true, openHour: "10:00", closeHour: "22:00"),
-            OperationalHours(dayName: "Saturday", isOpen: true, openHour: "09:00", closeHour: "22:00"),
-            OperationalHours(dayName: "Sunday", isOpen: true, openHour: "09:00", closeHour: "23:00")
+            OfficeHour(day: "Monday",openTime: "0", closeTime: "0"),
+            OfficeHour(day: "Tuesday", openTime: "10:00", closeTime: "22:00"),
+            OfficeHour(day: "Wednesday", openTime: "10:00", closeTime: "22:00"),
+            OfficeHour(day: "Thursday", openTime: "10:00", closeTime: "22:00"),
+            OfficeHour(day: "Friday", openTime: "10:00", closeTime: "22:00"),
+            OfficeHour(day: "Saturday", openTime: "09:00", closeTime: "22:00"),
+            OfficeHour(day: "Sunday", openTime: "09:00", closeTime: "23:00")
         ])
     }
     
-    func getOperationalHours(index: Int) -> OperationalHours {
+    func getOperationalHours(index: Int) -> OfficeHour {
         return operationalHours[index]
     }
 }
