@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @Binding var rootIsActive: Bool
     var body: some View {
-//        NavigationView{
+        NavigationView{
             TabView{
                 HomeView()
                     .tabItem {
@@ -19,20 +20,19 @@ struct TabBarView: View {
                     .tabItem {
                         Image(systemName: "mappin.circle.fill")
                         Text("Peta") }
-                UserProfileView()
+                UserProfileView(rootIsActive: $rootIsActive)
                     .tabItem {
                         Image(systemName: "person.circle.fill")
                         Text("Profil")
                     }
             }
-            .navigationBarTitle(Text(""),displayMode: .inline)
             .navigationBarHidden(true)
-//        }
+        }.navigationBarHidden(true)
     }
 }
 
 struct TabBarVIew_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView()
+        TabBarView(rootIsActive: .constant(false))
     }
 }

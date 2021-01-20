@@ -10,14 +10,16 @@ import SwiftUI
 struct StoreList: View {
     @ObservedObject var viewModel = HomeViewModel()
     @Binding var searchText: String
-    var action: (() -> Bool)?
+    @Binding var showView: Bool
     var body: some View {
         VStack{
             ScrollView{
                 ForEach(viewModel.store.filter {
                     self.searchText.isEmpty ? true : $0.moneyChangerName.lowercased().contains(self.searchText.lowercased())
                 }, id: \.self) { item in
-                    StoreListCellView(store: item)
+                    let distance = viewModel.countDistance(loc1Latitude:
+                                                        item.latitudeCoordinate, loc1Longitude: item.longitudeCoordinate)
+                    StoreListCellView(showView: $showView, distance: distance, store: item )
                 }
             }
         }.frame(height: UIScreen.main.bounds.height*0.6)
@@ -26,6 +28,6 @@ struct StoreList: View {
 
 struct StoreList_Previews: PreviewProvider {
     static var previews: some View {
-        StoreList(searchText: .constant(""))
+        StoreList(searchText: .constant(""), showView: .constant(false))
     }
 }

@@ -11,9 +11,9 @@ struct RegisterButton: View {
     @Binding var showView: Bool
     var body: some View {
         HStack{
-        Text("Belum punya akun?")
-            .font(.body)
-            .fontWeight(.semibold)
+            Text("Belum punya akun?")
+                .font(.body)
+                .fontWeight(.semibold)
             NavigationLink(destination: RegisterView(), isActive: $showView){
                 Button(action: {
                     showView.toggle()
@@ -21,7 +21,7 @@ struct RegisterButton: View {
                     .font(.body)
                     .foregroundColor(Color("AccentColor"))
                     .underline()
-                    })
+                })
             }
         }
         .frame(width: UIScreen.main.bounds.width*0.9, alignment: .center)

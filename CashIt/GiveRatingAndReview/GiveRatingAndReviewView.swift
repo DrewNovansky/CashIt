@@ -23,6 +23,7 @@ struct GiveRatingAndReviewView: View {
         SubmitButton(action: {viewModel.checkIfAllFieldsFilled()})
             .padding()
         }
+        .foregroundColor(.black)
     }
 }
 

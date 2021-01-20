@@ -26,28 +26,26 @@ struct HomeMapView: View {
                     }
                 
                 if showingPlaceDetails{
-                    let loc1 = CLLocation(latitude: locValue.latitude,longitude: locValue.longitude)
-                    let loc2 = CLLocation(latitude: selectedPlace?.coordinate.latitude ?? centerCoordinate.latitude, longitude: selectedPlace?.coordinate.longitude ?? centerCoordinate.longitude)
-                    let distance = Double(loc1.distance(from: loc2 ))
+                    let distance = viewModel.countDistance(loc1Latitude: locValue.latitude, loc1Longitude: locValue.longitude, loc2Latitude: selectedPlace?.coordinate.latitude ?? centerCoordinate.latitude, loc2Longitude: selectedPlace?.coordinate.longitude ?? centerCoordinate.longitude)
                     VStack{
                         Spacer()
                         NavigationLink(destination: viewModel.segue(showView: $showView, distance: distance), isActive: $showView){
                             VStack{
-                                PlaceDetails(selectedPlace: $selectedPlace, distance: Float(distance))
+                                PlaceDetails(selectedPlace: $selectedPlace)
+                                    .padding(10)
                             }
                             .onTapGesture {
                                 showView.toggle()
                             }
-                            .frame(width: UIScreen.main.bounds.width*0.93, height: UIScreen.main.bounds.height/6, alignment: .topLeading)
+                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/7, alignment: .topLeading)
                             .border(Color.black, width: 1)
                             .background(Color(.white))
                         }
                     }
                 }
             }
-            .frame(width: UIScreen.main.bounds.width*0.9, height: UIScreen.main.bounds.height*0.9)
             .navigationBarHidden(true)
-        }
+        }.navigationBarHidden(true)
     }
 }
 

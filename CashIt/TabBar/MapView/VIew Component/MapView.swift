@@ -47,9 +47,9 @@ struct MapView: UIViewRepresentable {
         
         func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
             guard let placemark = view.annotation as? MKPointAnnotation else { return }
-
-                parent.selectedPlace = placemark
-                parent.showingPlaceDetails = true
+            
+            parent.selectedPlace = placemark
+            parent.showingPlaceDetails = true
         }
     }
     
@@ -57,43 +57,39 @@ struct MapView: UIViewRepresentable {
         Coordinator(self)
     }
     let locationManager = CLLocationManager()
-        func makeUIView(context: UIViewRepresentableContext<MapView>) -> MKMapView {
+    func makeUIView(context: UIViewRepresentableContext<MapView>) -> MKMapView {
         let mapView = MKMapView()
-            let locValue:CLLocationCoordinate2D = self.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
-            print("CURRENT LOCATION = \(locValue.latitude) \(locValue.longitude)")
-            let coordinate = CLLocationCoordinate2D(
-                latitude: locValue.latitude, longitude: locValue.longitude)
-            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-            let region = MKCoordinateRegion(center: coordinate, span: span)
-            mapView.setRegion(region, animated: true)
+        let locValue:CLLocationCoordinate2D = self.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
+        print("CURRENT LOCATION = \(locValue.latitude) \(locValue.longitude)")
+        let coordinate = CLLocationCoordinate2D(
+            latitude: locValue.latitude, longitude: locValue.longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        mapView.setRegion(region, animated: true)
         mapView.delegate = context.coordinator
         return mapView
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
         view.showsUserLocation = true
-
-            // Ask for Authorisation from the User.
-            self.locationManager.requestAlwaysAuthorization()
-
-            // For use in foreground
-            self.locationManager.requestWhenInUseAuthorization()
         
-            if CLLocationManager.locationServicesEnabled() {
-                //        self.locationManager.delegate = self
-                 self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                 self.locationManager.startUpdatingLocation()
-                
-            }
-                if annotations.count != view.annotations.count{
-                    view.removeAnnotations(view.annotations)
-                    view.addAnnotations(annotations)
-                }
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            //        self.locationManager.delegate = self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            self.locationManager.startUpdatingLocation()
+            
+        }
+        if annotations.count != view.annotations.count{
+            view.removeAnnotations(view.annotations)
+            view.addAnnotations(annotations)
+        }
     }
-    
-    
-    
-    
 }
 
 extension MKPointAnnotation{
@@ -108,7 +104,6 @@ extension MKPointAnnotation{
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-//        MapView(centerCoordinate: .constant(MKPointAnnotation.example.coordinate), selectedPlace: .constant(MKPointAnnotation.example), showingPlaceDetails: .constant(false), annotations: [MKPointAnnotation.example])
         Text("Hai")
     }
 }

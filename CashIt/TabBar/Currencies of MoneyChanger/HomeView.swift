@@ -10,26 +10,26 @@ import SwiftUI
 struct HomeView: View {
     @ObservedObject var viewModel = HomeViewModel()
     @State private var searchText : String = ""
-    @State var fromTo = false
-    
+    @State var showView: Bool = false
     var body: some View {
         NavigationView{
             ZStack{
                 VStack{
-                    Spacer()
+                    Text("")
+                        .padding()
                     SearchBar(text: $searchText, placeholder: "Cari nama money changer")
                     CurrencySelect()
-                    StoreList(searchText: $searchText)
+                    StoreList(searchText: $searchText, showView: $showView)
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width-20)
-                .navigationBarHidden(true)
-            }
+            }.navigationBarHidden(true)
         }
+        .navigationBarHidden(true)
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(showView: false)
     }
 }

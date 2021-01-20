@@ -26,7 +26,7 @@ struct MCInfoView: View {
                 .font(Font.title3.weight(.bold))
                 
                 HStack{
-                    Text(viewModel.name)
+                    Text(viewModel.moneyChanger.moneyChangerName)
                     Spacer()
                 }.font(.system(size: 19))
             }.padding(10)
@@ -53,7 +53,7 @@ struct MCInfoView: View {
                 .font(Font.title3.weight(.bold))
                 
                 HStack{
-                    Text(viewModel.wa)
+                    Text(viewModel.moneyChanger.phoneNumber)
                     Spacer()
                 }.font(.system(size: 19))
             }.padding(10)
@@ -66,7 +66,7 @@ struct MCInfoView: View {
                 .font(Font.title3.weight(.bold))
                 
                 HStack{
-                    Text(viewModel.address)
+                    Text(viewModel.moneyChanger.address)
                     Spacer()
                 }.font(.system(size: 19))
             }.padding(10)

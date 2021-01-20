@@ -10,7 +10,6 @@ import MapKit
 
 struct PlaceDetails: View {
     @Binding var selectedPlace: MKPointAnnotation?
-    var distance: Float
     var body: some View {
         HStack{
             Image("Test")
@@ -20,12 +19,14 @@ struct PlaceDetails: View {
                 .clipShape(Circle())
             VStack(alignment:.leading){
                 Text("\(selectedPlace?.title ?? "Unknown")")
+                    .fontWeight(.semibold)
                 Text("\(selectedPlace?.subtitle ?? "Missing place information")")
-                Text("\(distance, specifier: "%.2f") Meter")
+                    .font(.caption)
             }
-            .font(.title3)
+            .font(.body)
             .foregroundColor(.black)
-        }.padding([.top, .leading], 24.0)
-       
+        }.padding(.leading, 25)
+        .padding(.top, 10)
+        
     }
 }

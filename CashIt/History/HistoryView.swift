@@ -12,7 +12,7 @@ struct HistoryView: View {
     
     var body: some View {
             ScrollView() {
-                ForEach(viewModel.transactions) { transaction in
+                ForEach(viewModel.appointment) { transaction in
                     OrderCellView(transaction: transaction)
                 }
             }.padding()

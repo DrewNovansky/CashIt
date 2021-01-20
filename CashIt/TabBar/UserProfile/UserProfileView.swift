@@ -10,12 +10,12 @@ import SwiftUI
 struct UserProfileView: View {
     
     var viewModel = UserProfileViewModel()
-    
+    @Binding var rootIsActive : Bool
     var body: some View {
         NavigationView{
         VStack{
             HStack{
-                Text("Hi, " + "Andrew")
+                Text("Hi, " + "\(viewModel.user.username)")
                     .font(.system(size:25))
                     .padding()
                 
@@ -38,43 +38,31 @@ struct UserProfileView: View {
             .foregroundColor(.black)
             }
             Divider()
-            //                HStack{
-            //                    Image(systemName: "star.fill")
-            //                        .resizable()
-            //                        .foregroundColor(.blue)
-            //                        .frame(width: 35, height: 35)
-            //
-            //                    Text("Nilai Aplikasi Kami")
-            //                        .font(.system(size:20))
-            //
-            //                    Spacer()
-            //
-            //                    Image(systemName: "chevron.right")
-            //                        .resizable()
-            //                        .foregroundColor(.gray)
-            //                        .frame(width: 15, height: 25)
-            //                }.frame(width: UIScreen.main.bounds.width - 50)
-            //                Divider()
             Spacer()
-            
-            NavigationLink(destination: WelcomePageView()) {
+            Button(action: {
+                rootIsActive = false
+            }, label: {
                 Text("Keluar")
                     .font(.title2)
+                    .foregroundColor(.red)
                     .cornerRadius(40)
-                    .padding(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 40)
-                            .stroke(Color("AccentColor"), lineWidth: 5)
+                            .stroke(Color(.red), lineWidth: 5)
                             .frame(width: UIScreen.main.bounds.width - 20, height: 45)
+                            .padding(10)
                     )
-            }.navigationBarTitle(Text("Profil"), displayMode: .inline)
-        }
-        }
+                    .padding()
+                    .padding(.bottom)
+            }).navigationBarTitle(Text("Profil"), displayMode: .inline)
+                
+        }.navigationBarHidden(true)
+        }.navigationBarHidden(true)
     }
 }
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView()
+        UserProfileView( rootIsActive: .constant(false))
     }
 }

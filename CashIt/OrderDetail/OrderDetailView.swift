@@ -10,11 +10,9 @@ import SwiftUI
 struct OrderDetailView: View {
     @State var isPresentingModalView = false
     var viewModel = OrderDetailViewModel()
-    //    var viewModel: OrderDetailViewModel
     
     var body: some View {
         VStack {
-            
             Image(systemName: "person.circle.fill")
                 .resizable()
                 .foregroundColor(.gray)
