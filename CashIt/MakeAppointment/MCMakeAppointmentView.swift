@@ -18,13 +18,14 @@ struct MCMakeAppointmentView: View {
             VStack{
                 Image(systemName: "person.circle.fill")
                     .resizable()
-                    .foregroundColor(.gray)
+                    .foregroundColor(.black)
                     .frame(width: 100, height: 100, alignment: .center)
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .padding()
                 Text(viewModel.name)
+                    .font(.title2)
+                    .fontWeight(.semibold)
                     .padding(.bottom, 15)
-                    .font(.system(size:25))
                 Spacer()
                 VStack{
                     AppointmentSetCurrency(switcher: .constant(false), textFieldFrom: $viewModel.appoinmentFromPrice, textFieldTo: $viewModel.appoinmentToPrice)
@@ -41,12 +42,12 @@ struct MCMakeAppointmentView: View {
                 Button("Confirm"){
                     self.popToRootView = false
                 }
-                .padding()
                 .font(.title2)
                 .frame(width: UIScreen.main.bounds.width - 20, height: 45)
                 .foregroundColor(.white)
                 .background(Color("AccentColor"))
                 .cornerRadius(25)
+                .padding()
             }
         }
     }

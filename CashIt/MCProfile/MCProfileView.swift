@@ -38,6 +38,7 @@ struct MCProfileView: View {
             
             Text(viewModel.moneyChanger.moneyChangerName)
                 .font(.title2)
+                .fontWeight(.semibold)
                 .padding(5)
             Text("Monday " + "open" + " - " + "close")
                 .padding(.bottom,5)
@@ -45,24 +46,27 @@ struct MCProfileView: View {
             HStack{
                 VStack{
                     Text("Jarak")
+                        .fontWeight(.semibold)
                     Image(systemName: "map.fill")
                         .resizable()
                         .foregroundColor(Color("AccentColor"))
                         .frame(width: 45, height: 45)
-                    Text("\(viewModel.moneyChanger.distance) "+"m")
+                    Text("\(viewModel.distance) "+"m")
                 }.frame(width: UIScreen.main.bounds.width/3)
                 VStack{
                     Text("Kontak")
+                        .fontWeight(.semibold)
                     Link(destination: viewModel.openWA()) {
                         Image(systemName: "text.bubble.fill")
                             .resizable()
                             .foregroundColor(Color("AccentColor"))
                             .frame(width: 45, height: 45)
                     }
-                    Text(viewModel.wa)
+                    Text(viewModel.moneyChanger.phoneNumber)
                 }.frame(width: UIScreen.main.bounds.width/3)
                 VStack{
-                    Text("\(viewModel.review.reviews.count)" + " Ulasan")
+                    Text("\(viewModel.reviews.count)" + " Ulasan")
+                        .fontWeight(.semibold)
                     NavigationLink(destination: viewModel.segueToReview()){
                         HStack{
                             Image(systemName: "star.fill")
@@ -71,7 +75,7 @@ struct MCProfileView: View {
                                 .frame(width: 45, height: 45)
                         }
                     }
-                    Text("Nilai: \(viewModel.review.getStoreRating())")
+                    Text("Nilai: \(viewModel.getStoreRating())")
                 }.frame(width: UIScreen.main.bounds.width/3)
             }.padding(5)
             
@@ -112,6 +116,7 @@ struct MCProfileView: View {
                     .background(Color("AccentColor"))
                     .cornerRadius(25)
                     .font(.title2)
+                    .padding(.bottom)
             }.isDetailLink(false)
         }
         .navigationBarTitle(Text("Toko"), displayMode: .inline)

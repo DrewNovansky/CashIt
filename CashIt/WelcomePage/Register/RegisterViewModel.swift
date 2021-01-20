@@ -19,4 +19,11 @@ class RegisterViewModel: ObservableObject {
         print("\(user.username) and \(user.password)")
         return true
     }
+    func segueToLogin() -> LoginView {
+        let view = LoginView()
+        return view
+    }
+//    func createLoginData(<#parameters#>){
+//        return user
+//    }
 }

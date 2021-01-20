@@ -9,11 +9,12 @@ import SwiftUI
 import MapKit
 
 struct SubmitLogin: View {
+    @ObservedObject var viewModel = LoginViewModel()
     @Binding var showView: Bool
     @Binding var showAlert: Bool
     var action: (() -> Bool)? = nil
     var body: some View {
-        NavigationLink(destination: TabBarView(), isActive: $showView){
+        NavigationLink(destination: viewModel.segueToMainView(showView: $showView), isActive: $showView){
             Button(action: {
                 if let run = action {
                     if run() {

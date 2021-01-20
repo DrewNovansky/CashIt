@@ -13,30 +13,29 @@ struct LoginView: View {
     @State var showView2: Bool = false
     @State var showAlert: Bool = false
     var body: some View {
-            VStack(alignment:.leading){
-                HStack{
-                    TitleTemp(text: "Masuk")
-                        .padding([.top, .bottom, .trailing], 10)
-                    Spacer()
-                }
+        VStack(alignment:.leading){
+            HStack{
+                TitleTemp(text: "Masuk")
+                    .padding([.top, .bottom, .trailing], 10)
                 Spacer()
-                
-                TextFieldTemp(input: self.$viewModel.user.email, textField: "Email")
-                    .onChange(of: viewModel.user.email, perform: { email in
-                        UserDefaults.standard.set(self.viewModel.user.email, forKey: "email")
-                    })
-                PasswordFieldTemp(input: self.$viewModel.user.password, textField: "Kata Sandi")
-                    .onChange(of: viewModel.user.password, perform: { password in
-                        UserDefaults.standard.set(self.viewModel.user.password, forKey: "password")
-                        print("Password changed to \(password)")
-                    })
-                Spacer()
-                SubmitLogin(showView: $showView, showAlert: $showAlert, action: {viewModel.checkIfAllFieldsFilled()})
-                RegisterButton(showView: $showView2)
             }
-            .padding()
-//            .navigationBarTitle(Text(""), displayMode: .inline)
-            .navigationBarHidden(true)
+            Spacer()
+            
+            TextFieldTemp(input: self.$viewModel.user.email, textField: "Email")
+                .onChange(of: viewModel.user.email, perform: { email in
+                    UserDefaults.standard.set(self.viewModel.user.email, forKey: "email")
+                })
+            PasswordFieldTemp(input: self.$viewModel.user.password, textField: "Kata Sandi")
+                .onChange(of: viewModel.user.password, perform: { password in
+                    UserDefaults.standard.set(self.viewModel.user.password, forKey: "password")
+                    print("Password changed to \(password)")
+                })
+            Spacer()
+            SubmitLogin(showView: $showView, showAlert: $showAlert, action: {viewModel.checkIfAllFieldsFilled()})
+            RegisterButton(showView: $showView2)
+        }
+        .padding()
+        .navigationBarHidden(true)
     }
 }
 

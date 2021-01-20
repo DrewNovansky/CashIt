@@ -15,11 +15,13 @@ struct MCReviewView: View {
         
         VStack{
             HStack{
-                Text("\(viewModel.getStoreRating())")
+                let mean = viewModel.getStoreRating()
+                Text("\(mean)")
                     .font(.system(size: 50))
                 VStack{
                     HStack{
-                        ForEach(0..<viewModel.getStoreRating()){ i in
+                        
+                        ForEach(0..<mean){ i in
                             Image(systemName: "star.fill").resizable().frame(width: 30, height: 30, alignment: .center).foregroundColor(.yellow)
                         }
                     }

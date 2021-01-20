@@ -8,9 +8,10 @@
 import Foundation
 
 class OrderDetailViewModel: ObservableObject {
+//    var review: Appointment
     
-//    init(_ transaction: Transaction) {
-//        self.transaction = transaction
+//    init() {
+//
 //    }
     
     var name : String = "Maju Jaya Money Changer"
@@ -23,7 +24,10 @@ class OrderDetailViewModel: ObservableObject {
     var toName: String = "USD"
     var toTotal: Int =  70
     
-    var transaction: Transaction = Transaction(orderNumber: "", date: "", moneyChangerName: "", moneyChangerAddress: "", time: "", amount: "")
+    var transaction: Appointment = Appointment(orderNumber: "", status: "", date: "", time: "", toReceiveAmount: 0, toReceiveCurrencyName: "", toExchangeAmount: 0, toExchangeCurrencyName: "")
     
+//    func makeReview(){
+//
+//    }
     
 }

@@ -11,7 +11,7 @@ var currencies = ["IDR","USD","KRW","RGM"]
 
 struct DropDown:View {
     @State var expand = false
-    @State var text = currencies[1]
+    @State var text = currencies[0]
     var body: some View{
         ZStack{
             VStack{
@@ -58,7 +58,7 @@ struct DropDownElement:View {
                 .font(.title3)
                 .fontWeight(.semibold)
                 .padding()
-                
+            
         })
         .foregroundColor(Color(.black))
         .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height*0.045, alignment: .center)

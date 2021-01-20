@@ -13,14 +13,14 @@ struct SignInButton: View{
     var foregroundColor:Color = Color(.white)
     
     var body: some View{
-    Text("\(buttonText)")
-        .font(.body)
-        .foregroundColor(foregroundColor)
-        .frame(
-            width: UIScreen.main.bounds.width*0.9,
-            height:UIScreen.main.bounds.height*0.05,
-            alignment: .center)
-        .background(backgroundColor)
-        .padding(.bottom)
+        Text("\(buttonText)")
+            .font(.body)
+            .foregroundColor(.white)
+            .frame(
+                width: UIScreen.main.bounds.width*0.9,
+                height:UIScreen.main.bounds.height*0.05,
+                alignment: .center)
+            .background(Color("AccentColor"))
+            .padding(.bottom)
     }
 }

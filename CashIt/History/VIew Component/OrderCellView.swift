@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OrderCellView: View {
-    var transaction: Transaction
+    var transaction: Appointment
     var viewModel = HistoryViewModel()
     
     var body: some View {
@@ -17,10 +17,10 @@ struct OrderCellView: View {
             label: {
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
-                    Text("\(transaction.moneyChangerName)")
+                    Text("*MONEY CHANGER NAME*")
                         .font(.title3)
                         .fontWeight(.semibold)
-                    Text("\(transaction.amount)")
+                    Text("\(transaction.toExchangeAmount)")
                         .font(.body)
                 }.padding()
                 
@@ -39,6 +39,6 @@ struct OrderCellView: View {
 
 struct OrderCellView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderCellView(transaction: Transaction(orderNumber: "190120001", date: "29/05/2020", moneyChangerName: "Maju Roso Money Changer", moneyChangerAddress: "Jln. Doang Jadian Kaga", time: "18:00", amount: "IDR 15000000 = USD 1000"))
+        Text("Hai")
     }
 }

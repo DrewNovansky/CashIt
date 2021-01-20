@@ -8,7 +8,8 @@
 import Foundation
 
 class UserProfileViewModel{
-    
+    var user: User = User()
+   
     func segueToHistory() -> HistoryView {
         let viewModel = HistoryViewModel()//terima parameter
         let view = HistoryView(viewModel: viewModel)

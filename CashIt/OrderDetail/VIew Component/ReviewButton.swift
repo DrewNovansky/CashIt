@@ -17,18 +17,17 @@ struct ReviewButton: View {
             },
             label: {
             Text("Beri Ulasan")
-                .font(.title3)
                 .fontWeight(.semibold)
-                .foregroundColor(Color("AccentColor"))
         })
         .sheet(isPresented: $isPresentingModalView, content: {
             GiveRatingAndReviewView()
         })
-        .frame(width: UIScreen.main.bounds.width*0.8, height: 50)
-        .overlay(
-            Capsule(style: .continuous)
-                .stroke(Color("AccentColor"), lineWidth: 5)
-        )
+            .frame(width: UIScreen.main.bounds.width-20, height: 45)
+            .foregroundColor(.white)
+            .background(Color("AccentColor"))
+            .cornerRadius(25)
+            .font(.title2)
+            .padding(.bottom)
     }
 }
 
