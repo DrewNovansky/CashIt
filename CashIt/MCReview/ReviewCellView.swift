@@ -15,7 +15,7 @@ struct ReviewCellView: View {
         
         VStack{
             HStack{
-                Text("*NAME*")
+                Text("Yatno")
                     .fontWeight(.semibold)
                     .font(.headline)
                     .frame(maxWidth: UIScreen.main.bounds.width/2, alignment: .leading)

@@ -7,7 +7,7 @@
 // generate ordernumber
 // currency di make appointment dan fungsi hitung dari onchange untuk harga valuta
 // benerin orderDetailView
-//
+// pasang pesan moneychanger tidak terdaftar di halaman Currencies of MoneyChanger
 //
 //
 //

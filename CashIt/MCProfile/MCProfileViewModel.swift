@@ -24,6 +24,7 @@ class MCProfileViewModel{
             Currency(currencyName: "CNY", buyPrice: 2165, sellPrice: 2180),
             Currency(currencyName: "HKD", buyPrice: 1795, sellPrice: 1815)
         ])
+        
         self.reviews.append(contentsOf: [
             Review(rating: 3, description: "Staffnya ramah, pelayanan baik dan cepat", date: "20 Desember 2020"),
             Review(rating: 4, description: "Pelayanan cepat walaupun banyak pembelinya", date: "2 Januari 2021"),

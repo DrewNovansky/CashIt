@@ -17,7 +17,7 @@ struct OrderCellView: View {
             label: {
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
-                    Text("*MONEY CHANGER NAME*")
+                    Text("Rainbow Bridge Money Changer")
                         .font(.title3)
                         .fontWeight(.semibold)
                     Text("\(transaction.toExchangeAmount)")

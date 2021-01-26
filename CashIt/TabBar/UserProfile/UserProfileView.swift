@@ -15,7 +15,8 @@ struct UserProfileView: View {
         NavigationView{
         VStack{
             HStack{
-                Text("Hi, " + "\(viewModel.user.username)")
+//                Text("Hi, " + "\(viewModel.user.username)")
+                Text("Hi, \(UserDefaults.standard.string(forKey: "username") ?? "")")
                     .font(.system(size:25))
                     .padding()
                 

@@ -39,7 +39,7 @@ struct RegisterView: View {
             SubmitRegister(showView: $showView, showAlert: $showAlert, action: {viewModel.checkIfAllFieldsFilled()})
             
         }.frame(width: UIScreen.main.bounds.width - 20)
-        .navigationBarHidden(true)
+        .navigationBarTitle(Text(""), displayMode: .inline)
     }
 }
 

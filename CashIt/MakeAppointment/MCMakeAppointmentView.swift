@@ -13,6 +13,7 @@ struct MCMakeAppointmentView: View {
     let currentDate = Date()
     let dateFormatter = DateFormatter()
     @Binding var popToRootView : Bool
+    @State var showAlert = false
     var body: some View {
         ZStack{
             VStack{
@@ -28,7 +29,8 @@ struct MCMakeAppointmentView: View {
                     .padding(.bottom, 15)
                 Spacer()
                 VStack{
-                    AppointmentSetCurrency(switcher: .constant(false), textFieldFrom: $viewModel.appoinmentFromPrice, textFieldTo: $viewModel.appoinmentToPrice)
+                    
+                    AppointmentSetCurrency()
                 }.zIndex(15)
                 .padding()
                 Spacer()
@@ -37,10 +39,12 @@ struct MCMakeAppointmentView: View {
                         .padding()
                 }.zIndex(14)
                 Spacer()
+                Text("Sebelumnya kami tidak menjamin harga yang berubah.\nKarena fluktuatifnya harga valuta yang dipilih")
+                    .font(.footnote)
+                    .multilineTextAlignment(.center)
                 Spacer()
-                Spacer()
-                Button("Confirm"){
-                    self.popToRootView = false
+                Button("Buat Pesanan"){
+                    self.showAlert = true
                 }
                 .font(.title2)
                 .frame(width: UIScreen.main.bounds.width - 20, height: 45)
@@ -48,6 +52,11 @@ struct MCMakeAppointmentView: View {
                 .background(Color("AccentColor"))
                 .cornerRadius(25)
                 .padding()
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Success!"), message: Text("Your Appointment have beend booked with code number 24-1-2021-1"), dismissButton: .default(Text("Okay"), action: {
+                        self.popToRootView = false
+                    }))
+                }
             }
         }
     }

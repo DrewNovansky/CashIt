@@ -10,7 +10,6 @@ import SwiftUI
 struct StoreList: View {
     @ObservedObject var viewModel = HomeViewModel()
     @Binding var searchText: String
-    @Binding var showView: Bool
     var body: some View {
         VStack{
             ScrollView{
@@ -19,7 +18,7 @@ struct StoreList: View {
                 }, id: \.self) { item in
                     let distance = viewModel.countDistance(loc1Latitude:
                                                         item.latitudeCoordinate, loc1Longitude: item.longitudeCoordinate)
-                    StoreListCellView(showView: $showView, distance: distance, store: item )
+                    StoreListCellView(distance: distance, store: item )
                 }
             }
         }.frame(height: UIScreen.main.bounds.height*0.6)
@@ -28,6 +27,6 @@ struct StoreList: View {
 
 struct StoreList_Previews: PreviewProvider {
     static var previews: some View {
-        StoreList(searchText: .constant(""), showView: .constant(false))
+        StoreList(searchText: .constant(""))
     }
 }
