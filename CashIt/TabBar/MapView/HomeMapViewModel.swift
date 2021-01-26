@@ -23,7 +23,6 @@ class HomeMapViewModel: ObservableObject{
         
         for i in 0..<(store.count)
         {
-            
             //untuk membuat titik annotate
             let pointAnnotation = MKPointAnnotation() // First create an annotation.
             pointAnnotation.title = store[i].moneyChangerName
@@ -41,9 +40,9 @@ class HomeMapViewModel: ObservableObject{
     }
     func segue(showView: Binding<Bool>, distance: Double) -> MCProfileView {
         let viewModel = MCProfileViewModel()
+        viewModel.distance = self.distance
         //terima parameter
         let view = MCProfileView(rootIsActive: showView)
-        viewModel.distance = distance
         return view
     }
     

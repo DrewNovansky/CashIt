@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct AppointmentSetCurrency: View {
-    
-    @Binding var switcher: Bool
-    @Binding var textFieldFrom: Int
-    @Binding var textFieldTo: Int
-    
+    @ObservedObject var viewModel = MCMakeAppointmentViewModel()
+    @State var textFieldFrom: Int = 0
+    @State var textFieldTo: Int = 0
     var body: some View {
         VStack{
         VStack(alignment: .leading){
@@ -34,6 +32,11 @@ struct AppointmentSetCurrency: View {
                             .padding(5)
                             .border(Color.black,width: 3)
                             .padding(10)
+                            .onChange(of: textFieldFrom, perform: { value in
+//                                viewModel.appointment.toReceiveAmount = viewModel.calculateCurrency(calculateFor: "sell", buyName: currency[1], buyPrice: viewModel.appointment.toReceiveAmount, sellName: currency[2], sellPrice: viewModel.appointment.toExchangeAmount, buyField: viewModel.appointment.toReceiveAmount, sellField: viewModel.appointment.toExchangeAmount)
+//                                textFieldFrom = viewModel.appointment.toReceiveAmount
+                                textFieldTo = textFieldFrom/14000*1
+                            })
                     }
                 }
                 
@@ -56,6 +59,11 @@ struct AppointmentSetCurrency: View {
                             .padding(5)
                             .border(Color.black,width: 3)
                             .padding(10)
+                            .onChange(of: textFieldTo, perform: { value in
+//                                viewModel.appointment.toExchangeAmount = viewModel.calculateCurrency(calculateFor: "buy", buyName: currency[1], buyPrice: viewModel.appointment.toReceiveAmount, sellName: currency[2], sellPrice: viewModel.appointment.toExchangeAmount, buyField: viewModel.appointment.toReceiveAmount, sellField: viewModel.appointment.toExchangeAmount)
+//                                textFieldTo = viewModel.appointment.toReceiveAmount
+                                textFieldFrom = textFieldTo/1*14000
+                            })
                     }
                 }
                 
@@ -70,6 +78,6 @@ struct AppointmentSetCurrency: View {
 
 struct AppointmentSetCurrency_Previews: PreviewProvider {
     static var previews: some View {
-        AppointmentSetCurrency(switcher: .constant(false), textFieldFrom: .constant(1), textFieldTo: .constant(1))
+        AppointmentSetCurrency(textFieldFrom: 1, textFieldTo: 1)
     }
 }

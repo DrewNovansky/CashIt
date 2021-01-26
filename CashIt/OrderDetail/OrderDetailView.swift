@@ -110,7 +110,7 @@ struct OrderDetailView: View {
             }.frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.height * 0.2)
             .background(Color("CardBackground"))
             .clipShape(RoundedRectangle(cornerRadius: 20))
-        }.navigationBarTitle("Order Detail")
+        }.navigationBarTitle("Detail Riwayat")
         ReviewButton(isPresentingModalView: $isPresentingModalView)
     }
 }

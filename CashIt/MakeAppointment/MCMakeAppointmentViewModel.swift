@@ -43,9 +43,21 @@ class MCMakeAppointmentViewModel: ObservableObject{
 //        return view
 //    }
     
-    func calculateCurrency(calculateFor: String, buyName: String, buyPrice: Int, sellName: String, sellPrice: Int)-> Int {
-        return sellPrice
+    func calculateCurrency(calculateFor: String, buyName: String, buyPrice: Int, sellName: String, sellPrice: Int, buyField: Int, sellField: Int)-> Int {
+        var buyField: Int = 0
+        var sellField: Int = 0
+        if calculateFor == "buy" {
+            let price = sellField/sellPrice*buyPrice
+            buyField = price
+            return buyField
+        }
+        if calculateFor == "sell" {
+            sellField = buyField/buyPrice*sellPrice
+            return sellField
+        }
+        return buyField
     }
+    
     func makeAppointment() {
         
     }

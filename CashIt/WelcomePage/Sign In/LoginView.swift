@@ -16,7 +16,7 @@ struct LoginView: View {
         VStack(alignment:.leading){
             HStack{
                 TitleTemp(text: "Masuk")
-                    .padding([.top, .bottom, .trailing], 10)
+                    .padding([.bottom, .trailing], 10)
                 Spacer()
             }
             Spacer()
@@ -35,7 +35,7 @@ struct LoginView: View {
             RegisterButton(showView: $showView2)
         }
         .padding()
-        .navigationBarHidden(true)
+        .navigationBarTitle(Text(""), displayMode: .inline)
     }
 }
 

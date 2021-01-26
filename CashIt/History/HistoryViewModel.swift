@@ -14,8 +14,8 @@ class HistoryViewModel {
     init() {
         self.appointment.append(contentsOf: [
             Appointment(orderNumber: "190120001", status: "Waiting", date: "29/05/2020", time: "18:00", toReceiveAmount: 1400000, toReceiveCurrencyName: "USD", toExchangeAmount: 100, toExchangeCurrencyName: "IDR"),
-            Appointment(orderNumber: "190120002", status: "Waiting", date: "29/05/2020", time: "18:00", toReceiveAmount: 700000, toReceiveCurrencyName: "USD", toExchangeAmount: 50, toExchangeCurrencyName: "IDR"),
-            Appointment(orderNumber: "190120003", status: "Waiting", date: "29/05/2020", time: "18:00", toReceiveAmount: 720000, toReceiveCurrencyName: "USD", toExchangeAmount: 50, toExchangeCurrencyName: "IDR")
+            Appointment(orderNumber: "190120002", status: "Waiting", date: "28/05/2020", time: "18:00", toReceiveAmount: 700000, toReceiveCurrencyName: "USD", toExchangeAmount: 50, toExchangeCurrencyName: "IDR"),
+            Appointment(orderNumber: "190120003", status: "Waiting", date: "26/05/2020", time: "18:00", toReceiveAmount: 720000, toReceiveCurrencyName: "USD", toExchangeAmount: 50, toExchangeCurrencyName: "IDR")
         ])
     }
     

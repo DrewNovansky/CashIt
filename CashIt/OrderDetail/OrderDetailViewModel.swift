@@ -14,8 +14,8 @@ class OrderDetailViewModel: ObservableObject {
 //
 //    }
     
-    var name : String = "Maju Jaya Money Changer"
-    var address: String = "Jl. Doang Jadian Kaga Blok AQ No.4, Rawa Belong, Jakarta Barat, 11270"
+    var name : String = "Rainbow Bridge Money Changer"
+    var address: String = "Jl.Raya Kb.Jeruk Gg.H.Salbini No.27 RT.1 RW.9"
     var orderID: String = "1101202102"
     var date: String = "11 Januari 2021"
     var time: String = "16:00"
@@ -26,8 +26,6 @@ class OrderDetailViewModel: ObservableObject {
     
     var transaction: Appointment = Appointment(orderNumber: "", status: "", date: "", time: "", toReceiveAmount: 0, toReceiveCurrencyName: "", toExchangeAmount: 0, toExchangeCurrencyName: "")
     
-//    func makeReview(){
-//
-//    }
+
     
 }

@@ -16,7 +16,7 @@ struct HistoryView: View {
                     OrderCellView(transaction: transaction)
                 }
             }.padding()
-            .navigationBarTitle("History")
+            .navigationBarTitle("Riwayat")
     }
 }
 

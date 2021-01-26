@@ -16,4 +16,7 @@ class GiveRatingAndReviewViewModel: ObservableObject {
         }
         return true
     }
+    //    func makeReview(){
+    //
+    //    }
 }
