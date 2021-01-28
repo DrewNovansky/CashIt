@@ -15,10 +15,11 @@ struct StoreListCellView: View {
     var body: some View {
         NavigationLink(destination: viewModel.segue(showView: $showView, distance: distance), isActive: $showView){
             HStack(alignment: .center){
-                Image("\(store.photo)")
+//                Image("\(store.photo)")
+                Image(systemName: "person.circle.fill")
                     .resizable()
                     .scaledToFit()
-                    .frame(width:  UIScreen.main.bounds.height/10, height:  UIScreen.main.bounds.height/10)
+                    .frame(width:  UIScreen.main.bounds.height/12, height:  UIScreen.main.bounds.height/12)
                     .clipShape(Circle())
                     .padding(10)
                 VStack(alignment:.leading){
@@ -26,14 +27,14 @@ struct StoreListCellView: View {
                         .fontWeight(.bold)
                     Text("\(store.address)")
                         .font(.caption)
-                    Text("\(distance, specifier: "%.2f") Meter")
+                    Text("\(distance, specifier: "%.2f") KM")
                         .font(.caption)
                 }
                 Spacer()
                 //            Text("\(currency.buyPrice)")
-                Text("1 \n = \n\(viewModel.currency[1].sellPrice,specifier: "%.2f")")
-                    .font(.footnote)
-                    .fontWeight(.medium)
+                Text("\(viewModel.currency[1].sellPrice,specifier: "%.2f")")
+                    .font(.body)
+                    .fontWeight(.semibold)
                     .padding()
             }.foregroundColor(.black)
             .font(.body)

@@ -34,7 +34,7 @@ struct SubmitRegister: View {
                 .background(Color("AccentColor"))
                 .padding(.bottom)})
         }.alert(isPresented: $showAlert) {
-            Alert(title: Text("Error!"), message: Text("We're sorry but you need to fill all the box to register"), dismissButton: .cancel(Text("Okay")))
+            Alert(title: Text("Pesan Error"), message: Text("Mohon isi semua data yang diperlukan untuk melakukan pendaftaran"), dismissButton: .cancel(Text("Tutup")))
         }
     }
 }

@@ -27,7 +27,7 @@ class HomeMapViewModel: ObservableObject{
             let pointAnnotation = MKPointAnnotation() // First create an annotation.
             pointAnnotation.title = store[i].moneyChangerName
             pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: store[i].latitudeCoordinate, longitude: store[i].longitudeCoordinate)
-            pointAnnotation.subtitle = "\(store[i].address) \n" + "\(countDistance(loc1Latitude: locationManager.location?.coordinate.latitude ?? store[i].latitudeCoordinate, loc1Longitude: locationManager.location?.coordinate.longitude ?? store[i].longitudeCoordinate, loc2Latitude: store[i].latitudeCoordinate, loc2Longitude: store[i].longitudeCoordinate)) M"
+            pointAnnotation.subtitle = "\(store[i].address) \n" + "\(countDistance(loc1Latitude: locationManager.location?.coordinate.latitude ?? store[i].latitudeCoordinate, loc1Longitude: locationManager.location?.coordinate.longitude ?? store[i].longitudeCoordinate, loc2Latitude: store[i].latitudeCoordinate, loc2Longitude: store[i].longitudeCoordinate)) KM"
             annotatedMoneyChanger.append(pointAnnotation) // Now append this newly created annotation to array.
         }
     }
@@ -35,6 +35,7 @@ class HomeMapViewModel: ObservableObject{
         let loc1 = CLLocation(latitude: loc1Latitude, longitude: loc1Longitude)
         let loc2 = CLLocation(latitude: loc2Latitude, longitude: loc2Longitude)
         distance = loc1.distance(from: loc2)
+        distance = distance/1000
         distance = Double(round(100*distance)/100)
         return distance
     }

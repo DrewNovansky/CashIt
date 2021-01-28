@@ -53,7 +53,7 @@ struct MCMakeAppointmentView: View {
                 .cornerRadius(25)
                 .padding()
                 .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Success!"), message: Text("Your Appointment have beend booked with code number 24-1-2021-1"), dismissButton: .default(Text("Okay"), action: {
+                    Alert(title: Text("Success!"), message: Text("Pesanan berhasil dibuat. Dengan kode pesanan : 24-1-2021-1"), dismissButton: .default(Text("Okay"), action: {
                         self.popToRootView = false
                     }))
                 }

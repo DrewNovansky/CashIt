@@ -18,15 +18,18 @@ struct OrderCellView: View {
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
                     Text("Rainbow Bridge Money Changer")
-                        .font(.title3)
+                        .font(.headline)
                         .fontWeight(.semibold)
-                    Text("\(transaction.toExchangeAmount)")
+                    Text("\(transaction.toReceiveAmount) \(transaction.toReceiveCurrencyName)")
                         .font(.body)
                 }.padding()
                 
                 VStack {
                     Text("\(transaction.date)")
-                        .font(.body)
+                        .font(.callout)
+                    Text("\(transaction.status)")
+                        .font(.callout)
+                        .foregroundColor(Color("AccentColor"))
                 }.padding([.top, .trailing])
             }
             .frame(width: UIScreen.main.bounds.width-20, height: UIScreen.main.bounds.height/10)

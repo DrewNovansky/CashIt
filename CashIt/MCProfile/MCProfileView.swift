@@ -40,19 +40,21 @@ struct MCProfileView: View {
                 .font(.title2)
                 .fontWeight(.semibold)
                 .padding(5)
-            Text("Monday " + "open" + " - " + "close")
-                .padding(.bottom,5)
             
+            Text("Monday " + "\(viewModel.operationalHours[1].openTime)" + " - " + "\(viewModel.operationalHours[1].closeTime)")
+                .padding(.bottom,5)
+            Text("Jarak: \(viewModel.distance) KM")
+                .padding(.bottom,5)
             HStack{
-                VStack{
-                    Text("Jarak")
-                        .fontWeight(.semibold)
-                    Image(systemName: "map.fill")
-                        .resizable()
-                        .foregroundColor(Color("AccentColor"))
-                        .frame(width: 45, height: 45)
-                    Text("\(viewModel.distance) "+"m")
-                }.frame(width: UIScreen.main.bounds.width/3)
+//                VStack{
+//                    Text("Jarak")
+//                        .fontWeight(.semibold)
+//                    Image(systemName: "map.fill")
+//                        .resizable()
+//                        .foregroundColor(Color("AccentColor"))
+//                        .frame(width: 45, height: 45)
+//                    Text("\(viewModel.distance) "+"KM")
+//                }.frame(width: UIScreen.main.bounds.width/3)
                 VStack{
                     Text("Kontak")
                         .fontWeight(.semibold)
@@ -107,7 +109,6 @@ struct MCProfileView: View {
             .background(Color("CardBackground"))
             .clipShape(RoundedRectangle(cornerRadius: 20))
             Spacer()
-                .padding()
             
             NavigationLink(destination: viewModel.segueToMakeAppointment(showView: $rootIsActive)) {
                 Text("Buat Janji")

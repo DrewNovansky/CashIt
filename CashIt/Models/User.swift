@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Decodable,Identifiable {
+struct User: Codable,Identifiable {
     var id = UUID()
     var username: String = UserDefaults.standard.string(forKey: "username") ?? ""
     var email: String = UserDefaults.standard.string(forKey: "email") ?? ""
@@ -16,7 +16,7 @@ struct User: Decodable,Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
-        case username = "name"
+        case username = "userName"
         case email = "email"
         case password = "password"
     }

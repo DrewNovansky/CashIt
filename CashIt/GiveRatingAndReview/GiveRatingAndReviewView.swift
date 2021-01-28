@@ -13,6 +13,9 @@ struct GiveRatingAndReviewView: View {
     var body: some View {
         VStack{
         Text("Berapa bintang untuk pesanan ini")
+            .onTapGesture(perform: {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            })
             .padding()
             .multilineTextAlignment(.center)
             .frame(width: UIScreen.main.bounds.width*0.5)
@@ -22,7 +25,9 @@ struct GiveRatingAndReviewView: View {
             .padding()
         SubmitButton(action: {viewModel.checkIfAllFieldsFilled()})
             .padding()
-        }
+        }.onTapGesture(perform: {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        })
         .foregroundColor(.black)
     }
 }

@@ -52,6 +52,7 @@ class HomeViewModel: ObservableObject {
         let loc1 = CLLocation(latitude: loc1Latitude, longitude: loc1Longitude)
         let loc2 = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         distance = loc1.distance(from: loc2)
+        distance = distance/1000
         distance = Double(round(100*distance)/100)
         return distance
     }
@@ -65,7 +66,7 @@ class HomeViewModel: ObservableObject {
     
 //        func load() {
 //            let url = URL(string: "https://gist.githubusercontent.com/rbreve/60eb5f6fe49d5f019d0c39d71cb8388d/raw/f6bc27e3e637257e2f75c278520709dd20b1e089/movies.json")!
-//    
+//
 //            URLSession.shared.dataTask(with: url) {(data,response,error) in
 //                do {
 //                    if let d = data {
@@ -84,5 +85,8 @@ class HomeViewModel: ObservableObject {
 //
 //            }.resume()
 //        }
+    
+//    func showMoneyChangerbyCurrencyDetail(){
+//}
     //    <<--Setelah ini diupload ke dalam init dipanggil load() -->
 }
