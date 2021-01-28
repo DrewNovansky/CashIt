@@ -31,8 +31,9 @@ struct MCProfileView: View {
                     )}
             )
             
-            Image(systemName: "person.circle.fill")
+            Image(UserDefaults.standard.string(forKey: "photo") ?? "")
                 .resizable()
+                .clipShape(Circle())
                 .frame(width: 100, height: 100, alignment: .center)
                 .padding(5)
             

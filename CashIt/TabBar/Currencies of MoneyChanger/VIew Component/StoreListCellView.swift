@@ -15,8 +15,8 @@ struct StoreListCellView: View {
     var body: some View {
         NavigationLink(destination: viewModel.segue(showView: $showView, distance: distance), isActive: $showView){
             HStack(alignment: .center){
-//                Image("\(store.photo)")
-                Image(systemName: "person.circle.fill")
+                Image("\(store.photo)")
+//                Image(systemName: "person.circle.fill")
                     .resizable()
                     .scaledToFit()
                     .frame(width:  UIScreen.main.bounds.height/12, height:  UIScreen.main.bounds.height/12)

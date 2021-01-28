@@ -10,10 +10,11 @@ import Foundation
 class InfoViewModel{
     var operationalHours: [OfficeHour] = []
     var moneyChanger: MoneyChanger
-    
+    var distance: Double
     // Dummy Data
     init() {
         moneyChanger = MoneyChanger(moneyChangerName: "Rainbow Bridge Money Changer", photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557)
+        distance = 0.02
         self.operationalHours.append(contentsOf: [
             OfficeHour(day: "Monday",openTime: "0", closeTime: "0"),
             OfficeHour(day: "Tuesday", openTime: "10:00", closeTime: "22:00"),

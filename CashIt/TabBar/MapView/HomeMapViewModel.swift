@@ -26,6 +26,7 @@ class HomeMapViewModel: ObservableObject{
             //untuk membuat titik annotate
             let pointAnnotation = MKPointAnnotation() // First create an annotation.
             pointAnnotation.title = store[i].moneyChangerName
+            UserDefaults.standard.set(store[i].photo, forKey: "photo")
             pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: store[i].latitudeCoordinate, longitude: store[i].longitudeCoordinate)
             pointAnnotation.subtitle = "\(store[i].address) \n" + "\(countDistance(loc1Latitude: locationManager.location?.coordinate.latitude ?? store[i].latitudeCoordinate, loc1Longitude: locationManager.location?.coordinate.longitude ?? store[i].longitudeCoordinate, loc2Latitude: store[i].latitudeCoordinate, loc2Longitude: store[i].longitudeCoordinate)) KM"
             annotatedMoneyChanger.append(pointAnnotation) // Now append this newly created annotation to array.

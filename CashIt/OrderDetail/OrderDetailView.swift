@@ -13,8 +13,9 @@ struct OrderDetailView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "person.circle.fill")
+            Image(UserDefaults.standard.string(forKey: "photo") ?? "")
                 .resizable()
+                .clipShape(Circle())
                 .frame(width: 100, height: 100, alignment: .center)
                 .padding(.vertical,10)
             VStack{
@@ -68,6 +69,7 @@ struct OrderDetailView: View {
                         Text("Rangkuman Pesanan")
                             .font(.title2)
                             .fontWeight(.bold)
+                            .padding(.leading,10)
                         Spacer()
                         VStack{
                         Text("Status")
@@ -85,11 +87,13 @@ struct OrderDetailView: View {
                         Text("Dari")
                             .font(.title3)
                             .fontWeight(.semibold)
+                            .padding(.leading,10)
                         Spacer()
                     }
                     HStack{
                         Text(viewModel.appointment.toExchangeCurrencyName)
                             .frame(width: UIScreen.main.bounds.width / 3,alignment: .leading)
+                            .padding(.leading,10)
                         Text("\(viewModel.appointment.toExchangeAmount)")
                             .frame(width: UIScreen.main.bounds.width / 2,alignment: .leading)
                         Spacer()
@@ -101,11 +105,13 @@ struct OrderDetailView: View {
                             Text("Ke")
                                 .font(.title3)
                                 .fontWeight(.semibold)
+                                .padding(.leading,10)
                             Spacer()
                         }
                         HStack{
                             Text(viewModel.appointment.toReceiveCurrencyName)
                                 .frame(width: UIScreen.main.bounds.width / 3,alignment: .leading)
+                                .padding(.leading,10)
                             Text("\(viewModel.appointment.toReceiveAmount)")
                                 .frame(width: UIScreen.main.bounds.width / 2,alignment: .leading)
                             Spacer()

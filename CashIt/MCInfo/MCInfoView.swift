@@ -13,10 +13,12 @@ struct MCInfoView: View {
     
     var body: some View {
         VStack{
-            Image(systemName: "person.circle.fill")
+            Image(UserDefaults.standard.string(forKey: "photo") ?? "")
                 .resizable()
+                .clipShape(Circle())
                 .frame(width: 100, height: 100, alignment: .center)
                 .padding(24)
+                
             VStack{
             HStack{
                 HStack{
@@ -39,7 +41,7 @@ struct MCInfoView: View {
                 .font(Font.title3.weight(.bold))
                 
                 HStack{
-                    Text("500 m")
+                    Text("\(viewModel.distance) KM")
                     Spacer()
                 }.font(.system(size: 19))
             }.padding(10)
