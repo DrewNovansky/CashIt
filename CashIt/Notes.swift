@@ -10,10 +10,10 @@
 // pasang pesan moneychanger tidak terdaftar di halaman Currencies of MoneyChanger
 //
 //
+// alert sudah beri ulasan
+// simpan nya merubah data is able to review
 //
-//
-//
-//
+// tambahin id model di class sama showButton di orderdetail
 //
 //
 //

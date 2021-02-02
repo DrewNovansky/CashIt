@@ -11,11 +11,11 @@ struct StoreListCellView: View {
     @ObservedObject var viewModel = HomeViewModel()
     @State var showView: Bool = false
     var distance: Double
-    var store : MoneyChanger
+    var store : MoneyChangerDetail
     var body: some View {
-        NavigationLink(destination: viewModel.segue(showView: $showView, distance: distance), isActive: $showView){
+        NavigationLink(destination: viewModel.segue(showView: $showView, distance: self.distance, moneyChanger: self.store.moneyChanger), isActive: $showView){
             HStack(alignment: .center){
-                Image("\(store.photo)")
+                Image("\(store.moneyChanger.photo)")
 //                Image(systemName: "person.circle.fill")
                     .resizable()
                     .scaledToFit()
@@ -23,16 +23,16 @@ struct StoreListCellView: View {
                     .clipShape(Circle())
                     .padding(10)
                 VStack(alignment:.leading){
-                    Text("\(store.moneyChangerName)")
+                    Text("\(store.moneyChanger.moneyChangerName)")
                         .fontWeight(.bold)
-                    Text("\(store.address)")
+                    Text("\(store.moneyChanger.address)")
                         .font(.caption)
                     Text("\(distance, specifier: "%.2f") KM")
                         .font(.caption)
                 }
                 Spacer()
                 //            Text("\(currency.buyPrice)")
-                Text("\(viewModel.currency[1].sellPrice,specifier: "%.2f")")
+                Text("\(store.exchangeRate)")
                     .font(.body)
                     .fontWeight(.semibold)
                     .padding()
@@ -48,6 +48,6 @@ struct StoreListCellView: View {
 
 struct StoreListCellView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreListCellView(showView: false, distance: 20, store: MoneyChanger(moneyChangerName: "Yatno", photo: "Test", address: "Jl Kasih Sayang", whatsappLink: "Test", phoneNumber: "Dihatimu", latitudeCoordinate: 1, longitudeCoordinate: 1))
+        StoreListCellView(showView: false, distance: 40, store: MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 0,moneyChangerName: "Rainbow Bridge Money Changer",  photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557), exchangeRate: 16000) )
     }
 }

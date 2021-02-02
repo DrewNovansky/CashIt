@@ -34,6 +34,6 @@ struct InfoCellView: View {
 
 struct InfoCellView_Previews: PreviewProvider {
     static var previews: some View {
-        InfoCellView(operationalHour: OfficeHour(day: "Monday", openTime: "0", closeTime: "0"))
+        InfoCellView(operationalHour: OfficeHour(officeHourId: 0,day: "Monday",  openTime: "0", closeTime: "0"))
     }
 }

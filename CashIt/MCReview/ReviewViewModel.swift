@@ -7,17 +7,18 @@
 
 import Foundation
 
+
 class ReviewViewModel {
     var reviews: [Review] = []
     var mean: Int = 0
-    
+
     // Dummy Data
     init() {
         self.reviews.append(contentsOf: [
 //            Review(by: "Kevin", rating: 3, description: "Staffnya ramah, pelayanan baik dan cepat", date: "20 Desember 2020"),
 //            Review(by: "Yatno", rating: 4, description: "Pelayanan cepat walaupun banyak pembelinya", date: "2 Januari 2021"),
-            Review(rating: 3, description: "Staffnya ramah, pelayanan baik dan cepat", date: "20 Desember 2020"),
-            Review(rating: 4, description: "Pelayanan cepat walaupun banyak pembelinya", date: "2 Januari 2021"),
+            Review(appointmentId: 0, rating: 3, description: "Staffnya ramah, pelayanan baik dan cepat", date: "20 Desember 2020", username: "Yatno"),
+            Review(appointmentId: 1, rating: 4, description: "Pelayanan cepat walaupun banyak pembelinya", date: "2 Januari 2021", username: "Yatno"),
         ])
     }
     

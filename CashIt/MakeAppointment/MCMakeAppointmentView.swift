@@ -29,7 +29,6 @@ struct MCMakeAppointmentView: View {
                     .padding(.bottom, 15)
                 Spacer()
                 VStack{
-                    
                     AppointmentSetCurrency()
                 }.zIndex(15)
                 .padding()
@@ -37,6 +36,7 @@ struct MCMakeAppointmentView: View {
                 VStack{
                     AppointmentDateAndTime()
                         .padding()
+                    Text("\(viewModel.appoinmentDate)")
                 }.zIndex(14)
                 Spacer()
                 Text("Sebelumnya kami tidak menjamin harga yang berubah.\nKarena fluktuatifnya harga valuta yang dipilih")

@@ -10,7 +10,7 @@ import SwiftUI
 struct OrderDetailView: View {
     @State var isPresentingModalView = false
     var viewModel = OrderDetailViewModel()
-    
+    @State var showButton = false
     var body: some View {
         VStack {
             Image(UserDefaults.standard.string(forKey: "photo") ?? "")
@@ -19,7 +19,7 @@ struct OrderDetailView: View {
                 .frame(width: 100, height: 100, alignment: .center)
                 .padding(.vertical,10)
             VStack{
-                Text(viewModel.moneyChanger.moneyChangerName)
+                Text(viewModel.appointment.moneyChangerName)
                     .font(.title2)
                     .fontWeight(.semibold)
                 
@@ -31,7 +31,7 @@ struct OrderDetailView: View {
                     .font(Font.title3.weight(.semibold))
                     
                     HStack{
-                        Text(viewModel.moneyChanger.address)
+                        Text(viewModel.appointment.address)
                         Spacer()
                     }.font(.system(size: 19))
                 }.padding(10)

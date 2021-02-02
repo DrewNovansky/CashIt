@@ -9,19 +9,19 @@ import Foundation
 import SwiftUI
 import Combine
 
-struct serverMessage: Codable{
-    struct User: Codable{
-        let id: Int
-        let username: String
-        let email: String
-        private enum CodingKeys : String, CodingKey {
-                      case id = "id"
-                      case username = "userName"
-                      case email = "email"
-                   }
-    }
-    let user: User
-}
+//struct serverMessage: Codable{
+//    struct User: Codable{
+//        let id: Int
+//        let username: String
+//        let email: String
+//        private enum CodingKeys : String, CodingKey {
+//                      case id = "id"
+//                      case username = "userName"
+//                      case email = "email"
+//                   }
+//    }
+//    let user: User
+//}
 
 class LoginViewModel: ObservableObject {
     @Published var user = User()
@@ -54,15 +54,16 @@ class LoginViewModel: ObservableObject {
                 print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
                 return
             }
-            let finalData = try? JSONDecoder().decode(serverMessage.self, from: data)
+            let finalData = try! JSONDecoder().decode(User.self, from: data)
             print("\(body)")
             print("\(finalBody)")
             print("\(finalData) ini final data \n\n\n\n\n\n ")
             DispatchQueue.main.async {
-                self.user.email = finalData?.user.email ?? ""
-                self.user.username = finalData?.user.username ?? ""
-                UserDefaults.standard.set(finalData?.user.username ?? "", forKey: "username")
+                UserDefaults.standard.setValue(finalData.userId, forKey: "userId")
+                UserDefaults.standard.setValue(finalData.username, forKey: "username")
+                UserDefaults.standard.setValue(finalData.email, forKey: "email")
             }
+            
         }.resume()
 //        guard let url = URL(string: "http://cashit.link/api/customerLogin") else {
 //            print("Error URl")

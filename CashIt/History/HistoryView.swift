@@ -11,7 +11,7 @@ struct HistoryView: View {
     var viewModel = HistoryViewModel()
     
     var body: some View {
-            ScrollView() {
+        ScrollView() {
                 ForEach(viewModel.appointment) { transaction in
                     OrderCellView(transaction: transaction)
                 }
@@ -19,6 +19,7 @@ struct HistoryView: View {
             .navigationBarTitle("Riwayat")
     }
 }
+
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {

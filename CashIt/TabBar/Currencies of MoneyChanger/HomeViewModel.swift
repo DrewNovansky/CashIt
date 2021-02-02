@@ -8,9 +8,36 @@
 import Foundation
 import SwiftUI
 import MapKit
+
+struct MoneyChangerDetail: Decodable, Hashable{
+    struct MoneyChanger: Codable, Hashable{
+        var moneyChangerId: Int
+        var moneyChangerName: String
+        var photo: String
+        var address: String
+        var whatsappLink: String
+        var phoneNumber: String
+        var latitudeCoordinate: Double
+        var longitudeCoordinate: Double
+        private enum CodingKeys : String, CodingKey {
+            case moneyChangerId = "id"
+            case moneyChangerName = "moneyChangerName"
+            case photo = "photo"
+            case address = "address"
+            case whatsappLink = "whatsappLink"
+            case phoneNumber = "phoneNumber"
+            case latitudeCoordinate = "latitudeCoordinate"
+            case longitudeCoordinate = "longitudeCoordinate"
+        }
+    }
+    var moneyChanger: MoneyChanger
+    var exchangeRate: Int
+}
+
+
+
 class HomeViewModel: ObservableObject {
-    var store: [MoneyChanger] = []
-    var currency: [Currency] = []
+    var store: [MoneyChangerDetail] = []
     var distance: Double = 0
     var locValue: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0,longitude: 0)
     let locationManager = CLLocationManager()
@@ -18,26 +45,18 @@ class HomeViewModel: ObservableObject {
     init() {
         locValue = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
         self.store.append(contentsOf: [
-            MoneyChanger(moneyChangerName: "Rainbow Bridge Money Changer", photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557),
-            MoneyChanger(moneyChangerName: "Surya Money Changer",photo: "Test", address: "Central Park Mall Lantai B 30A",whatsappLink: "wa.me/6281243658709", phoneNumber: "081234658709",latitudeCoordinate:-6.1774,longitudeCoordinate: 106.7907),
-            MoneyChanger(moneyChangerName: "Tiga Saudara Money Changer",photo: "Test", address: "Taman Anggrek Lantai 1 29B",whatsappLink: "wa.me/084681809919", phoneNumber: "084681809919",latitudeCoordinate:-6.1785,longitudeCoordinate: 106.7922),
-        ])
-        self.currency.append(contentsOf: [
-            Currency(currencyName: "USD", buyPrice: 14050, sellPrice: 14100),
-            Currency(currencyName: "EUR", buyPrice: 17200, sellPrice: 17330),
-            Currency(currencyName: "GBP", buyPrice: 19010, sellPrice: 19200),
-            Currency(currencyName: "CNY", buyPrice: 2165, sellPrice: 2180),
-            Currency(currencyName: "HKD", buyPrice: 1795, sellPrice: 1815)
+            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 0,moneyChangerName: "Rainbow Bridge Money Changer",  photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557), exchangeRate: 16000),
+            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 1,moneyChangerName: "Surya Money Changer",photo: "Test", address: "Central Park Mall Lantai B 30A",whatsappLink: "wa.me/6281243658709", phoneNumber: "081234658709",latitudeCoordinate:-6.1774,longitudeCoordinate: 106.7907),exchangeRate: 17000),
+            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 2,moneyChangerName: "Tiga Saudara Money Changer",photo: "Test", address: "Taman Anggrek Lantai 1 29B",whatsappLink: "wa.me/084681809919", phoneNumber: "084681809919",latitudeCoordinate:-6.1785,longitudeCoordinate: 106.7922), exchangeRate: 16500),
         ])
         
                 store.sort {
-                    countDistance(loc1Latitude: $0.latitudeCoordinate, loc1Longitude: $0.longitudeCoordinate) < countDistance(loc1Latitude: $1.latitudeCoordinate, loc1Longitude: $1.longitudeCoordinate)
-//                                Price Sort implement price Currency first
-//                                    && $0.storePrice < $1.storePrice
+                    $0.exchangeRate < $1.exchangeRate &&
+                    countDistance(loc1Latitude: $0.moneyChanger.latitudeCoordinate , loc1Longitude: $0.moneyChanger.longitudeCoordinate) < countDistance(loc1Latitude: $1.moneyChanger.latitudeCoordinate, loc1Longitude: $1.moneyChanger.longitudeCoordinate)
                 }
     }
     func searchCurrency(currency: [Currency], currencySearchFor: Currency)-> Currency{
-        var getCurrency: Currency = Currency(currencyName: "", buyPrice: 0, sellPrice: 0)
+        var getCurrency: Currency = Currency(currencyId: 0, currencyName: "", buyPrice: 0, sellPrice: 0)
         for item in currency {
             if item.currencyName == currencySearchFor.currencyName{
                 getCurrency.currencyName = item.currencyName
@@ -57,9 +76,14 @@ class HomeViewModel: ObservableObject {
         return distance
     }
     
-    func segue(showView: Binding<Bool>,distance: Double) -> MCProfileView {
+    func segue(showView: Binding<Bool>,distance: Double, moneyChanger: MoneyChangerDetail.MoneyChanger) -> MCProfileView {
         let viewModel = MCProfileViewModel()
-        viewModel.distance = self.distance//terima parameter
+        viewModel.moneyChanger.moneyChangerId = moneyChanger.moneyChangerId
+        viewModel.moneyChanger.moneyChangerName = moneyChanger.moneyChangerName
+        viewModel.moneyChanger.address = moneyChanger.address
+        viewModel.moneyChanger.whatsappLink = moneyChanger.whatsappLink
+        viewModel.moneyChanger.phoneNumber = moneyChanger.phoneNumber
+        viewModel.distance = distance//terima parameter
         let view = MCProfileView(rootIsActive: showView)
         return view
     }

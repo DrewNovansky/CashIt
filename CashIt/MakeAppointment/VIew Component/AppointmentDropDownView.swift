@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-var currency = ["IDR","USD","KRW","RGM"]
+//var currency = ["USD","EUR","GBP","CNY"]
 
 struct AppointmentDropDownView: View {
     
     @State var expand = false
-    @State var text = currency[1]
+    @State var text = currencies[1]
     
     var body: some View {
         ZStack{
@@ -37,11 +37,10 @@ struct AppointmentDropDownView: View {
             }
             .animation(.spring())
             if expand{
-                ForEach(0..<currency.count){
+                ForEach(0..<currencies.count){
                     currency in
                     AppointmentDropDownElement(element: currencies[currency], expand: $expand, text: $text)
-                        .offset(y: UIScreen.main.bounds.height * (0.055 * CGFloat((currency + 1))))
-                    
+                        .offset(y: UIScreen.main.bounds.height * (0.055 * CGFloat(currency + 1)))
                 }
             }
         }
@@ -61,7 +60,7 @@ struct AppointmentDropDownElement:View {
                 .font(.title3)
                 .fontWeight(.semibold)
                 .padding(10)
-
+            
         })
         .foregroundColor(Color(.black))
         .frame(width: UIScreen.main.bounds.width * 0.24, height: UIScreen.main.bounds.height*0.045, alignment: .center)

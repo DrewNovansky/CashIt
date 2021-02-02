@@ -15,7 +15,7 @@ struct MCProfileView: View {
     var body: some View {
         VStack{
             NavigationLink(
-                destination: viewModel.segueToInfo(),
+                destination: viewModel.segueToInfo(moneyChangerTo: viewModel.moneyChanger, distance: viewModel.distance),
                 isActive: $isTopNavigationActive,
                 label: {Text("")
                     .navigationBarItems(trailing:
@@ -42,8 +42,8 @@ struct MCProfileView: View {
                 .fontWeight(.semibold)
                 .padding(5)
             
-            Text("Monday " + "\(viewModel.operationalHours[1].openTime)" + " - " + "\(viewModel.operationalHours[1].closeTime)")
-                .padding(.bottom,5)
+//            Text("Monday " + "\(viewModel.operationalHours[1].openTime)" + " - " + "\(viewModel.operationalHours[1].closeTime)")
+//                .padding(.bottom,5)
             Text("Jarak: \(viewModel.distance) KM")
                 .padding(.bottom,5)
             HStack{
@@ -70,7 +70,7 @@ struct MCProfileView: View {
                 VStack{
                     Text("\(viewModel.reviews.count)" + " Ulasan")
                         .fontWeight(.semibold)
-                    NavigationLink(destination: viewModel.segueToReview()){
+                    NavigationLink(destination: viewModel.segueToReview(review: viewModel.reviews)){
                         HStack{
                             Image(systemName: "star.fill")
                                 .resizable()
@@ -111,7 +111,7 @@ struct MCProfileView: View {
             .clipShape(RoundedRectangle(cornerRadius: 20))
             Spacer()
             
-            NavigationLink(destination: viewModel.segueToMakeAppointment(showView: $rootIsActive)) {
+            NavigationLink(destination: viewModel.segueToMakeAppointment(showView: $rootIsActive, moneyChanger: viewModel.moneyChanger)) {
                 Text("Buat Janji")
                     .frame(width: UIScreen.main.bounds.width-20, height: 45)
                     .foregroundColor(.white)

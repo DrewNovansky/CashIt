@@ -49,6 +49,6 @@ struct ReviewCellView: View {
 
 struct ReviewCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewCellView(review: Review(rating: 5, description: "Amazingly Good AF Holy Moly", date: "12/12/2012"))
+        ReviewCellView(review: Review( appointmentId: 0, rating: 5,  description: "Amazingly Good AF Holy Moly", date: "12/12/2012", username: ""))
     }
 }
