@@ -23,7 +23,7 @@ struct GiveRatingAndReviewView: View {
             .padding()
         ReviewTextField(review: $viewModel.review.description)
             .padding()
-        SubmitButton(action: {viewModel.checkIfAllFieldsFilled()})
+            SubmitButton(action: {viewModel.checkIfAllFieldsFilled(appointmentId: viewModel.review.appointmentId , rating: viewModel.review.rating, description: viewModel.review.description)})
             .padding()
         }.onTapGesture(perform: {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)

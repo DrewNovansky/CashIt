@@ -22,7 +22,6 @@ struct HomeMapView: View {
                     .edgesIgnoringSafeArea(.all)
                     .onAppear(){
                         locValue = viewModel.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
-                        
                     }
                 
                 if showingPlaceDetails{

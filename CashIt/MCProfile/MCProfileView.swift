@@ -15,7 +15,7 @@ struct MCProfileView: View {
     var body: some View {
         VStack{
             NavigationLink(
-                destination: viewModel.segueToInfo(moneyChangerTo: viewModel.moneyChanger, distance: viewModel.distance),
+                destination: viewModel.segueToInfo(operationalHours: viewModel.operationalHours, distance: viewModel.distance),
                 isActive: $isTopNavigationActive,
                 label: {Text("")
                     .navigationBarItems(trailing:
@@ -36,26 +36,37 @@ struct MCProfileView: View {
                 .clipShape(Circle())
                 .frame(width: 100, height: 100, alignment: .center)
                 .padding(5)
+                
             
-            Text(viewModel.moneyChanger.moneyChangerName)
+            Text("\(viewModel.moneyChanger.moneyChangerName)")
                 .font(.title2)
                 .fontWeight(.semibold)
                 .padding(5)
-            
-//            Text("Monday " + "\(viewModel.operationalHours[1].openTime)" + " - " + "\(viewModel.operationalHours[1].closeTime)")
-//                .padding(.bottom,5)
-            Text("Jarak: \(viewModel.distance) KM")
+            let today = dateformatter()
+            if (today == "Monday"){
+                Text("\(today) \(viewModel.operationalHours[0].openTime) - \(viewModel.operationalHours[0].closeTime)")
+            }
+            else if (today == "Tuesday"){
+                Text("\(today) \(viewModel.operationalHours[1].openTime) - \(viewModel.operationalHours[1].closeTime)")
+            }
+            else if (today == "Wednesday"){
+                Text("\(today) \(viewModel.operationalHours[2].openTime) - \(viewModel.operationalHours[2].closeTime)")
+            }
+            else if (today == "Thursday"){
+                Text("\(today) \(viewModel.operationalHours[3].openTime) - \(viewModel.operationalHours[3].closeTime)")
+            }
+            else if (today == "Friday"){
+                Text("\(today) \(viewModel.operationalHours[4].openTime) - \(viewModel.operationalHours[4].closeTime)")
+            }
+            else if (today == "Saturday"){
+                Text("\(today) \(viewModel.operationalHours[5].openTime) - \(viewModel.operationalHours[5].closeTime)")
+            }
+            else if (today == "Sunday"){
+                Text("\(today) \(viewModel.operationalHours[6].openTime) - \(viewModel.operationalHours[6].closeTime)")
+            }
+            Text("Jarak: \(viewModel.distance) KM ")
                 .padding(.bottom,5)
             HStack{
-//                VStack{
-//                    Text("Jarak")
-//                        .fontWeight(.semibold)
-//                    Image(systemName: "map.fill")
-//                        .resizable()
-//                        .foregroundColor(Color("AccentColor"))
-//                        .frame(width: 45, height: 45)
-//                    Text("\(viewModel.distance) "+"KM")
-//                }.frame(width: UIScreen.main.bounds.width/3)
                 VStack{
                     Text("Kontak")
                         .fontWeight(.semibold)
@@ -123,6 +134,12 @@ struct MCProfileView: View {
         }
         .navigationBarTitle(Text("Toko"), displayMode: .inline)
     }
+}
+func dateformatter() -> String{
+    let formatter = DateFormatter()
+    formatter.dateFormat = "EEEE"
+    let today = formatter.string(from: Date())
+    return today
 }
 
 struct MCProfileView_Previews: PreviewProvider {

@@ -13,10 +13,10 @@ struct StoreListCellView: View {
     var distance: Double
     var store : MoneyChangerDetail
     var body: some View {
-        NavigationLink(destination: viewModel.segue(showView: $showView, distance: self.distance, moneyChanger: self.store.moneyChanger), isActive: $showView){
+        NavigationLink(destination: viewModel.segue(showView: $showView, distance: distance, moneyChanger: store), isActive: $showView,label:{
             HStack(alignment: .center){
                 Image("\(store.moneyChanger.photo)")
-//                Image(systemName: "person.circle.fill")
+                    //                Image(systemName: "person.circle.fill")
                     .resizable()
                     .scaledToFit()
                     .frame(width:  UIScreen.main.bounds.height/12, height:  UIScreen.main.bounds.height/12)
@@ -42,7 +42,7 @@ struct StoreListCellView: View {
             .background(Color("CardBackground"))
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .padding(5)
-        }
+        })
     }
 }
 

@@ -15,13 +15,13 @@ class HomeMapViewModel: ObservableObject{
     let locationManager = CLLocationManager()
     var distance: Double = 0
     init() {
-        load()
-        //        self.store.append(contentsOf: [
-        //            MoneyChanger(moneyChangerId: 0, moneyChangerName: "Surya Money Changer",photo: "Test", address: "Central Park Mall Lantai B 30A",whatsappLink: "wa.me/6281243658709", phoneNumber: "081234658709",latitudeCoordinate:-6.1774,longitudeCoordinate: 106.7907),
-        //            MoneyChanger(moneyChangerId: 1, moneyChangerName: "Tiga Saudara Money Changer",photo: "Test", address: "Taman Anggrek Lantai 1 29B",whatsappLink: "wa.me/084681809919", phoneNumber: "084681809919",latitudeCoordinate:-6.1785,longitudeCoordinate: 106.7922),
-        //            MoneyChanger(moneyChangerId: 2, moneyChangerName: "Rainbow Bridge Money Changer", photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557)
-        //        ])
-        print("\(store.count) ini count toko\n\n\n\n\n\n\n")
+//        load()
+                self.store.append(contentsOf: [
+                    MoneyChanger(moneyChangerId: 0, moneyChangerName: "Surya Money Changer",photo: "Test", address: "Central Park Mall Lantai B 30A",whatsappLink: "wa.me/6281243658709", phoneNumber: "081234658709",latitudeCoordinate:-6.1774,longitudeCoordinate: 106.7907),
+                    MoneyChanger(moneyChangerId: 1, moneyChangerName: "Tiga Saudara Money Changer",photo: "Test", address: "Taman Anggrek Lantai 1 29B",whatsappLink: "wa.me/084681809919", phoneNumber: "084681809919",latitudeCoordinate:-6.1785,longitudeCoordinate: 106.7922),
+                    MoneyChanger(moneyChangerId: 2, moneyChangerName: "Rainbow Bridge Money Changer", photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557)
+                ])
+//        print("\(store.count) ini count toko\n\n\n\n\n\n\n")
         for i in 0..<(store.count)
         {
             //untuk membuat titik annotate

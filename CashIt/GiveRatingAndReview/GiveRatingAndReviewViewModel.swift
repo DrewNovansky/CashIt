@@ -10,13 +10,34 @@ import Foundation
 class GiveRatingAndReviewViewModel: ObservableObject {
     @Published var review = Review( appointmentId: 0, rating: 0,  description: "", date: "*DATE*", username: "yatno")
     
-    func checkIfAllFieldsFilled() -> Bool {
+    func checkIfAllFieldsFilled(appointmentId: Int, rating: Int, description: String) -> Bool {
         if self.review.description.isEmpty || self.review.rating == 0 {
             return false
         }
-        return true
+        else{
+            makeReview(appointmentId: appointmentId, rating: rating, description: description)
+            return true
+        }
     }
-    //    func makeReview(){
-    //
-    //    }
+    
+    func makeReview(appointmentId: Int, rating: Int, description: String) {
+                let url = URL(string: "http://cashit.link/api/giveReview")!
+                let body: [String: Any] = ["appointmentId": appointmentId, "rating": rating, "description": description]
+                let finalBody = try! JSONSerialization.data(withJSONObject: body)
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.httpBody = finalBody
+                let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    guard let data = data, error == nil else {
+                        print(error?.localizedDescription ?? "No data")
+                        return
+                    }
+                    let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                    if let responseJSON = responseJSON as? [String: Any] {
+                        print("\(responseJSON) ini responseJSON\n\n\n\n\n\n\n")
+                    }
+                }
+                task.resume()
+    }
 }

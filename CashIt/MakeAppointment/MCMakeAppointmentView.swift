@@ -11,18 +11,24 @@ struct MCMakeAppointmentView: View {
     
     @ObservedObject var viewModel = MCMakeAppointmentViewModel()
     let currentDate = Date()
-    let dateFormatter = DateFormatter()
     @Binding var popToRootView : Bool
     @State var showAlert = false
+    let dateFormatter = DateFormatter()
     var body: some View {
         ZStack{
             VStack{
+                
+                
+                
                 Image(UserDefaults.standard.string(forKey: "photo") ?? "")
                     .resizable()
                     .clipShape(Circle())
                     .frame(width: 100, height: 100, alignment: .center)
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .padding()
+                    .onAppear(perform: {
+                        dateFormatter.dateFormat = "dd-MM-yyyy"
+                    })
                 Text(viewModel.name)
                     .font(.title2)
                     .fontWeight(.semibold)
@@ -36,7 +42,6 @@ struct MCMakeAppointmentView: View {
                 VStack{
                     AppointmentDateAndTime()
                         .padding()
-                    Text("\(viewModel.appoinmentDate)")
                 }.zIndex(14)
                 Spacer()
                 Text("Sebelumnya kami tidak menjamin harga yang berubah.\nKarena fluktuatifnya harga valuta yang dipilih")
@@ -44,6 +49,7 @@ struct MCMakeAppointmentView: View {
                     .multilineTextAlignment(.center)
                 Spacer()
                 Button(action: {
+                    viewModel.makeAppointment(moneyChangerName: viewModel.name, address: viewModel.address, id: viewModel.moneyChangerId, orderNumber: dateFormatter.string(from: viewModel.appoinmentDate), status: "Waiting", date: "\(viewModel.appoinmentDate)", time: "\(viewModel.appoinmentTime)", toExchangeAmount: viewModel.appoinmentFromPrice, toExchangeCurrencyName: viewModel.appoinmentFrom, toReceiveAmount: viewModel.appoinmentToPrice, toReceiveCurrencyName: viewModel.appoinmentFrom)
                     self.showAlert = true
                 }, label: {
                     Text("Buat Pesanan")
@@ -55,7 +61,7 @@ struct MCMakeAppointmentView: View {
                         .padding()
                 })
                 .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Success!"), message: Text("Pesanan berhasil dibuat. Dengan kode pesanan : 7-1-2021-1"), dismissButton: .default(Text("Okay"), action: {
+                    Alert(title: Text("Success!"), message: Text("Pesanan berhasil dibuat. Dengan kode pesanan : \(dateFormatter.string(from: Date()))-1"), dismissButton: .default(Text("Okay"), action: {
                         self.popToRootView = false
                     }))
                 }

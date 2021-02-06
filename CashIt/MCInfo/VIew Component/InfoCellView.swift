@@ -21,6 +21,7 @@ struct InfoCellView: View {
             HStack{
 //                Commented Conditional
                 Text(operationalHour.openTime + " - " + operationalHour.closeTime)
+                    .font(.footnote)
 //                if(operationalHour.isOpen == true){
 //
 //                }else {

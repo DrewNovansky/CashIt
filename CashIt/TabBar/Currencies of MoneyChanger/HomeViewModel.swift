@@ -34,8 +34,6 @@ struct MoneyChangerDetail: Decodable, Hashable{
     var exchangeRate: Int
 }
 
-
-
 class HomeViewModel: ObservableObject {
     var store: [MoneyChangerDetail] = []
     var distance: Double = 0
@@ -49,7 +47,7 @@ class HomeViewModel: ObservableObject {
             MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 1,moneyChangerName: "Surya Money Changer",photo: "Test", address: "Central Park Mall Lantai B 30A",whatsappLink: "wa.me/6281243658709", phoneNumber: "081234658709",latitudeCoordinate:-6.1774,longitudeCoordinate: 106.7907),exchangeRate: 17000),
             MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 2,moneyChangerName: "Tiga Saudara Money Changer",photo: "Test", address: "Taman Anggrek Lantai 1 29B",whatsappLink: "wa.me/084681809919", phoneNumber: "084681809919",latitudeCoordinate:-6.1785,longitudeCoordinate: 106.7922), exchangeRate: 16500),
         ])
-        
+//        load()
                 store.sort {
                     $0.exchangeRate < $1.exchangeRate &&
                     countDistance(loc1Latitude: $0.moneyChanger.latitudeCoordinate , loc1Longitude: $0.moneyChanger.longitudeCoordinate) < countDistance(loc1Latitude: $1.moneyChanger.latitudeCoordinate, loc1Longitude: $1.moneyChanger.longitudeCoordinate)
@@ -67,6 +65,25 @@ class HomeViewModel: ObservableObject {
         return getCurrency
     }
     
+//    func load() {
+//        let url = URL(string: "http://cashit.link/api/getAllMoneyChanger")!
+//
+//        URLSession.shared.dataTask(with: url) {(data,response,error) in
+//            do {
+//                if let d = data {
+//                    let decodedMC = try JSONDecoder().decode([MoneyChanger].self, from: d)
+//                    DispatchQueue.main.async {
+//                        self.store = decodedMC
+//                    }
+//                }else {
+//                    print("No Data")
+//                }
+//            } catch {
+//                print ("Error")
+//            }
+//        }.resume()
+//    }
+    
     func countDistance(loc1Latitude: Double, loc1Longitude: Double) -> Double {
         let loc1 = CLLocation(latitude: loc1Latitude, longitude: loc1Longitude)
         let loc2 = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
@@ -76,41 +93,15 @@ class HomeViewModel: ObservableObject {
         return distance
     }
     
-    func segue(showView: Binding<Bool>,distance: Double, moneyChanger: MoneyChangerDetail.MoneyChanger) -> MCProfileView {
+    func segue(showView: Binding<Bool>,distance: Double, moneyChanger: MoneyChangerDetail) -> MCProfileView {
         let viewModel = MCProfileViewModel()
-        viewModel.moneyChanger.moneyChangerId = moneyChanger.moneyChangerId
-        viewModel.moneyChanger.moneyChangerName = moneyChanger.moneyChangerName
-        viewModel.moneyChanger.address = moneyChanger.address
-        viewModel.moneyChanger.whatsappLink = moneyChanger.whatsappLink
-        viewModel.moneyChanger.phoneNumber = moneyChanger.phoneNumber
+        viewModel.moneyChanger.moneyChangerId = moneyChanger.moneyChanger.moneyChangerId
+        viewModel.moneyChanger.moneyChangerName = moneyChanger.moneyChanger.moneyChangerName
+        viewModel.moneyChanger.address = moneyChanger.moneyChanger.address
+        viewModel.moneyChanger.whatsappLink = moneyChanger.moneyChanger.whatsappLink
+        viewModel.moneyChanger.phoneNumber = moneyChanger.moneyChanger.phoneNumber
         viewModel.distance = distance//terima parameter
         let view = MCProfileView(rootIsActive: showView)
         return view
     }
-    
-//        func load() {
-//            let url = URL(string: "https://gist.githubusercontent.com/rbreve/60eb5f6fe49d5f019d0c39d71cb8388d/raw/f6bc27e3e637257e2f75c278520709dd20b1e089/movies.json")!
-//
-//            URLSession.shared.dataTask(with: url) {(data,response,error) in
-//                do {
-//                    if let d = data {
-//                        let decodedMC = try JSONDecoder().decode([MoneyChanger].self, from: d)
-//                        let decodedCurrency = try JSONDecoder().decode([Currency].self, from: d)
-//                        DispatchQueue.main.async {
-//                            self.store = decodedMC
-//                            self.currency = decodedCurrency
-//                        }
-//                    }else {
-//                        print("No Data")
-//                    }
-//                } catch {
-//                    print ("Error")
-//                }
-//
-//            }.resume()
-//        }
-    
-//    func showMoneyChangerbyCurrencyDetail(){
-//}
-    //    <<--Setelah ini diupload ke dalam init dipanggil load() -->
 }
