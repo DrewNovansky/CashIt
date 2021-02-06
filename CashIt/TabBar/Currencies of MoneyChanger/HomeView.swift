@@ -18,9 +18,15 @@ struct HomeView: View {
                         .padding()
                     SearchBar(text: $searchText, placeholder: "Cari nama money changer")
                     CurrencySelect()
+                        .onTapGesture(perform: {
+                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        })
                     StoreList(searchText: $searchText)
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width-20)
+                .onTapGesture(perform: {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                })
             }.navigationBarHidden(true)
         }
         .navigationBarHidden(true)

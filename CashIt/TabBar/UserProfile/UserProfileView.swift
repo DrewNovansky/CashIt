@@ -41,6 +41,11 @@ struct UserProfileView: View {
             Divider()
             Spacer()
             Button(action: {
+                UserDefaults.standard.set("", forKey: "userId")
+                UserDefaults.standard.set("", forKey: "email")
+                UserDefaults.standard.set("", forKey: "username")
+                UserDefaults.standard.set("", forKey: "password")
+                UserDefaults.standard.set("", forKey: "confpassword")
                 rootIsActive = false
             }, label: {
                 Text("Keluar")

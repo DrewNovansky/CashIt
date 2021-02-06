@@ -22,14 +22,13 @@ struct HomeMapView: View {
                     .edgesIgnoringSafeArea(.all)
                     .onAppear(){
                         locValue = viewModel.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
-                        
                     }
                 
                 if showingPlaceDetails{
-                    let distance = viewModel.countDistance(loc1Latitude: locValue.latitude, loc1Longitude: locValue.longitude, loc2Latitude: selectedPlace?.coordinate.latitude ?? centerCoordinate.latitude, loc2Longitude: selectedPlace?.coordinate.longitude ?? centerCoordinate.longitude)
+                    let distance = viewModel.countDistance(loc1Latitude: locValue.latitude, loc1Longitude: locValue.longitude, loc2Latitude: selectedPlace?.coordinate.latitude ?? centerCoordinate.latitude, loc2Longitude: selectedPlace?.coordinate.longitude ?? centerCoordinate.longitude)/1000
                     VStack{
                         Spacer()
-                        NavigationLink(destination: viewModel.segue(showView: $showView, distance: distance), isActive: $showView){
+                        NavigationLink(destination: viewModel.segue(showView: $showView, distance: distance, moneyChanger: viewModel.store[0]), isActive: $showView){
                             VStack{
                                 PlaceDetails(selectedPlace: $selectedPlace)
                                     .padding(10)

@@ -34,7 +34,7 @@ struct SubmitLogin: View {
                 .background(Color("AccentColor"))
                 .padding(.bottom)})
         }.alert(isPresented: $showAlert) {
-            Alert(title: Text("Error!"), message: Text("Please fill all the information to Sign In"), dismissButton: .cancel(Text("Okay")))
+            Alert(title: Text("Pesan Error"), message: Text("Mohon isi semua data yang diperlukan untuk masuk"), dismissButton: .cancel(Text("Tutup")))
         }
     }
 }

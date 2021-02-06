@@ -9,6 +9,9 @@ import Foundation
 
 struct Appointment: Decodable,Identifiable{
     var id = UUID()
+    var moneyChangerId: Int
+    var moneyChangerName: String
+    var address: String
     var orderNumber: String
     var status: String
     var date: String
@@ -19,7 +22,9 @@ struct Appointment: Decodable,Identifiable{
     var toExchangeCurrencyName: String
     
     enum CodingKeys: String,CodingKey {
-        case id = "id"
+        case moneyChangerId = "moneyChangerId"
+        case moneyChangerName = "moneyChangerName"
+        case address = "moneyChangerAddress"
         case orderNumber = "orderNumber"
         case status = "status"
         case date = "date"

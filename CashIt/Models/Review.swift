@@ -8,14 +8,15 @@
 import Foundation
 
 struct Review: Decodable,Identifiable {
-    
     var id = UUID()
+    var appointmentId: Int
     var rating: Int
     var description: String
     var date: String
-    
+    var username: String
     enum CodingKeys: String, CodingKey {
-        case id = "id"
+        case appointmentId = "appointmentId"
+        case username = "userName"
         case rating = "rating"
         case description = "description"
         case date = "date"

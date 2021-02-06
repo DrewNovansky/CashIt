@@ -9,13 +9,14 @@ import Foundation
 
 struct Currency: Decodable,Identifiable {
     var id = UUID()
+    var currencyId: Int
     var currencyName: String
     var buyPrice: Float
     var sellPrice: Float
     
     enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case currencyName = "day"
+        case currencyId = "id"
+        case currencyName = "currencyName"
         case buyPrice = "buyPrice"
         case sellPrice = "sellPrice"
     }

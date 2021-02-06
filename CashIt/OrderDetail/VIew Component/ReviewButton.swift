@@ -18,14 +18,15 @@ struct ReviewButton: View {
             label: {
             Text("Beri Ulasan")
                 .fontWeight(.semibold)
+                .frame(width: UIScreen.main.bounds.width-20, height: 45)
+                .foregroundColor(.white)
+                .background(Color("AccentColor"))
+                .cornerRadius(25)
         })
         .sheet(isPresented: $isPresentingModalView, content: {
             GiveRatingAndReviewView()
         })
-            .frame(width: UIScreen.main.bounds.width-20, height: 45)
-            .foregroundColor(.white)
-            .background(Color("AccentColor"))
-            .cornerRadius(25)
+            
             .font(.title2)
             .padding(.bottom)
     }

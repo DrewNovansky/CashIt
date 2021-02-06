@@ -10,17 +10,18 @@ import SwiftUI
 struct OrderDetailView: View {
     @State var isPresentingModalView = false
     var viewModel = OrderDetailViewModel()
-    
+    @State var showButton = false
     var body: some View {
         VStack {
-            Image(systemName: "person.circle.fill")
+            Image(UserDefaults.standard.string(forKey: "photo") ?? "")
                 .resizable()
-                .foregroundColor(.gray)
+                .clipShape(Circle())
                 .frame(width: 100, height: 100, alignment: .center)
                 .padding(.vertical,10)
             VStack{
-                Text(viewModel.name)
-                    .font(.system(size:25))
+                Text(viewModel.appointment.moneyChangerName)
+                    .font(.title2)
+                    .fontWeight(.semibold)
                 
                 HStack{
                     HStack{
@@ -30,7 +31,7 @@ struct OrderDetailView: View {
                     .font(Font.title3.weight(.semibold))
                     
                     HStack{
-                        Text(viewModel.address)
+                        Text(viewModel.appointment.address)
                         Spacer()
                     }.font(.system(size: 19))
                 }.padding(10)
@@ -43,7 +44,7 @@ struct OrderDetailView: View {
                     .font(Font.title3.weight(.semibold))
                     
                     HStack{
-                        Text("191020001")
+                        Text(viewModel.appointment.orderNumber)
                         Spacer()
                     }.font(.system(size: 19))
                 }.padding(10)
@@ -56,23 +57,29 @@ struct OrderDetailView: View {
                     .font(Font.title3.weight(.bold))
                     
                     HStack{
-                        Text("11 Januari Bertemu")
-                        Text("19:00")
+                        Text(viewModel.appointment.date)
+                        Text(viewModel.appointment.time)
                         Spacer()
                     }.font(.system(size: 19))
                 }.padding(10)
-            }.font(.title3)
-            .frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.height/3)
-            .background(Color("CardBackground"))
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-            .padding(.vertical,5)
-            VStack{
+                Divider()
+                    .frame(width: UIScreen.main.bounds.width-40)
                 HStack{
                     HStack{
                         Text("Rangkuman Pesanan")
                             .font(.title2)
                             .fontWeight(.bold)
+                            .padding(.leading,10)
                         Spacer()
+                        VStack{
+                        Text("Status")
+                            .font(.body)
+                            .fontWeight(.semibold)
+                            Text(viewModel.appointment.status)
+                                .font(.callout)
+                                .foregroundColor(Color("AccentColor"))
+                        }
+                        .padding(.trailing)
                     }.frame(width: UIScreen.main.bounds.width-20)
                 }.padding(10)
                 VStack{
@@ -80,12 +87,14 @@ struct OrderDetailView: View {
                         Text("Dari")
                             .font(.title3)
                             .fontWeight(.semibold)
+                            .padding(.leading,10)
                         Spacer()
                     }
                     HStack{
-                        Text(viewModel.fromName)
+                        Text(viewModel.appointment.toExchangeCurrencyName)
                             .frame(width: UIScreen.main.bounds.width / 3,alignment: .leading)
-                        Text("\(viewModel.fromTotal)")
+                            .padding(.leading,10)
+                        Text("\(viewModel.appointment.toExchangeAmount)")
                             .frame(width: UIScreen.main.bounds.width / 2,alignment: .leading)
                         Spacer()
                     }.font(.title3)
@@ -96,18 +105,20 @@ struct OrderDetailView: View {
                             Text("Ke")
                                 .font(.title3)
                                 .fontWeight(.semibold)
+                                .padding(.leading,10)
                             Spacer()
                         }
                         HStack{
-                            Text(viewModel.toName)
+                            Text(viewModel.appointment.toReceiveCurrencyName)
                                 .frame(width: UIScreen.main.bounds.width / 3,alignment: .leading)
-                            Text("\(viewModel.toTotal)")
+                                .padding(.leading,10)
+                            Text("\(viewModel.appointment.toReceiveAmount)")
                                 .frame(width: UIScreen.main.bounds.width / 2,alignment: .leading)
                             Spacer()
                         }.font(.title3)
                     }
                 }.padding(5)
-            }.frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.height * 0.2)
+            }.frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.height * 0.6)
             .background(Color("CardBackground"))
             .clipShape(RoundedRectangle(cornerRadius: 20))
         }.navigationBarTitle("Detail Riwayat")

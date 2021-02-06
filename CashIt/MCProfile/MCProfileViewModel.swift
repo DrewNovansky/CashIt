@@ -10,50 +10,51 @@ import SwiftUI
 class MCProfileViewModel{
     var currency: [Currency] = []
     var reviews: [Review] = []
+    var operationalHours: [OfficeHour] = []
     var moneyChanger: MoneyChanger
-    var distance: Double = 20
+    var distance: Double
     var mean: Int = 0
     // Dummy Data
     init(){
-        moneyChanger = MoneyChanger(moneyChangerName: "Rainbow Bridge Money Changer", photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557)
+        distance = 2000
+        distance = Double(round(100*distance)/100)/1000
         
-        self.currency.append(contentsOf: [
-            Currency(currencyName: "USD", buyPrice: 14050, sellPrice: 14100),
-            Currency(currencyName: "EUR", buyPrice: 17200, sellPrice: 17330),
-            Currency(currencyName: "GBP", buyPrice: 19010, sellPrice: 19200),
-            Currency(currencyName: "CNY", buyPrice: 2165, sellPrice: 2180),
-            Currency(currencyName: "HKD", buyPrice: 1795, sellPrice: 1815)
-        ])
-        
-        self.reviews.append(contentsOf: [
-            Review(rating: 3, description: "Staffnya ramah, pelayanan baik dan cepat", date: "20 Desember 2020"),
-            Review(rating: 4, description: "Pelayanan cepat walaupun banyak pembelinya", date: "2 Januari 2021"),
-        ])
+        moneyChanger = MoneyChanger(moneyChangerId: 3, moneyChangerName: "Rainbow Bridge Money Changer", photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557)
+        load()
     }
     
     func getStoreRating() -> Int{
         for i in 0..<reviews.count {
             mean+=reviews[i].rating
         }
+        if (reviews.count != 0){
         mean = mean / reviews.count
+        }
+        else {mean = 0}
         return mean
     }
     
-    func segueToInfo() -> MCInfoView {
+    func segueToInfo(operationalHours: [OfficeHour], distance: Double) -> MCInfoView {
         let viewModel = InfoViewModel()//terima parameter
+        viewModel.operationalHours = operationalHours
+        viewModel.distance = distance
         let view = MCInfoView(viewModel: viewModel)
         return view
     }
     
-    func segueToReview() -> MCReviewView {
+    func segueToReview(review: [Review]) -> MCReviewView {
         let viewModel = ReviewViewModel()//terima parameter
         let view = MCReviewView(viewModel: viewModel)
+        viewModel.reviews = review
         return view
     }
     
-    func segueToMakeAppointment(showView: Binding<Bool>) -> MCMakeAppointmentView {
+    func segueToMakeAppointment(showView: Binding<Bool>, moneyChanger: MoneyChanger) -> MCMakeAppointmentView {
         let viewModel = MCMakeAppointmentViewModel()//terima parameter
         let view = MCMakeAppointmentView(popToRootView: showView)
+        viewModel.name = moneyChanger.moneyChangerName
+        viewModel.moneyChangerId = moneyChanger.moneyChangerId
+        viewModel.address = moneyChanger.address
         return view
     }
     
@@ -62,24 +63,62 @@ class MCProfileViewModel{
         return url
     }
     
-    //
-    //            func load() {
-    //                let url = URL(string: "https://gist.githubusercontent.com/rbreve/60eb5f6fe49d5f019d0c39d71cb8388d/raw/f6bc27e3e637257e2f75c278520709dd20b1e089/movies.json")!
-    //
-    //                URLSession.shared.dataTask(with: url) {(data,response,error) in
-    //                    do {
-    //                        if let d = data {
-    //                            let decodedCurrency = try JSONDecoder().decode([Currency].self, from: d)
-    //                            DispatchQueue.main.async {
-    //                                self.currency = decodedCurrency
-    //                            }
-    //                        }else {
-    //                            print("No Data")
-    //                        }
-    //                    } catch {
-    //                        print ("Error")
-    //                    }
-    //                }.resume()
-    //            }
-    //    <<--Setelah ini diupload ke dalam init dipanggil load() -->
+    func load() {
+        
+        //        GET Currency API
+        let url = URL(string: "http://cashit.link/api/getCurrencyByMoneyChangerId/\(moneyChanger.moneyChangerId)")!
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            do {
+                if let data = data {
+                    let decodedMC = try JSONDecoder().decode([Currency].self, from: data)
+                    DispatchQueue.main.async {
+                        self.currency = decodedMC
+                        print(decodedMC)
+                    }
+                }else {
+                    print("No Data\n\n")
+                }
+            } catch {
+                print ("Error data1\n\n")
+            }
+        }.resume()
+        let url2 = URL(string: "http://cashit.link/api/getOfficeHourByMoneyChangerId/\(moneyChanger.moneyChangerId)")!
+        
+        //       GET Office Hour API
+        
+        URLSession.shared.dataTask(with: url2) { (data2, response, error) in
+            do {
+                if let data2 = data2 {
+                    let decodedOfficeHour = try JSONDecoder().decode([OfficeHour].self, from: data2)
+                    DispatchQueue.main.async {
+                        self.operationalHours = decodedOfficeHour
+                        print(decodedOfficeHour)
+                    }
+                }else {
+                    print("No Data\n\n")
+                }
+            } catch {
+                print ("Error data2\n\n")
+            }
+        }.resume()
+        
+        //        GET Review API
+//        let url3 = URL(string: "http://cashit.link/api/getAllReviewsByMoneyChangerId/\(self.moneyChanger.moneyChangerId)")!
+//        URLSession.shared.dataTask(with: url3) { (data3, response, error) in
+//            // handle the result here.
+//            do {
+//                if let data3 = data3 {
+//                    let decodedReview = try JSONDecoder().decode([Review].self, from: data3)
+//                    DispatchQueue.main.async {
+//                        self.reviews = decodedReview
+//                    }
+//                }else {
+//                    print("No Data\n\n")
+//                }
+//            } catch {
+//                print ("Error data3\n\n")
+//            }
+//        }.resume()
+    }
 }

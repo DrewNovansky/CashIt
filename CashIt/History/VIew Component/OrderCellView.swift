@@ -13,20 +13,23 @@ struct OrderCellView: View {
     
     var body: some View {
         NavigationLink(
-            destination: viewModel.segueToOrderDetail(),
+            destination: viewModel.segueToOrderDetail(history: transaction),
             label: {
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
-                    Text("Rainbow Bridge Money Changer")
-                        .font(.title3)
+                    Text("\(transaction.moneyChangerName)")
+                        .font(.headline)
                         .fontWeight(.semibold)
-                    Text("\(transaction.toExchangeAmount)")
+                    Text("\(transaction.toReceiveAmount) \(transaction.toReceiveCurrencyName)")
                         .font(.body)
                 }.padding()
-                
+                Spacer()
                 VStack {
                     Text("\(transaction.date)")
-                        .font(.body)
+                        .font(.callout)
+                    Text("\(transaction.status)")
+                        .font(.callout)
+                        .foregroundColor(Color("AccentColor"))
                 }.padding([.top, .trailing])
             }
             .frame(width: UIScreen.main.bounds.width-20, height: UIScreen.main.bounds.height/10)
@@ -39,6 +42,6 @@ struct OrderCellView: View {
 
 struct OrderCellView_Previews: PreviewProvider {
     static var previews: some View {
-        Text("Hai")
+        OrderCellView(transaction: Appointment(moneyChangerId: 0, moneyChangerName: "Test", address: "Test", orderNumber: "Test", status: "Test", date: "Test", time: "Test", toReceiveAmount: 0, toReceiveCurrencyName: "Test", toExchangeAmount: 0, toExchangeCurrencyName: "Test"))
     }
 }

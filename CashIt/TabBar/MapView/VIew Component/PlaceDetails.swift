@@ -9,11 +9,13 @@ import SwiftUI
 import MapKit
 
 struct PlaceDetails: View {
+    @ObservedObject var viewModel = HomeMapViewModel()
     @Binding var selectedPlace: MKPointAnnotation?
     var body: some View {
         HStack{
-            Image("Test")
+            Image(UserDefaults.standard.string(forKey: "photo") ?? "")
                 .resizable()
+                .foregroundColor(.black)
                 .scaledToFit()
                 .frame(width:  UIScreen.main.bounds.height/10, height:  UIScreen.main.bounds.height/10)
                 .clipShape(Circle())

@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct MoneyChanger: Decodable, Identifiable, Hashable {
+struct MoneyChanger: Codable, Identifiable, Hashable {
     var id = UUID()
+    var moneyChangerId: Int
     var moneyChangerName: String
     var photo: String
     var address: String
@@ -18,7 +19,7 @@ struct MoneyChanger: Decodable, Identifiable, Hashable {
     var longitudeCoordinate: Double
     
     enum CodingKeys: String, CodingKey {
-        case id = "id"
+        case moneyChangerId = "id"
         case moneyChangerName = "name"
         case photo = "photo"
         case address = "address"

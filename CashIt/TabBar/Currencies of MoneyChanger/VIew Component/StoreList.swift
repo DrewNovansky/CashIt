@@ -14,10 +14,10 @@ struct StoreList: View {
         VStack{
             ScrollView{
                 ForEach(viewModel.store.filter {
-                    self.searchText.isEmpty ? true : $0.moneyChangerName.lowercased().contains(self.searchText.lowercased())
+                    self.searchText.isEmpty ? true : $0.moneyChanger.moneyChangerName.lowercased().contains(self.searchText.lowercased())
                 }, id: \.self) { item in
                     let distance = viewModel.countDistance(loc1Latitude:
-                                                        item.latitudeCoordinate, loc1Longitude: item.longitudeCoordinate)
+                                                            item.moneyChanger.latitudeCoordinate, loc1Longitude: item.moneyChanger.longitudeCoordinate)
                     StoreListCellView(distance: distance, store: item )
                 }
             }

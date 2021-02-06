@@ -25,6 +25,6 @@ struct MoneyCellView: View {
 
 struct MoneyCellView_Previews: PreviewProvider {
     static var previews: some View {
-        MoneyCellView(currency: Currency(currencyName: "USD", buyPrice: 14000, sellPrice: 1000))
+        MoneyCellView(currency: Currency(currencyId: 0, currencyName: "USD",  buyPrice: 14000, sellPrice: 1000))
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var currencies = ["IDR","USD","EUR","RGM"]
+var currencies = ["USD","EUR","GBP","CNY","HKD","IDR","RGM","THB","SGD"]
 
 struct DropDown:View {
     @State var expand = false
