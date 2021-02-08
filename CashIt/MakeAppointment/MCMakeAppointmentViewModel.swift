@@ -35,10 +35,10 @@ class MCMakeAppointmentViewModel: ObservableObject{
     }
     
     func load() {
-        
+
         //        GET Currency API
         let url = URL(string: "http://cashit.link/api/getCurrencyByMoneyChangerId/\(moneyChangerId)")!
-        
+
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {
                 if let data = data {
