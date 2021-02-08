@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MCProfileView: View {
-    
     var viewModel = MCProfileViewModel()
     @State var isTopNavigationActive = false
     @Binding var rootIsActive: Bool

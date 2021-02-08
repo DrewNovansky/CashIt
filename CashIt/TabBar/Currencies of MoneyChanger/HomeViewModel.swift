@@ -35,7 +35,7 @@ struct MoneyChangerDetail: Decodable, Hashable{
 }
 
 class HomeViewModel: ObservableObject {
-    var store: [MoneyChangerDetail] = []
+    @Published var store: [MoneyChangerDetail] = []
     var distance: Double = 0
     var locValue: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0,longitude: 0)
     let locationManager = CLLocationManager()
@@ -95,13 +95,13 @@ class HomeViewModel: ObservableObject {
     
     func segue(showView: Binding<Bool>,distance: Double, moneyChanger: MoneyChangerDetail) -> MCProfileView {
         let viewModel = MCProfileViewModel()
+        var view = MCProfileView(viewModel:viewModel, rootIsActive: showView)
         viewModel.moneyChanger.moneyChangerId = moneyChanger.moneyChanger.moneyChangerId
         viewModel.moneyChanger.moneyChangerName = moneyChanger.moneyChanger.moneyChangerName
         viewModel.moneyChanger.address = moneyChanger.moneyChanger.address
         viewModel.moneyChanger.whatsappLink = moneyChanger.moneyChanger.whatsappLink
         viewModel.moneyChanger.phoneNumber = moneyChanger.moneyChanger.phoneNumber
         viewModel.distance = distance//terima parameter
-        let view = MCProfileView(rootIsActive: showView)
         return view
     }
 }
