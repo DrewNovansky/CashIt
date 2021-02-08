@@ -44,8 +44,8 @@ class MCProfileViewModel{
     
     func segueToReview(review: [Review]) -> MCReviewView {
         let viewModel = ReviewViewModel()//terima parameter
-        let view = MCReviewView(viewModel: viewModel)
         viewModel.reviews = review
+        let view = MCReviewView(viewModel: viewModel)
         return view
     }
     

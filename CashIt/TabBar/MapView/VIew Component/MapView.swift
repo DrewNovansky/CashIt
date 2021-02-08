@@ -37,7 +37,6 @@ struct MapView: UIViewRepresentable {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier )
                 annotationView?.canShowCallout = true
                 annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                
             }
             else {
                 annotationView?.annotation = annotation
