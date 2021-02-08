@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StoreList: View {
-    @ObservedObject var viewModel = HomeViewModel()
+    var viewModel = HomeViewModel()
     @Binding var searchText: String
     var body: some View {
         VStack{

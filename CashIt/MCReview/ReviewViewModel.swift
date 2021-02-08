@@ -16,7 +16,6 @@ class ReviewViewModel {
     init() {
         
     }
-    
     func getStoreRating() -> Int{
         for i in 0..<reviews.count {
             mean+=reviews[i].rating

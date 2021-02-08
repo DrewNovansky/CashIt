@@ -13,7 +13,7 @@ class InfoViewModel{
     var distance: Double
     // Dummy Data
     init() {
-        moneyChanger = MoneyChanger(moneyChangerId: 0, moneyChangerName: "Rainbow Bridge Money Changer", photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557)
+        moneyChanger = MoneyChanger(moneyChangerId: 0, moneyChangerName: "TESTING", photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557)
         distance = 0.02
         self.operationalHours.append(contentsOf: [
             OfficeHour(officeHourId: 0, day: "Monday",openTime: "0", closeTime: "0"),

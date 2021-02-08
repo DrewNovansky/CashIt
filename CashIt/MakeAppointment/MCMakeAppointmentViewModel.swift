@@ -10,7 +10,7 @@ import SwiftUI
 
 class MCMakeAppointmentViewModel: ObservableObject{
     
-    //    var currency: [Currency]
+    var currency: [Currency] = []
     let currentDate = Date()
     //ini dimasukkin class diagram
     var name : String
@@ -24,70 +24,76 @@ class MCMakeAppointmentViewModel: ObservableObject{
     @Published var appoinmentTime: Date = Date()
     
     init() {
-        moneyChangerId = 0
+        moneyChangerId = 3
         name = ""
         address = ""
-        //        currency.append(contentsOf: [
-        //            Currency(currencyName: "USD", buyPrice: 14060, sellPrice: 14020),
-        //            Currency(currencyName: "THB", buyPrice: 480, sellPrice: 460),
-        //        ])
-        
+        currency.append(contentsOf: [
+            Currency(currencyId: 0, currencyName: "IDR", buyPrice: 1, sellPrice: 1),
+            Currency(currencyId: 1, currencyName: "USD", buyPrice: 14000, sellPrice: 12000),
+        ])
+        load()
     }
     
-    //    func dateValidation() -> Bool{
-    //        if appoinmentDate < currentDate {
-    //            return false
-    //        }else {
-    //            return true
-    //        }
-    //    }
+    func load() {
+        
+        //        GET Currency API
+        let url = URL(string: "http://cashit.link/api/getCurrencyByMoneyChangerId/\(moneyChangerId)")!
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            do {
+                if let data = data {
+                    let decodedMC = try JSONDecoder().decode([Currency].self, from: data)
+                    DispatchQueue.main.async {
+                        self.currency = decodedMC
+                        print(decodedMC)
+                    }
+                }else {
+                    print("No Data\n\n")
+                }
+            } catch {
+                print ("Error data1\n\n")
+            }
+        }.resume()
+    }
     
-    //    func segueToUserProfile() -> UserProfileView {
-    //        let viewModel = UserProfileViewModel()//terima parameter
-    //        let view = UserProfileView(viewModel: viewModel, rootIsActive: .constant(false))
-    //        return view
-    //    }
-    
-    func calculateCurrency(calculateFor: String, buyName: String, buyPrice: Int, sellName: String, sellPrice: Int, buyField: Int, sellField: Int)-> Int {
+    func calculateCurrency(calculateFor: String, buyPrice: Int, sellPrice: Int, buyField: Int, sellField: Int)-> Int {
         var buyField: Int = 0
         var sellField: Int = 0
         if calculateFor == "buy" {
-            let price = sellField/sellPrice*buyPrice
-            buyField = price
-            return buyField
-        }
-        if calculateFor == "sell" {
             sellField = buyField/buyPrice*sellPrice
             return sellField
         }
-        return buyField
+        else {
+            buyField = sellField/sellPrice*buyPrice
+            return buyField
+        }
     }
     
     func makeAppointment(moneyChangerName: String, address: String, id: Int, orderNumber: String, status: String, date: String, time: String, toExchangeAmount: Int, toExchangeCurrencyName: String, toReceiveAmount: Int, toReceiveCurrencyName: String){
-                let url = URL(string: "http://cashit.link/api/makeNewAppointment")!
-                let body: [String: Any] = ["moneyChangerName": moneyChangerName, "address": address, "id": id, "orderNumber": orderNumber, "status": status, "date": date, "time": time, "toExchangeAmount": toExchangeAmount, "toExchangeCurrencyName": toExchangeCurrencyName, "toReceiveAmount": toReceiveAmount, "toReceiveCurrencyName": toReceiveCurrencyName]
+        let url = URL(string: "http://cashit.link/api/makeNewAppointment")!
+        let body: [String: Any] = ["moneyChangerName": moneyChangerName, "address": address, "id": id, "orderNumber": orderNumber, "status": status, "date": date, "time": time, "toExchangeAmount": toExchangeAmount, "toExchangeCurrencyName": toExchangeCurrencyName, "toReceiveAmount": toReceiveAmount, "toReceiveCurrencyName": toReceiveCurrencyName]
         
-                let finalBody = try! JSONSerialization.data(withJSONObject: body)
+        let finalBody = try! JSONSerialization.data(withJSONObject: body)
         
-                var request = URLRequest(url: url)
-                request.httpMethod = "POST"
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.httpBody = finalBody
-                let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                    guard let data = data, error == nil else {
-                        print(error?.localizedDescription ?? "No data")
-                        return
-                    }
-                    let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-                    if let responseJSON = responseJSON as? [String: Any] {
-                        print("\(responseJSON) ini responseJSON\n\n\n\n\n\n\n")
-                    }
-                }
-                task.resume()
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = finalBody
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print("\(responseJSON) ini responseJSON\n\n\n\n\n\n\n")
+            }
+        }
+        task.resume()
     }
     
-//    func load(appointment: Appointment) {
-//        
-//    }
+    //    func load(appointment: Appointment) {
+    //
+    //    }
     //    <<--Setelah ini diupload ke dalam init dipanggil load() -->
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var viewModel = HomeViewModel()
+    var viewModel = HomeViewModel()
     @State private var searchText : String = ""
     var body: some View {
         NavigationView{

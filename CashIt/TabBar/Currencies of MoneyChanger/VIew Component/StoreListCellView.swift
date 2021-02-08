@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StoreListCellView: View {
-    @ObservedObject var viewModel = HomeViewModel()
+    var viewModel = HomeViewModel()
     @State var showView: Bool = false
     var distance: Double
     var store : MoneyChangerDetail

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MCMakeAppointmentView: View {
     
-    @ObservedObject var viewModel = MCMakeAppointmentViewModel()
+    var viewModel = MCMakeAppointmentViewModel()
     let currentDate = Date()
     @Binding var popToRootView : Bool
     @State var showAlert = false

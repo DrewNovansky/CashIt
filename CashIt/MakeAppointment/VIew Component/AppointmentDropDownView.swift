@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-//var currency = ["USD","EUR","GBP","CNY"]
+
 
 struct AppointmentDropDownView: View {
-    
+    @ObservedObject var viewModel = MCMakeAppointmentViewModel()
     @State var expand = false
-    @State var text = currencies[1]
-    
+    @Binding var text: String
+    @Binding var itemSelected: Int
     var body: some View {
         ZStack{
             VStack{
@@ -37,10 +37,13 @@ struct AppointmentDropDownView: View {
             }
             .animation(.spring())
             if expand{
-                ForEach(0..<currencies.count){
-                    currency in
-                    AppointmentDropDownElement(element: currencies[currency], expand: $expand, text: $text)
-                        .offset(y: UIScreen.main.bounds.height * (0.055 * CGFloat(currency + 1)))
+                ForEach(0..<viewModel.currency.count){
+                    item in
+                    AppointmentDropDownElement(element: viewModel.currency[item].currencyName, expand: $expand, text: $text, onClick: { () in
+                        itemSelected = item
+                        print("\(itemSelected)\n\n\n\n\n\n\n\n\n\n")
+                    })
+                        .offset(y: UIScreen.main.bounds.height * (0.055 * CGFloat(item + 1)))
                 }
             }
         }
@@ -51,9 +54,11 @@ struct AppointmentDropDownElement:View {
     var element = "test"
     @Binding var expand:Bool
     @Binding var text:String
+    var onClick: () -> Void
     var body : some View{
         Button(action: {
             text = "\(element)"
+            onClick()
             expand.toggle()
         }, label: {
             Text("\(element)")
@@ -73,8 +78,8 @@ struct AppointmentDropDownElement:View {
     }
 }
 
-struct AppoinmentDropDownView_Previews: PreviewProvider {
-    static var previews: some View {
-        AppointmentDropDownView()
-    }
-}
+//struct AppoinmentDropDownView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AppointmentDropDownView(text: .constant(""), itemSelected: .constant(0))
+//    }
+//}

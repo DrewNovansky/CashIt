@@ -17,9 +17,8 @@ class MCProfileViewModel{
     // Dummy Data
     init(){
         distance = 2000
-        distance = Double(round(100*distance)/100)/1000
-        
-        moneyChanger = MoneyChanger(moneyChangerId: 3, moneyChangerName: "Rainbow Bridge Money Changer", photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557)
+        //        distance = Double(round(100*distance)/100)/1000
+        moneyChanger = MoneyChanger(moneyChangerId: 3, moneyChangerName: "Testing", photo: "Test", address: "alamat init",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557)
         load()
     }
     
@@ -28,7 +27,7 @@ class MCProfileViewModel{
             mean+=reviews[i].rating
         }
         if (reviews.count != 0){
-        mean = mean / reviews.count
+            mean = mean / reviews.count
         }
         else {mean = 0}
         return mean
@@ -36,6 +35,7 @@ class MCProfileViewModel{
     
     func segueToInfo(operationalHours: [OfficeHour], distance: Double) -> MCInfoView {
         let viewModel = InfoViewModel()//terima parameter
+        viewModel.moneyChanger = moneyChanger
         viewModel.operationalHours = operationalHours
         viewModel.distance = distance
         let view = MCInfoView(viewModel: viewModel)
@@ -51,10 +51,11 @@ class MCProfileViewModel{
     
     func segueToMakeAppointment(showView: Binding<Bool>, moneyChanger: MoneyChanger) -> MCMakeAppointmentView {
         let viewModel = MCMakeAppointmentViewModel()//terima parameter
-        let view = MCMakeAppointmentView(popToRootView: showView)
         viewModel.name = moneyChanger.moneyChangerName
         viewModel.moneyChangerId = moneyChanger.moneyChangerId
         viewModel.address = moneyChanger.address
+        viewModel.currency = self.currency
+        let view = MCMakeAppointmentView(viewModel: viewModel, popToRootView: showView)
         return view
     }
     
@@ -104,21 +105,21 @@ class MCProfileViewModel{
         }.resume()
         
         //        GET Review API
-//        let url3 = URL(string: "http://cashit.link/api/getAllReviewsByMoneyChangerId/\(self.moneyChanger.moneyChangerId)")!
-//        URLSession.shared.dataTask(with: url3) { (data3, response, error) in
-//            // handle the result here.
-//            do {
-//                if let data3 = data3 {
-//                    let decodedReview = try JSONDecoder().decode([Review].self, from: data3)
-//                    DispatchQueue.main.async {
-//                        self.reviews = decodedReview
-//                    }
-//                }else {
-//                    print("No Data\n\n")
-//                }
-//            } catch {
-//                print ("Error data3\n\n")
-//            }
-//        }.resume()
+        //        let url3 = URL(string: "http://cashit.link/api/getAllReviewsByMoneyChangerId/\(self.moneyChanger.moneyChangerId)")!
+        //        URLSession.shared.dataTask(with: url3) { (data3, response, error) in
+        //            // handle the result here.
+        //            do {
+        //                if let data3 = data3 {
+        //                    let decodedReview = try JSONDecoder().decode([Review].self, from: data3)
+        //                    DispatchQueue.main.async {
+        //                        self.reviews = decodedReview
+        //                    }
+        //                }else {
+        //                    print("No Data\n\n")
+        //                }
+        //            } catch {
+        //                print ("Error data3\n\n")
+        //            }
+        //        }.resume()
     }
 }
