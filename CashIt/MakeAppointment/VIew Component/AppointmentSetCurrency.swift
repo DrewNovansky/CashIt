@@ -53,7 +53,6 @@ struct AppointmentSetCurrency: View {
                                 })
                         }
                     }
-                    
                 }.zIndex(4)
                 
                 HStack{
@@ -84,10 +83,10 @@ struct AppointmentSetCurrency: View {
                                     print("\(itemSelected2) ini dropdown 2")
                                     print("\(viewModel.currency[itemSelected2].buyPrice) ini harga beli")
                                     print("\(viewModel.currency[itemSelected].sellPrice) ini harga jual")
+                                        print(viewModel.appoinmentFrom)
+                                        print(viewModel.appoinmentFromPrice)
                                     print(viewModel.appoinmentTo)
                                     print(viewModel.appoinmentToPrice)
-                                    print(viewModel.appoinmentFrom)
-                                    print(viewModel.appoinmentFromPrice)
                                     textFieldFrom = viewModel.appoinmentFromPrice
                                     } else {calculatePrice = false}
                                 })

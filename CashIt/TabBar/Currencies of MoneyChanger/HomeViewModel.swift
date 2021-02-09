@@ -43,9 +43,9 @@ class HomeViewModel: ObservableObject {
     init() {
         locValue = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
         self.store.append(contentsOf: [
-            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 0,moneyChangerName: "Rainbow Bridge Money Changer",  photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557), exchangeRate: 16000),
-            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 1,moneyChangerName: "Surya Money Changer",photo: "Test", address: "Central Park Mall Lantai B 30A",whatsappLink: "wa.me/6281243658709", phoneNumber: "081234658709",latitudeCoordinate:-6.1774,longitudeCoordinate: 106.7907),exchangeRate: 17000),
-            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 2,moneyChangerName: "Tiga Saudara Money Changer",photo: "Test", address: "Taman Anggrek Lantai 1 29B",whatsappLink: "wa.me/084681809919", phoneNumber: "084681809919",latitudeCoordinate:-6.1785,longitudeCoordinate: 106.7922), exchangeRate: 16500),
+            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 8,moneyChangerName: "Rainbow Bridge Money Changer",  photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557), exchangeRate: 16000),
+            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 3,moneyChangerName: "Surya Money Changer",photo: "Test", address: "Central Park Mall Lantai B 30A",whatsappLink: "wa.me/6281243658709", phoneNumber: "081234658709",latitudeCoordinate:-6.1774,longitudeCoordinate: 106.7907),exchangeRate: 17000),
+            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 4,moneyChangerName: "Tiga Saudara Money Changer",photo: "Test", address: "Taman Anggrek Lantai 1 29B",whatsappLink: "wa.me/084681809919", phoneNumber: "084681809919",latitudeCoordinate:-6.1785,longitudeCoordinate: 106.7922), exchangeRate: 16500),
         ])
 //        load()
                 store.sort {

@@ -12,13 +12,14 @@ class RegisterViewModel: ObservableObject {
     
     func checkIfAllFieldsFilled() -> Bool {
         if self.user.username.isEmpty || self.user.email.isEmpty || self.user.password.isEmpty || self.user.confPassword.isEmpty || self.user.password != self.user.confPassword{
-            print("\(user.username) and \(user.password)")
+            print("\(user.username) and \(user.password) data ini salah")
             return false
         }
-        createLoginData(email: user.email, username: user.username, password: user.password)
-    
-        print("\(user.username) and \(user.password)")
-        return true
+        else{
+            createLoginData(email: user.email, username: user.username, password: user.password)
+            print("\(user.username) and \(user.password) data ini benar")
+            return true
+        }
     }
     func segueToLogin() -> LoginView {
         let view = LoginView()
@@ -27,14 +28,12 @@ class RegisterViewModel: ObservableObject {
     func createLoginData(email: String, username: String, password: String){
         let url = URL(string: "http://cashit.link/api/customerRegister")!
         let body: [String: String] = ["email" : email, "name" : username, "password": password]
-        
         let finalBody = try! JSONSerialization.data(withJSONObject: body)
-        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = finalBody
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")
                 return

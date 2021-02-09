@@ -56,14 +56,17 @@ class LoginViewModel: ObservableObject {
             }
             let finalData = try! JSONDecoder().decode(User.self, from: data)
             print("\(body)")
+            print("\(response) ini response")
             print("\(finalBody)")
             print("\(finalData) ini final data \n\n\n\n\n\n ")
+            if let finalData = finalData as? [String: Any] {
+                print("\(finalData) ini responseJSON\n\n\n\n\n\n\n")
+            }
             DispatchQueue.main.async {
                 UserDefaults.standard.setValue(finalData.userId, forKey: "userId")
                 UserDefaults.standard.setValue(finalData.username, forKey: "username")
                 UserDefaults.standard.setValue(finalData.email, forKey: "email")
             }
-            
         }.resume()
 //        guard let url = URL(string: "http://cashit.link/api/customerLogin") else {
 //            print("Error URl")
