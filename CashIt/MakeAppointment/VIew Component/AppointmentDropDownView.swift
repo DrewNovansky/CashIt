@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct AppointmentDropDownView: View {
-    @ObservedObject var viewModel = MCMakeAppointmentViewModel()
+    var viewModel = MCMakeAppointmentViewModel()
     @State var expand = false
     @Binding var text: String
     @Binding var itemSelected: Int

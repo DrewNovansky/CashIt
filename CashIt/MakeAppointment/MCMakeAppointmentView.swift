@@ -9,11 +9,12 @@ import SwiftUI
 
 struct MCMakeAppointmentView: View {
     
-    var viewModel = MCMakeAppointmentViewModel()
+    @ObservedObject var viewModel = MCMakeAppointmentViewModel()
     let currentDate = Date()
     @Binding var popToRootView : Bool
     @State var showAlert = false
     let dateFormatter = DateFormatter()
+    let dateFormatter2 = DateFormatter()
     var body: some View {
         ZStack{
             VStack{
@@ -28,6 +29,7 @@ struct MCMakeAppointmentView: View {
                     .padding()
                     .onAppear(perform: {
                         dateFormatter.dateFormat = "dd-MM-yyyy"
+                        dateFormatter2.dateFormat = "hh:mm a"
                     })
                 Text(viewModel.name)
                     .font(.title2)
@@ -35,12 +37,12 @@ struct MCMakeAppointmentView: View {
                     .padding(.bottom, 15)
                 Spacer()
                 VStack{
-                    AppointmentSetCurrency()
+                    AppointmentSetCurrency(viewModel: viewModel)
                 }.zIndex(15)
                 .padding()
                 Spacer()
                 VStack{
-                    AppointmentDateAndTime()
+                    AppointmentDateAndTime(viewModel: viewModel)
                         .padding()
                 }.zIndex(14)
                 Spacer()
@@ -49,7 +51,8 @@ struct MCMakeAppointmentView: View {
                     .multilineTextAlignment(.center)
                 Spacer()
                 Button(action: {
-                    viewModel.makeAppointment(moneyChangerName: viewModel.name, address: viewModel.address, id: viewModel.moneyChangerId, orderNumber: dateFormatter.string(from: viewModel.appoinmentDate), status: "Waiting", date: "\(viewModel.appoinmentDate)", time: "\(viewModel.appoinmentTime)", toExchangeAmount: viewModel.appoinmentFromPrice, toExchangeCurrencyName: viewModel.appoinmentFrom, toReceiveAmount: viewModel.appoinmentToPrice, toReceiveCurrencyName: viewModel.appoinmentFrom)
+//                    viewModel.makeAppointment(moneyChangerName: viewModel.name, address: viewModel.address, id: viewModel.moneyChangerId, orderNumber: dateFormatter.string(from: viewModel.appoinmentDate), status: "Waiting", date: "\(viewModel.appoinmentDate)", time: "\(viewModel.appoinmentTime)", toExchangeAmount: viewModel.appoinmentFromPrice, toExchangeCurrencyName: viewModel.appoinmentFrom, toReceiveAmount: viewModel.appoinmentToPrice, toReceiveCurrencyName: viewModel.appoinmentTo)
+                    viewModel.makeAppointment(moneyChangerId: viewModel.moneyChangerId, userId: UserDefaults.standard.integer(forKey: "userId"), date: dateFormatter.string(from: viewModel.appoinmentDate), time: dateFormatter2.string(from: viewModel.appoinmentTime), toExchangeAmount: viewModel.appoinmentFromPrice, toExchangeCurrencyName: viewModel.appoinmentFrom, toReceiveAmount: viewModel.appoinmentToPrice, toReceiveCurrencyName: viewModel.appoinmentTo)
                     self.showAlert = true
                 }, label: {
                     Text("Buat Pesanan")

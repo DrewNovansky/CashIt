@@ -13,6 +13,5 @@ class OrderDetailViewModel: ObservableObject {
     // Dummy Data
     init() {
         self.appointment = Appointment(moneyChangerId: 0, moneyChangerName: "", address: "", orderNumber: "7-01-2021-1", status: "Waiting", date: "7-01-2021", time: "18:00", toReceiveAmount: 1400000, toReceiveCurrencyName: "IDR", toExchangeAmount: 100, toExchangeCurrencyName: "USD")
-        
     }
 }

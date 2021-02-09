@@ -54,7 +54,7 @@ class MCProfileViewModel{
         viewModel.name = moneyChanger.moneyChangerName
         viewModel.moneyChangerId = moneyChanger.moneyChangerId
         viewModel.address = moneyChanger.address
-        viewModel.currency = self.currency
+        viewModel.currency.append(contentsOf: currency)
         let view = MCMakeAppointmentView(viewModel: viewModel, popToRootView: showView)
         return view
     }
@@ -105,21 +105,21 @@ class MCProfileViewModel{
         }.resume()
         
         //        GET Review API
-        //        let url3 = URL(string: "http://cashit.link/api/getAllReviewsByMoneyChangerId/\(self.moneyChanger.moneyChangerId)")!
-        //        URLSession.shared.dataTask(with: url3) { (data3, response, error) in
-        //            // handle the result here.
-        //            do {
-        //                if let data3 = data3 {
-        //                    let decodedReview = try JSONDecoder().decode([Review].self, from: data3)
-        //                    DispatchQueue.main.async {
-        //                        self.reviews = decodedReview
-        //                    }
-        //                }else {
-        //                    print("No Data\n\n")
-        //                }
-        //            } catch {
-        //                print ("Error data3\n\n")
-        //            }
-        //        }.resume()
+                let url3 = URL(string: "http://cashit.link/api/getAllReviewsByMoneyChangerId/\(self.moneyChanger.moneyChangerId)")!
+                URLSession.shared.dataTask(with: url3) { (data3, response, error) in
+                    // handle the result here.
+                    do {
+                        if let data3 = data3 {
+                            let decodedReview = try JSONDecoder().decode([Review].self, from: data3)
+                            DispatchQueue.main.async {
+                                self.reviews = decodedReview
+                            }
+                        }else {
+                            print("No Data\n\n")
+                        }
+                    } catch {
+                        print ("Error data3\n\n")
+                    }
+                }.resume()
     }
 }

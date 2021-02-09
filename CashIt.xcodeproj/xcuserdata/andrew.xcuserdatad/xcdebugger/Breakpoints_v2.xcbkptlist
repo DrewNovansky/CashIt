@@ -3,4 +3,166 @@
    uuid = "9E9A95E6-2056-4756-9D1B-A913C618D761"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C035C76B-6E30-42F8-94DF-BE50B930E35B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CashIt/WelcomePage/Sign Up/RegisterViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "checkIfAllFieldsFilled()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F5F87943-379E-4FC2-BA09-C7128AFB5F2B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CashIt/WelcomePage/Sign Up/RegisterViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "createLoginData(email:username:password:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F5F87943-379E-4FC2-BA09-C7128AFB5F2B - 20886a0ce2baa4bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CashIt.RegisterViewModel.createLoginData(email: Swift.String, username: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "CashIt"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrew/Desktop/Project%20XCode/CashIt/CashIt/WelcomePage/Sign%20Up/RegisterViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "1861">
+               </Location>
+               <Location
+                  uuid = "F5F87943-379E-4FC2-BA09-C7128AFB5F2B - c8acad61cf653c23"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CashIt.RegisterViewModel.createLoginData(email: Swift.String, username: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "CashIt"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrew/Desktop/Project%20XCode/CashIt/CashIt/WelcomePage/Sign%20Up/RegisterViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "197">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4B290F90-5D63-4EF6-AB63-DE0E06B2BE98"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CashIt/WelcomePage/Sign Up/RegisterViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "createLoginData(email:username:password:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "74B44C17-696E-438B-9A02-31DB810B3FB0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CashIt/WelcomePage/Sign Up/RegisterViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "createLoginData(email:username:password:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "048BC995-1820-443B-9428-D7EB33EABBD8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CashIt/MakeAppointment/MCMakeAppointmentViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "makeAppointment(moneyChangerId:userId:date:time:toExchangeAmount:toExchangeCurrencyName:toReceiveAmount:toReceiveCurrencyName:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "048BC995-1820-443B-9428-D7EB33EABBD8 - f4d91e3d6b4283b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CashIt.MCMakeAppointmentViewModel.makeAppointment(moneyChangerId: Swift.Int, userId: Swift.Int, date: Swift.String, time: Swift.String, toExchangeAmount: Swift.Int, toExchangeCurrencyName: Swift.String, toReceiveAmount: Swift.Int, toReceiveCurrencyName: Swift.String) -&gt; ()"
+                  moduleName = "CashIt"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrew/Desktop/Project%20XCode/CashIt/CashIt/MakeAppointment/MCMakeAppointmentViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "2538">
+               </Location>
+               <Location
+                  uuid = "048BC995-1820-443B-9428-D7EB33EABBD8 - 5762856f306dac83"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CashIt.MCMakeAppointmentViewModel.makeAppointment(moneyChangerId: Swift.Int, userId: Swift.Int, date: Swift.String, time: Swift.String, toExchangeAmount: Swift.Int, toExchangeCurrencyName: Swift.String, toReceiveAmount: Swift.Int, toReceiveCurrencyName: Swift.String) -&gt; ()"
+                  moduleName = "CashIt"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrew/Desktop/Project%20XCode/CashIt/CashIt/MakeAppointment/MCMakeAppointmentViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "197">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BB6726E6-FBAF-492B-99A6-24068C69A040"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CashIt/MakeAppointment/MCMakeAppointmentViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "makeAppointment(moneyChangerId:userId:date:time:toExchangeAmount:toExchangeCurrencyName:toReceiveAmount:toReceiveCurrencyName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
