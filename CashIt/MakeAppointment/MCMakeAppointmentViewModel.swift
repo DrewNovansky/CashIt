@@ -77,23 +77,19 @@ class MCMakeAppointmentViewModel: ObservableObject{
     func makeAppointment(moneyChangerId: Int, userId: Int, date: String, time: String, toExchangeAmount: Int, toExchangeCurrencyName: String, toReceiveAmount: Int, toReceiveCurrencyName: String){
         let url = URL(string: "http://cashit.link/api/makeNewAppointment")!
         let body: [String: Any] = ["moneyChangerId": moneyChangerId, "date": date, "time": time, "toExchangeAmount": toExchangeAmount, "toExchangeCurrencyName": toExchangeCurrencyName, "toReceiveAmount": toReceiveAmount, "toReceiveCurrencyName": toReceiveCurrencyName, "userId": userId]
-        let finalBody = try! JSONSerialization.data(withJSONObject: body)
-        
+        let finalBody = try? JSONSerialization.data(withJSONObject: body)
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
         request.httpBody = finalBody
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
+       URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data
+            else {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
-            let responseJSON = try! JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
-                print("\(responseJSON) ini responseJSON\n\n\n\n\n\n\n")
-            }
-        }
-        task.resume()
+        print("\(response)")
+       }.resume()
     }
     
     //    func load(appointment: Appointment) {

@@ -28,8 +28,8 @@ struct MCMakeAppointmentView: View {
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .padding()
                     .onAppear(perform: {
-                        dateFormatter.dateFormat = "dd-MM-yyyy"
-                        dateFormatter2.dateFormat = "hh:mm a"
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        dateFormatter2.dateFormat = "hh:mm:ss"
                     })
                 Text(viewModel.name)
                     .font(.title2)

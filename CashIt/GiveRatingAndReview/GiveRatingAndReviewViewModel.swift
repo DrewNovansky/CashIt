@@ -28,16 +28,13 @@ class GiveRatingAndReviewViewModel: ObservableObject {
                 request.httpMethod = "POST"
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.httpBody = finalBody
-                let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                    guard let data = data, error == nil else {
+                URLSession.shared.dataTask(with: request) { data, response, error in
+                    guard let data = data
+                    else {
                         print(error?.localizedDescription ?? "No data")
                         return
                     }
-                    let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-                    if let responseJSON = responseJSON as? [String: Any] {
-                        print("\(responseJSON) ini responseJSON\n\n\n\n\n\n\n")
-                    }
-                }
-                task.resume()
+                }.resume()
+                
     }
 }
