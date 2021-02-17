@@ -72,10 +72,10 @@ class MCProfileViewModel{
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {
                 if let data = data {
-                    let decodedMC = try JSONDecoder().decode([Currency].self, from: data)
+                    let decodedMCCurrency = try JSONDecoder().decode([Currency].self, from: data)
                     DispatchQueue.main.async {
-                        self.currency = decodedMC
-                        print(decodedMC)
+                        self.currency = decodedMCCurrency
+                        print(decodedMCCurrency)
                     }
                 }else {
                     print("No Data\n\n")

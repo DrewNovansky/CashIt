@@ -19,7 +19,7 @@ class HistoryViewModel {
     
     
     func load() {
-        let url = URL(string: "http://cashit.link/api/getAppointmentByUserId/\(UserDefaults.standard.integer(forKey: "userId"))")!
+        let url = URL(string: "http://cashit.link/api/getAppointmentsByUserId/\(UserDefaults.standard.integer(forKey: "userId"))")!
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {
                 if let data = data {
