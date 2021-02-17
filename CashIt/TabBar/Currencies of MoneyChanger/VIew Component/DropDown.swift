@@ -11,7 +11,7 @@ var currencies = ["USD","EUR","GBP","CNY","HKD","IDR","RGM","THB","SGD"]
 
 struct DropDown:View {
     @State var expand = false
-    @State var text = currencies[0]
+    @Binding var text: String
     var body: some View{
         ZStack{
             VStack{
@@ -22,7 +22,6 @@ struct DropDown:View {
                     Image(systemName: expand ? "chevron.up" : "chevron.down")
                         .resizable()
                         .frame(width: 10, height: 5)
-                    
                 }.frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height*0.045, alignment: .center)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
@@ -43,7 +42,6 @@ struct DropDown:View {
         }
     }
 }
-
 
 struct DropDownElement:View {
     var element = "test"
@@ -69,11 +67,5 @@ struct DropDownElement:View {
                 .stroke(expand ? Color("AccentColor") : Color.gray, lineWidth: 3)
         )
         .offset(y: UIScreen.main.bounds.height*0.01)
-    }
-}
-
-struct DropDown_Previews: PreviewProvider {
-    static var previews: some View {
-        DropDown()
     }
 }

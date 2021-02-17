@@ -122,7 +122,9 @@ struct OrderDetailView: View {
             .background(Color("CardBackground"))
             .clipShape(RoundedRectangle(cornerRadius: 20))
         }.navigationBarTitle("Detail Riwayat")
+        if viewModel.appointment.status == "completed"{
         ReviewButton(isPresentingModalView: $isPresentingModalView)
+        }
     }
 }
 

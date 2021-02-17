@@ -20,10 +20,10 @@ struct MoneyChanger: Codable, Identifiable, Hashable {
     
     enum CodingKeys: String, CodingKey {
         case moneyChangerId = "id"
-        case moneyChangerName = "name"
+        case moneyChangerName = "moneyChangerName"
         case photo = "photo"
         case address = "address"
-        case whatsappLink = "whatsAppLink"
+        case whatsappLink = "whatsAppNumber"
         case phoneNumber = "phoneNumber"
         case latitudeCoordinate = "latitudeCoordinate"
         case longitudeCoordinate = "longitudeCoordinate"

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CurrencySelect: View {
+    var viewModel = HomeViewModel()
+    @Binding var toExchangeCurrencyName : String
+    @Binding var toReceiveCurrencyName : String
     var body: some View {
         HStack{
             VStack{
@@ -20,9 +23,9 @@ struct CurrencySelect: View {
                         .frame(width: (UIScreen.main.bounds.width/2)-20, alignment: .leading)
                 }.zIndex(5)
                 HStack{
-                    DropDown()
+                    DropDown(text: $toExchangeCurrencyName)
                         .frame(width: (UIScreen.main.bounds.width/2)-20, alignment: .leading)
-                    DropDown()
+                    DropDown(text: $toReceiveCurrencyName)
                         .frame(width: (UIScreen.main.bounds.width/2)-20, alignment: .leading)
                 }.zIndex(4)
             }.frame(height: UIScreen.main.bounds.height*0.1)
@@ -30,11 +33,5 @@ struct CurrencySelect: View {
             .zIndex(6)
         }.zIndex(5)
         .padding(10)
-    }
-}
-
-struct CurrencySelect_Previews: PreviewProvider {
-    static var previews: some View {
-        CurrencySelect()
     }
 }
