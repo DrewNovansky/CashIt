@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    var viewModel = HomeViewModel()
+    @ObservedObject var viewModel = HomeViewModel()
     @State private var searchText : String = ""
     @State var toExchangeCurrencyName = currencies[0]
     @State var toReceiveCurrencyName = currencies[0]
@@ -25,14 +25,17 @@ struct HomeView: View {
                         })
                         .onChange(of: toExchangeCurrencyName, perform: { value in
                            print("\(toExchangeCurrencyName)\n\n\n\n\n")
+                            print("\(toReceiveCurrencyName)\n\n\n\n\n")
                             viewModel.toExchangeCurrencyName = toExchangeCurrencyName
-                            
+                            viewModel.load(toExchangeCurrencyName: viewModel.toExchangeCurrencyName, toReceiveCurrencyName: viewModel.toReceiveCurrencyName)
                         })
                         .onChange(of: toReceiveCurrencyName, perform: { value in
                            print("\(toReceiveCurrencyName)\n\n\n\n\n")
+                            print("\(toExchangeCurrencyName)\n\n\n\n\n")
                             viewModel.toReceiveCurrencyName = toReceiveCurrencyName
+                            viewModel.load(toExchangeCurrencyName: viewModel.toExchangeCurrencyName, toReceiveCurrencyName: viewModel.toReceiveCurrencyName)
                         })
-                    StoreList(searchText: $searchText)
+                    StoreList(viewModel: viewModel, searchText: $searchText)
                     Spacer()
                 }.frame(width: UIScreen.main.bounds.width-20)
                 .onTapGesture(perform: {
