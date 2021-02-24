@@ -16,10 +16,11 @@ class MCProfileViewModel{
     var mean: Int = 0
     // Dummy Data
     init(){
+        
         distance = 2000
         //        distance = Double(round(100*distance)/100)/1000
         moneyChanger = MoneyChanger(moneyChangerId: 3, moneyChangerName: "Testing", photo: "Test", address: "alamat init",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557)
-        load()
+        self.load()
     }
     
     func getStoreRating() -> Int{
@@ -73,10 +74,10 @@ class MCProfileViewModel{
             do {
                 if let data = data {
                     let decodedMCCurrency = try JSONDecoder().decode([Currency].self, from: data)
-                    DispatchQueue.main.async {
-                        self.currency = decodedMCCurrency
-                        print(decodedMCCurrency)
-                    }
+                    //                    DispatchQueue.main.async {
+                    self.currency = decodedMCCurrency
+                    print(decodedMCCurrency)
+                    //                    }
                 }else {
                     print("No Data\n\n")
                 }
@@ -92,10 +93,10 @@ class MCProfileViewModel{
             do {
                 if let data2 = data2 {
                     let decodedOfficeHour = try JSONDecoder().decode([OfficeHour].self, from: data2)
-                    DispatchQueue.main.async {
-                        self.operationalHours = decodedOfficeHour
-                        print(decodedOfficeHour)
-                    }
+                    //                    DispatchQueue.main.async {
+                    self.operationalHours = decodedOfficeHour
+                    print(decodedOfficeHour)
+                    //                    }
                 }else {
                     print("No Data\n\n")
                 }
@@ -105,21 +106,21 @@ class MCProfileViewModel{
         }.resume()
         
         //        GET Review API
-                let url3 = URL(string: "http://cashit.link/api/getAllReviewsByMoneyChangerId/\(self.moneyChanger.moneyChangerId)")!
-                URLSession.shared.dataTask(with: url3) { (data3, response, error) in
-                    // handle the result here.
-                    do {
-                        if let data3 = data3 {
-                            let decodedReview = try JSONDecoder().decode([Review].self, from: data3)
-                            DispatchQueue.main.async {
-                                self.reviews = decodedReview
-                            }
-                        }else {
-                            print("No Data\n\n")
-                        }
-                    } catch {
-                        print ("Error data3\n\n")
-                    }
-                }.resume()
+        let url3 = URL(string: "http://cashit.link/api/getAllReviewsByMoneyChangerId/\(self.moneyChanger.moneyChangerId)")!
+        URLSession.shared.dataTask(with: url3) { (data3, response, error) in
+            // handle the result here.
+            do {
+                if let data3 = data3 {
+                    let decodedReview = try JSONDecoder().decode([Review].self, from: data3)
+//                    DispatchQueue.main.async {
+                        self.reviews = decodedReview
+//                    }
+                }else {
+                    print("No Data\n\n")
+                }
+            } catch {
+                print ("Error data3\n\n")
+            }
+        }.resume()
     }
 }
