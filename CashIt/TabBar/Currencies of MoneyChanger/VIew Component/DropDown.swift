@@ -42,6 +42,39 @@ struct DropDown:View {
         }
     }
 }
+struct DropDown2:View {
+    @State var expand = false
+    @Binding var text: String
+    var body: some View{
+        ZStack{
+            VStack{
+                HStack{
+                    Text("\(text)")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                    Image(systemName: expand ? "chevron.up" : "chevron.down")
+                        .resizable()
+                        .frame(width: 10, height: 5)
+                }.frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height*0.045, alignment: .center)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(expand ? Color("AccentColor") : Color.gray, lineWidth: 3)
+                )
+                .onTapGesture(perform: {
+                    self.expand.toggle()
+                })
+            }
+            .animation(.spring())
+            if expand{
+                ForEach(0..<currencies.count){
+                    currency in
+                    DropDownElement(element: currencies[currency], expand: $expand, text: $text)
+                        .offset(y: UIScreen.main.bounds.height * (0.05 * CGFloat((currency + 1))))
+                }
+            }
+        }
+    }
+}
 
 struct DropDownElement:View {
     var element = "test"

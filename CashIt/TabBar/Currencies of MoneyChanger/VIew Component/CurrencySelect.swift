@@ -25,7 +25,7 @@ struct CurrencySelect: View {
                 HStack{
                     DropDown(text: $toExchangeCurrencyName)
                         .frame(width: (UIScreen.main.bounds.width/2)-20, alignment: .leading)
-                    DropDown(text: $toReceiveCurrencyName)
+                    DropDown2(text: $toReceiveCurrencyName)
                         .frame(width: (UIScreen.main.bounds.width/2)-20, alignment: .leading)
                 }.zIndex(4)
             }.frame(height: UIScreen.main.bounds.height*0.1)

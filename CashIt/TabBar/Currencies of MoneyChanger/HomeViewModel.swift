@@ -9,29 +9,28 @@ import Foundation
 import SwiftUI
 import MapKit
 
-struct MoneyChangerDetail: Decodable, Hashable{
-    struct MoneyChanger: Codable, Hashable{
-        var moneyChangerId: Int
-        var moneyChangerName: String
-        var photo: String
-        var address: String
-        var whatsappLink: String
-        var phoneNumber: String
-        var latitudeCoordinate: Double
-        var longitudeCoordinate: Double
-        private enum CodingKeys : String, CodingKey {
-            case moneyChangerId = "id"
-            case moneyChangerName = "moneyChangerName"
-            case photo = "photo"
-            case address = "address"
-            case whatsappLink = "whatsappLink"
-            case phoneNumber = "phoneNumber"
-            case latitudeCoordinate = "latitudeCoordinate"
-            case longitudeCoordinate = "longitudeCoordinate"
-        }
+struct MoneyChangerDetail: Codable, Hashable{
+    var moneyChangerId: Int
+    var moneyChangerName: String
+    var photo: String
+    var address: String
+    var whatsappLink: String
+    var phoneNumber: String
+    var latitudeCoordinate: Double
+    var longitudeCoordinate: Double
+    var exchangeRate: Double
+    
+    private enum CodingKeys : String, CodingKey{
+        case moneyChangerId = "id"
+        case moneyChangerName = "moneyChangerName"
+        case photo = "photo"
+        case address = "address"
+        case whatsappLink = "whatsAppNumber"
+        case phoneNumber = "phoneNumber"
+        case latitudeCoordinate = "latitudeCoordinate"
+        case longitudeCoordinate = "longitudeCoordinate"
+        case exchangeRate = "exchangeRate"
     }
-    var moneyChanger: MoneyChanger
-    var exchangeRate: Int
 }
 
 class HomeViewModel: ObservableObject {
@@ -43,19 +42,19 @@ class HomeViewModel: ObservableObject {
     @Published var toReceiveCurrencyName : String
     // Dummy Data
     init() {
-        toExchangeCurrencyName = ""
-        toReceiveCurrencyName = ""
+        toExchangeCurrencyName = "USD"
+        toReceiveCurrencyName = "USD"
         locValue = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
-        self.store.append(contentsOf: [
-            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 8,moneyChangerName: "Rainbow Bridge Money Changer",  photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557), exchangeRate: 16000),
-            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 3,moneyChangerName: "Surya Money Changer",photo: "Test", address: "Central Park Mall Lantai B 30A",whatsappLink: "wa.me/6281243658709", phoneNumber: "081234658709",latitudeCoordinate:-6.1774,longitudeCoordinate: 106.7907),exchangeRate: 17000),
-            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 4,moneyChangerName: "Tiga Saudara Money Changer",photo: "Test", address: "Taman Anggrek Lantai 1 29B",whatsappLink: "wa.me/084681809919", phoneNumber: "084681809919",latitudeCoordinate:-6.1785,longitudeCoordinate: 106.7922), exchangeRate: 16500),
-        ])
-        load(toExchangeCurrencyName: toExchangeCurrencyName, toReceiveCurrencyName: toReceiveCurrencyName)
-                store.sort {
-                    $0.exchangeRate < $1.exchangeRate &&
-                    countDistance(loc1Latitude: $0.moneyChanger.latitudeCoordinate , loc1Longitude: $0.moneyChanger.longitudeCoordinate) < countDistance(loc1Latitude: $1.moneyChanger.latitudeCoordinate, loc1Longitude: $1.moneyChanger.longitudeCoordinate)
-                }
+        //        self.store.append(contentsOf: [
+        //            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 8,moneyChangerName: "Rainbow Bridge Money Changer",  photo: "Test", address: "Jl.Raya Kb.Jeruk Gg.H. Salbini No.27 RT.1 RW.9",whatsappLink: "wa.me/6281291286046", phoneNumber: "081291286046",latitudeCoordinate:-6.2018528,longitudeCoordinate: 106.782557), exchangeRate: 16000),
+        //            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 3,moneyChangerName: "Surya Money Changer",photo: "Test", address: "Central Park Mall Lantai B 30A",whatsappLink: "wa.me/6281243658709", phoneNumber: "081234658709",latitudeCoordinate:-6.1774,longitudeCoordinate: 106.7907),exchangeRate: 17000),
+        //            MoneyChangerDetail(moneyChanger: MoneyChangerDetail.MoneyChanger(moneyChangerId: 4,moneyChangerName: "Tiga Saudara Money Changer",photo: "Test", address: "Taman Anggrek Lantai 1 29B",whatsappLink: "wa.me/084681809919", phoneNumber: "084681809919",latitudeCoordinate:-6.1785,longitudeCoordinate: 106.7922), exchangeRate: 16500),
+        //        ])
+//        load(toExchangeCurrencyName: toExchangeCurrencyName, toReceiveCurrencyName: toReceiveCurrencyName)
+        store.sort {
+            $0.exchangeRate < $1.exchangeRate &&
+                countDistance(loc1Latitude: $0.latitudeCoordinate , loc1Longitude: $0.longitudeCoordinate) < countDistance(loc1Latitude: $1.latitudeCoordinate, loc1Longitude: $1.longitudeCoordinate)
+        }
     }
     func searchCurrency(currency: [Currency], currencySearchFor: Currency)-> Currency{
         var getCurrency: Currency = Currency(currencyId: 0, currencyName: "", buyPrice: 0, sellPrice: 0)
@@ -70,33 +69,20 @@ class HomeViewModel: ObservableObject {
     }
     
     func load(toExchangeCurrencyName: String, toReceiveCurrencyName: String) {
-        let url = URL(string: "/getMoneyChangerByTo_ExchangeReceive")!
-        let body: [String: String] = ["toExchangeCurrencyName" : toExchangeCurrencyName, "toReceiveCurrencyName" : toReceiveCurrencyName]
-        
-        let finalBody = try! JSONSerialization.data(withJSONObject: body)
-        
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        request.httpBody = finalBody
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        let url = URL(string: "http://cashit.link/api/getMoneyChangerByTo_ExchangeReceive/\(toExchangeCurrencyName)/\(toReceiveCurrencyName)")!
+        URLSession.shared.dataTask(with: url) { data, response, error in
             // handle the result here.
             guard let data = data
             else {
-//                print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
+                //                print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
                 return
             }
             let finalData = try! JSONDecoder().decode([MoneyChangerDetail].self, from: data)
-//            print("\(body)")
-//            print("\(response) ini response")
-//            print("\(finalBody)")
-//            print("\(finalData) ini final data \n\n\n\n\n\n ")
-            if let finalData = finalData as? [String: Any] {
-//                print("\(finalData) ini responseJSON\n\n\n\n\n\n\n")
-            }
-//            DispatchQueue.main.async {
-                self.store = finalData
-//            }
+//                        print("\(response) ini response")
+                        print("\(finalData) ini final data \n\n\n\n\n\n ")
+                        DispatchQueue.main.async {
+                            self.store = finalData
+                        }
         }.resume()
     }
     
@@ -112,11 +98,11 @@ class HomeViewModel: ObservableObject {
     func segue(showView: Binding<Bool>,distance: Double, moneyChanger: MoneyChangerDetail) -> MCProfileView {
         let viewModel = MCProfileViewModel()
         var view = MCProfileView(viewModel:viewModel, rootIsActive: showView)
-        viewModel.moneyChanger.moneyChangerId = moneyChanger.moneyChanger.moneyChangerId
-        viewModel.moneyChanger.moneyChangerName = moneyChanger.moneyChanger.moneyChangerName
-        viewModel.moneyChanger.address = moneyChanger.moneyChanger.address
-        viewModel.moneyChanger.whatsappLink = moneyChanger.moneyChanger.whatsappLink
-        viewModel.moneyChanger.phoneNumber = moneyChanger.moneyChanger.phoneNumber
+        viewModel.moneyChanger.moneyChangerId = moneyChanger.moneyChangerId
+        viewModel.moneyChanger.moneyChangerName = moneyChanger.moneyChangerName
+        viewModel.moneyChanger.address = moneyChanger.address
+        viewModel.moneyChanger.whatsappLink = moneyChanger.whatsappLink
+        viewModel.moneyChanger.phoneNumber = moneyChanger.phoneNumber
         viewModel.distance = distance//terima parameter
         return view
     }
