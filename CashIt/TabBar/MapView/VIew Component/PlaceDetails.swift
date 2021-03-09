@@ -13,7 +13,7 @@ struct PlaceDetails: View {
     @Binding var selectedPlace: MKPointAnnotation?
     var body: some View {
         HStack{
-            Image(UserDefaults.standard.string(forKey: "photo") ?? "")
+            Image("Test")
                 .resizable()
                 .foregroundColor(.black)
                 .scaledToFit()

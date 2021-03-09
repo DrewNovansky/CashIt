@@ -30,7 +30,8 @@ struct MCProfileView: View {
                     )}
             )
             
-            Image(UserDefaults.standard.string(forKey: "photo") ?? "")
+//            Image(UserDefaults.standard.string(forKey: "photo") ?? "")
+            Image("Test")
                 .resizable()
                 .clipShape(Circle())
                 .frame(width: 100, height: 100, alignment: .center)
